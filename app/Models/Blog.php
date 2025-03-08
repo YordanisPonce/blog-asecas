@@ -20,9 +20,12 @@ class Blog extends Model
 
     protected function photo(): Attribute
     {
+
+        $isUser = request()->input('is_user');
         return Attribute::make(
-            get: fn($item) => $item ? $this->generateUrl($item) : null
+            get: fn($item) => $item && $isUser ? $this->generateUrl($item) : $item
         );
+
     }
 
 

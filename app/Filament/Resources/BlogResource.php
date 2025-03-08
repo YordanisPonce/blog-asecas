@@ -33,7 +33,7 @@ class BlogResource extends Resource
                 TextInput::make('title')->label('Título')->columnSpanFull(),
                 RichEditor::make('description')->label('Contenido')->columnSpanFull(),
                 Toggle::make('active')->label('Habilitado')->columnSpanFull(),
-                FileUpload::make('photo')->label('Foto'),
+                FileUpload::make('photo')->label('Foto')->columnSpanFull(),
                 Hidden::make('user_id')->default(auth()->id())
             ]);
     }
