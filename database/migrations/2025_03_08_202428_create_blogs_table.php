@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
             $table->string('slug')->nullable();
+            $table->string('photo')->nullable();
             $table->boolean('active')->default(false);
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();

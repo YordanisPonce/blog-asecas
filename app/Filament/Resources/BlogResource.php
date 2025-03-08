@@ -6,6 +6,7 @@ use App\Filament\Resources\BlogResource\Pages;
 use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
@@ -13,6 +14,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -31,6 +33,7 @@ class BlogResource extends Resource
                 TextInput::make('title')->label('Título')->columnSpanFull(),
                 RichEditor::make('description')->label('Contenido')->columnSpanFull(),
                 Toggle::make('active')->label('Habilitado')->columnSpanFull(),
+                FileUpload::make('photo')->label('Foto'),
                 Hidden::make('user_id')->default(auth()->id())
             ]);
     }
@@ -39,6 +42,7 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('photo')->label('Foto')->circular(),
                 TextColumn::make('title')->label('Título'),
                 TextColumn::make('user.name')->label('Usuario'),
             ])
