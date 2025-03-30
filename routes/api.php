@@ -17,6 +17,19 @@ Route::middleware(IsUserMiddleware::class)->group(function () {
         ],
         base_path('routes/api/blog.php')
     );
+    Route::group(
+        [
+            'prefix' => '/carousel',
+        ],
+        base_path('routes/api/carousel.php')
+    );
+
+    Route::group(
+        [
+            'prefix' => '/events',
+        ],
+        base_path('routes/api/events.php')
+    );
 
 });
 
