@@ -6,6 +6,7 @@ use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
 use Filament\Forms;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -48,6 +49,7 @@ class EventResource extends Resource
                         'Difusión de Contenidos Jurídicos' => 'Difusión de Contenidos Jurídicos',
                     ])
                     ->required(),
+                Toggle::make('active')->label('Habilitado')->columnSpanFull(),
                 Forms\Components\RichEditor::make('description')->columnSpanFull()
                     ->label('Descripción')
                     ->required(),
@@ -82,6 +84,7 @@ class EventResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

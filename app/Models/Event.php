@@ -20,6 +20,7 @@ class Event extends Model
         'location',
         'type',
         'slug',
+        'active'
     ];
 
     protected $casts = [
