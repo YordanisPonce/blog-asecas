@@ -30,6 +30,12 @@ Route::middleware(IsUserMiddleware::class)->group(function () {
         ],
         base_path('routes/api/events.php')
     );
+    Route::group(
+        [
+            'prefix' => '/contact',
+        ],
+        base_path('routes/api/contact.php')
+    );
 
 });
 

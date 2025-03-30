@@ -17,4 +17,8 @@ class Service
     {
         return $this->record->newQuery()->where('slug', $slug)->first();
     }
+    public function save(array $attributes)
+    {
+        return $this->record->create($attributes);
+    }
 }
