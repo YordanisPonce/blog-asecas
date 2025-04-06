@@ -7,6 +7,7 @@ class BlogService extends Service
     public function __construct()
     {
         $this->record = new Blog;
+        $this->with = ['writer'];
     }
 
 }

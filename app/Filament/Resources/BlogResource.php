@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -17,8 +18,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BlogResource extends Resource
 {
@@ -27,7 +26,7 @@ class BlogResource extends Resource
     protected static ?string $label = 'noticia';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationGroup = 'Blog';
     public static function form(Form $form): Form
     {
         return $form
@@ -36,6 +35,12 @@ class BlogResource extends Resource
                 RichEditor::make('description')->label('Contenido')->columnSpanFull(),
                 Toggle::make('active')->label('Habilitado')->columnSpanFull(),
                 FileUpload::make('photo')->label('Foto')->columnSpanFull(),
+                Select::make('writer_id')->label('Escritor')->
+                    relationship('writer', 'name')
+                    ->columnSpanFull()->preload()->native(false),
+                Select::make('blog_category_id')->label('Categoría')->
+                    relationship('blogCategory', 'name')
+                    ->columnSpanFull()->preload()->native(false),
                 Hidden::make('user_id')->default(auth()->id())
             ]);
     }
@@ -47,6 +52,8 @@ class BlogResource extends Resource
                 ImageColumn::make('photo')->label('Foto')->circular(),
                 TextColumn::make('title')->label('Título'),
                 TextColumn::make('user.name')->label('Usuario'),
+                TextColumn::make('writer.name')->label('Escritor'),
+                TextColumn::make('blogCategory.name')->label('Categoría'),
             ])
             ->filters([
                 //

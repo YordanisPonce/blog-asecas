@@ -7,29 +7,29 @@ use App\Traits\Upload;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class Writer extends Model
 {
     use HasSlug, Upload;
-    protected static array $slugAttributes = ['title'];
-    protected $fillable = ['title', 'description', 'slug', 'active', 'user_id', 'photo'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'image',
+        'short_description',
+        'description'
+    ];
 
-    public function user()
+
+    protected static array $slugAttributes = ['name'];
+
+    protected function image(): Attribute
     {
-        return $this->belongsTo(User::class);
-    }
-
-    protected function photo(): Attribute
-    {
-
         $isUser = request()->input('is_user');
         return Attribute::make(
             get: fn($item) => $item && $isUser ? $this->generateUrl($item) : $item
         );
-
     }
 
-
-    public function setPhotoAttribute($value)
+    public function setImageAttribute($value)
     {
         $source = collect(explode("/", $value));
         if ($source->count() > 2) {
@@ -40,18 +40,12 @@ class Blog extends Model
             $source = $value;
         }
 
-        $this->attributes['photo'] = $source;
+        $this->attributes['image'] = $source;
     }
 
-
-    public function writer()
+    public function blogs()
     {
-        return $this->belongsTo(Writer::class);
-    }
-
-    public function blogCategory()
-    {
-        return $this->belongsTo(BlogCategory::class);
+        return $this->hasMany(Blog::class);
     }
 
 }

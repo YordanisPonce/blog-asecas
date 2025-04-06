@@ -55,6 +55,10 @@ class EventResource extends Resource
                 Forms\Components\RichEditor::make('description')->columnSpanFull()
                     ->label('Descripción')
                     ->required(),
+                Forms\Components\FileUpload::make('photo')
+                    ->label('Foto')
+                    ->image()
+                    ->columnSpanFull(),
             ])->columns(2)
         ;
 
@@ -64,6 +68,9 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('photo')
+                    ->label('Foto')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Título')
                     ->searchable()

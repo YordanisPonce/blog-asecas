@@ -20,5 +20,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => 'adminadmin'
         ]);
+
+        $this->call([
+            BlogCategorySeeder::class,
+            AdditionalBlogCategorySeeder::class,
+        ]);
     }
 }
