@@ -23,7 +23,8 @@ class Event extends Model
         'type',
         'slug',
         'active',
-        'photo'
+        'photo',
+        'meeting_link'
     ];
 
     protected $casts = [

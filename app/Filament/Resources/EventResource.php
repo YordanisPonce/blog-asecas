@@ -51,6 +51,10 @@ class EventResource extends Resource
                         'Difusión de Contenidos Jurídicos' => 'Difusión de Contenidos Jurídicos',
                     ])
                     ->required(),
+                Forms\Components\TextInput::make('meeting_link')
+                    ->label('Link de la reunión')
+                    ->url()
+                    ->maxLength(255),
                 Toggle::make('active')->label('Habilitado')->columnSpanFull(),
                 Forms\Components\RichEditor::make('description')->columnSpanFull()
                     ->label('Descripción')
@@ -87,6 +91,11 @@ class EventResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
                     ->label('Tipo'),
+                Tables\Columns\TextColumn::make('meeting_link')
+                    ->label('Link de la reunión')
+                    ->url(fn ($record) => $record->meeting_link)
+                    ->openUrlInNewTab()
+                    ->limit(30),
             ])
             ->filters([
                 //
