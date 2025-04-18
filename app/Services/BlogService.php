@@ -59,6 +59,7 @@ class BlogService extends Service
     private function generateNewsHtml($news): array
     {
         return $news->map(function ($item) {
+            $item->update(['notified' => true]);
             return sprintf('
                 <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
                     <img src="%s" alt="%s" style="width:100%%;max-width:600px;margin-bottom:12px;border-radius:8px;">
