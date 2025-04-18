@@ -41,6 +41,8 @@ class SuscriptionEmailController extends Controller
             'email' => 'required|email|unique:subscription_emails,email',
         ]);
         $data = $this->subscriptionEmailService->save($request->all());
+        $data->sendEmailVerificationNotification();
+
         return $this->sendResponse(data: $this->subscriptionEmailService->getById($data->id), message: 'Email suscrito correctamente');
     }
 
@@ -74,5 +76,20 @@ class SuscriptionEmailController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function verify()
+    {
+        $token = request()->get('token');
+        $verified = $this->subscriptionEmailService->verify($token);
+        $route = $verified ? 'suscrito' : 'no-suscrito';
+        return view('welcome', compact('route'));
+    }
+    public function unVerify()
+    {
+        $token = request()->get('token');
+        $verified = $this->subscriptionEmailService->unVerify($token);
+        $route = 'suscripcion-cancelada';
+        return view('welcome', compact('route'));
     }
 }

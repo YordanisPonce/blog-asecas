@@ -11,7 +11,7 @@ class Blog extends Model
 {
     use HasSlug, Upload;
     protected static array $slugAttributes = ['title'];
-    protected $fillable = ['title', 'description', 'slug', 'active', 'user_id', 'photo'];
+    protected $fillable = ['title', 'description', 'slug', 'active', 'user_id', 'photo', 'notified'];
 
     public function user()
     {
