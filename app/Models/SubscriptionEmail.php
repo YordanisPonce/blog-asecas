@@ -55,7 +55,7 @@ class SubscriptionEmail extends Model implements MustVerifyEmail
             $this->forceFill([
                 'email_verified_token' => $token
             ])->save();
-            $verification_link = route('unverify-email', ['token' => $token]);
+            $verification_link = route('verify-email', ['token' => $token]);
             $this->notify(new DynamicNotification([
                 'subject' => 'Email de verificación de correo para suscripción',
                 'message' => "
