@@ -15,7 +15,7 @@ class EventService extends Service
 
     public function notify($options = [])
     {
-        $news = $this->record->newQuery()->whereDate('date', '>=', Carbon::now())->get();
+        $news = $this->record->newQuery()->whereDate('date', '>=', Carbon::now())->where('active', true)->get();
         if ($news->count() >= $options['minNews']) {
             $recipients = $this->subscriptionEmailService->getRecipients([
                 'query' => fn($query) => $query->whereHas('events')
