@@ -28,9 +28,13 @@ class SubscriptionEmailService extends Service
         return $model->markEmailAsUnVerified();
     }
 
-    public function getRecipients()
+    public function getRecipients(array $options = [])
     {
-        return $this->record->newQuery()->whereNotNull('email_verified_at')->get();
+        $query = $this->record->newQuery()->whereNotNull('email_verified_at');
+        if (isset($options['query'])) {
+            $query->where($options['query']);
+        }
+        return $query->get();
     }
 
 

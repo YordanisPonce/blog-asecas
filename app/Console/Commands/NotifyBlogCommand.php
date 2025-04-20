@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\BlogService;
+use App\Services\EventService;
 use Illuminate\Console\Command;
 
 class NotifyBlogCommand extends Command
@@ -24,10 +25,17 @@ class NotifyBlogCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(BlogService $blogService)
-    {
+    public function handle(
+        BlogService $blogService,
+        EventService $eventService
+    ) {
         request()->merge(['is_user' => true]);
         $blogService->notify([
+            'minNews' => $this->option('notify-limit') ?? 3,
+            'update' => $this->option('update')
+        ]);
+
+        $eventService->notify([
             'minNews' => $this->option('notify-limit') ?? 3,
             'update' => $this->option('update')
         ]);

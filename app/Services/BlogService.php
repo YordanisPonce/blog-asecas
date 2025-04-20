@@ -66,7 +66,7 @@ class BlogService extends Service
     {
         return $news->map(function ($item) use ($options) {
 
-          //  $item->update(['notified' => true]);
+            $item->update(['notified' => true]);
 
             return sprintf('
                 <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">

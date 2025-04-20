@@ -61,7 +61,6 @@ class SubscriptionEmail extends Model implements MustVerifyEmail
             $this->notify(new DynamicNotification([
                 'subject' => 'Email de verificación de correo para suscripción',
                 'message' => "
-                <h2>¡Bienvenido a nuestra newsletter!</h2>
                 <p>Gracias por suscribirte. Para comenzar a recibir nuestras novedades, por favor verifica tu correo electrónico haciendo clic en el siguiente botón:</p>
                 <p style=\"text-align:center;\">
                     <a href=\"{$verification_link}\" style=\"background-color:#309CAA;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;\">
