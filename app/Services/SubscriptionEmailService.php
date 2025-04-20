@@ -14,10 +14,11 @@ class SubscriptionEmailService extends Service
     public function verify($token)
     {
         $model = $this->record->newQuery()->where('email_verified_token', $token)->first();
-        if (!$model) {
+        if (!$model || $model->hasVerifiedEmail()) {
             return false;
         }
-        return $model->markEmailAsVerified();
+        $model->markEmailAsVerified();
+        return true;
     }
     public function unVerify($token)
     {

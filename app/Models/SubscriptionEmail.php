@@ -33,15 +33,13 @@ class SubscriptionEmail extends Model implements MustVerifyEmail
     public function markEmailAsVerified()
     {
         return $this->forceFill([
-            'email_verified_at' => now(),
-            'email_verified_token' => null
+            'email_verified_at' => now()
         ])->save();
     }
     public function markEmailAsUnVerified()
     {
         return $this->forceFill([
-            'email_verified_at' => null,
-            'email_verified_token' => null
+            'email_verified_at' => null
         ])->save();
     }
 
