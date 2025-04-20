@@ -302,6 +302,8 @@
                     {!! $data['message'] !!}
                 </p>
             @endif
+            <p class="montserrat-alternates-regular">
+                Gracias por formar parte de esta comunidad comprometida con el acceso a la justicia. </p>
             <p style="padding-bottom: 50px;" class="montserrat-alternates-regular">
                 Un saludo,<br />
                 Equipo de {{ config('app.name') }}

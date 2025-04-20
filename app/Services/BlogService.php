@@ -47,8 +47,14 @@ class BlogService extends Service
 
                 Notification::route('mail', $recipient->email)
                     ->notify(new DynamicNotification([
-                        'subject' => "Nuevas notificaciones: {$news->count()} actualizaciones importantes",
-                        'message' => $message
+                        'subject' => "Nuevos artículos legales para estar al día con tus derechos",
+                        'message' => [
+                            'Hola',
+                            'Ya tienes disponibles los últimos contenidos en Derecho Ciudadano. Esta semana te traemos artículos pensados para ayudarte a comprender y ejercer tus derechos de forma sencilla y práctica.',
+                            '<h1>Lo más reciente:</h1>',
+                            ...$message,
+                            '<small><strong>Recuerda: al estar suscrito, también puedes acceder a nuestros modelos de reclamación y formularios gratuitos, además de recibir orientación legal básica.</strong></small>'
+                        ]
                     ]));
             }
         }
@@ -56,13 +62,15 @@ class BlogService extends Service
     }
 
 
-    private function generateNewsHtml($news): array
+    private function generateNewsHtml($news, $options = []): array
     {
-        return $news->map(function ($item) {
-            $item->update(['notified' => true]);
+        return $news->map(function ($item) use ($options) {
+
+          //  $item->update(['notified' => true]);
+
             return sprintf('
                 <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
-                    <img src="%s" alt="%s" style="width:100%%;max-width:600px;margin-bottom:12px;border-radius:8px;">
+                    <img src="%s" alt="%s" style="width:100%%;max-width:600px;margin-bottom:12px;border-radius:8px;object-fit:cover" height="180">
                     <h3 style="color: #1a1a1a;">%s</h3>
                     <p style="color: #555;">%s</p>
                     <a href="%s" style="

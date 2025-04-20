@@ -41,8 +41,7 @@ class SuscriptionEmailController extends Controller
             'email' => 'required|email|unique:subscription_emails,email',
         ]);
         $data = $this->subscriptionEmailService->save($request->all());
-        $data->sendEmailVerificationNotification();
-
+      
         return $this->sendResponse(data: $this->subscriptionEmailService->getById($data->id), message: 'Email suscrito correctamente');
     }
 

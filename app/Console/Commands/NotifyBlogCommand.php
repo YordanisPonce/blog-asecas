@@ -12,7 +12,7 @@ class NotifyBlogCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'notify';
+    protected $signature = 'notify {--notify-limit=} {--update=1}';
 
     /**
      * The console command description.
@@ -26,9 +26,10 @@ class NotifyBlogCommand extends Command
      */
     public function handle(BlogService $blogService)
     {
-
+        request()->merge(['is_user' => true]);
         $blogService->notify([
-            'minNews' => 3
+            'minNews' => $this->option('notify-limit') ?? 3,
+            'update' => $this->option('update')
         ]);
     }
 }

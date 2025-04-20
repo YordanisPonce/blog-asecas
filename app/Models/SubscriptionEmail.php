@@ -52,26 +52,29 @@ class SubscriptionEmail extends Model implements MustVerifyEmail
      */
     public function sendEmailVerificationNotification()
     {
-        $token = Str::random(40);
-        $this->forceFill([
-            'email_verified_token' => $token
-        ])->save();
-        $verification_link = route('verify-email', ['token' => $token]);
-        $this->notify(new DynamicNotification([
-            'subject' => 'Email de verificación de correo para suscripción',
-            'message' => "
-            <h2>¡Bienvenido a nuestra newsletter!</h2>
-            <p>Gracias por suscribirte. Para comenzar a recibir nuestras novedades, por favor verifica tu correo electrónico haciendo clic en el siguiente botón:</p>
-            <p style=\"text-align:center;\">
-                <a href=\"{$verification_link}\" style=\"background-color:#309CAA;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;\">
-                    Verificar mi correo
-                </a>
-            </p>
-            <p>O, si prefieres, copia y pega este enlace en tu navegador:</p>
-            <p><a href=\"$verification_link\">{$verification_link}</a></p>
-            <p>Si tú no solicitaste esta suscripción, puedes ignorar este correo.</p>
-            "
-        ]));
+        if (!$this->hasVerifiedEmail()) {
+            $token = Str::random(40);
+            $this->forceFill([
+                'email_verified_token' => $token
+            ])->save();
+            $verification_link = route('verify-email', ['token' => $token]);
+            $this->notify(new DynamicNotification([
+                'subject' => 'Email de verificación de correo para suscripción',
+                'message' => "
+                <h2>¡Bienvenido a nuestra newsletter!</h2>
+                <p>Gracias por suscribirte. Para comenzar a recibir nuestras novedades, por favor verifica tu correo electrónico haciendo clic en el siguiente botón:</p>
+                <p style=\"text-align:center;\">
+                    <a href=\"{$verification_link}\" style=\"background-color:#309CAA;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;\">
+                        Verificar mi correo
+                    </a>
+                </p>
+                <p>O, si prefieres, copia y pega este enlace en tu navegador:</p>
+                <p><a href=\"$verification_link\">{$verification_link}</a></p>
+                <p>Si tú no solicitaste esta suscripción, puedes ignorar este correo.</p>
+                "
+            ]));
+        }
+
     }
 
     /**
@@ -84,4 +87,9 @@ class SubscriptionEmail extends Model implements MustVerifyEmail
         return $this->attributes['email'];
     }
 
+    public function events()
+    {
+
+        return $this->belongsToMany(Event::class, 'event_s_emails', 'email_id', 'event_id');
+    }
 }

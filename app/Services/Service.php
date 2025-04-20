@@ -24,7 +24,8 @@ class Service
     }
     public function save(array $attributes)
     {
-        return $this->record->create($attributes);
+        $record = $this->record->create($attributes);
+        return $this->getById($record->id);
     }
 
     public function update(array $attributes, $id)
@@ -49,5 +50,8 @@ class Service
 
 
 
-
+    public function query()
+    {
+        return $this->record->newQuery();
+    }
 }

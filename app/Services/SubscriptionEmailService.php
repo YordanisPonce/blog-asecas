@@ -34,4 +34,12 @@ class SubscriptionEmailService extends Service
     }
 
 
+    public function save(array $attributes)
+    {
+        $model = parent::save($attributes);
+        $model->sendEmailVerificationNotification();
+        return $model;
+    }
+
+
 }
