@@ -31,9 +31,6 @@ class Event extends Model
         'meeting_link'
     ];
 
-    protected $casts = [
-        'date' => 'datetime',
-    ];
 
     protected static array $slugAttributes = ['title'];
 

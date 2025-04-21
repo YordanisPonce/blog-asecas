@@ -18,13 +18,6 @@ class EventService extends Service
     {
         $startDate = Carbon::now()->addDay()->toDateString();        // Mañana
         $endDate = Carbon::now()->addDays(2)->toDateString();        // Pasado mañana
-        $news = $this->record->newQuery()
-            ->whereDate('date', '>=', $startDate)
-            ->whereDate('date', '<=', $endDate)
-            ->where('active', true)
-            ->get();
-
-        Log::debug($news);
         $recipients = $this->subscriptionEmailService->query()->whereHas('events')->get();
 
         foreach ($recipients as $recipient) {
@@ -40,6 +33,13 @@ class EventService extends Service
             $message = [
                 $buttonUrl
             ];
+
+            $news = $recipient->events()
+                ->whereDate('date', '>=', $startDate)
+                ->whereDate('date', '<=', $endDate)
+                ->where('active', true)
+                ->get();
+
             foreach ($news as $key => $value) {
 
                 Carbon::setLocale('es');
@@ -67,6 +67,8 @@ class EventService extends Service
                         ]
                     ]));
             }
+
+
 
         }
 
