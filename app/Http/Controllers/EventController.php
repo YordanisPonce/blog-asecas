@@ -40,7 +40,8 @@ class EventController extends Controller
             $suscriptor = $this->subscriptionEmailService->save($request->all());
         }
         $suscriptor->events()->syncWithoutDetaching($event);
-        return $this->sendResponse(data: $suscriptor, message: 'Suscripcion completada satisfactoriamente');
+        $event->notify($suscriptor);
+        return $this->sendResponse(data: $suscriptor, message: 'Suscripción completada satisfactoriamente');
 
     }
 }

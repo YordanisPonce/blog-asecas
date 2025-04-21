@@ -2,18 +2,17 @@
 
 namespace App\Console\Commands;
 
-use App\Services\BlogService;
 use App\Services\EventService;
 use Illuminate\Console\Command;
 
-class NotifyBlogCommand extends Command
+class NotifyEventCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'notify {--notify-limit=} {--update=1}';
+    protected $signature = 'notify-event';
 
     /**
      * The console command description.
@@ -26,14 +25,8 @@ class NotifyBlogCommand extends Command
      * Execute the console command.
      */
     public function handle(
-        BlogService $blogService
+        EventService $eventService
     ) {
-        request()->merge(['is_user' => true]);
-        $blogService->notify([
-            'minNews' => $this->option('notify-limit') ?? 3,
-            'update' => $this->option('update')
-        ]);
-
-        
+        $eventService->notify();
     }
 }

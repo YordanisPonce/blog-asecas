@@ -3,6 +3,7 @@ namespace App\Services;
 use App\Models\Event;
 use App\Notifications\DynamicNotification;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 
@@ -15,19 +16,19 @@ class EventService extends Service
 
     public function notify($options = [])
     {
-        $news = $this->record->newQuery()->whereDate('date', '>=', Carbon::now())->where('active', true)->get();
-        if ($news->count() >= $options['minNews']) {
-            $recipients = $this->subscriptionEmailService->getRecipients([
-                'query' => fn($query) => $query->whereHas('events')
-            ]);
+        $startDate = Carbon::now()->addDay()->toDateString();        // Mañana
+        $endDate = Carbon::now()->addDays(2)->toDateString();        // Pasado mañana
+        $news = $this->record->newQuery()
+            ->whereDate('date', '>=', $startDate)
+            ->whereDate('date', '<=', $endDate)
+            ->where('active', true)
+            ->get();
 
-            foreach ($recipients as $recipient) {
-                $token = Str::random(40);
-                $recipient->update(['email_verified_token' => $token]);
+        Log::debug($news);
+        $recipients = $this->subscriptionEmailService->query()->whereHas('events')->get();
 
-                $verification_link = route('unverify-email', ['token' => $token]);
-
-                $buttonUrl = '
+        foreach ($recipients as $recipient) {
+            $buttonUrl = '
                     <center>
                         <a href="https://derecho-ciudadano.com/eventos" style="background-color:#309CAA;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;margin:auto">
                             Ver todos los eventos
@@ -35,34 +36,44 @@ class EventService extends Service
                     </center>
                 ';
 
-                $message = [
-                    ...$this->generateNewsHtml($news),
-                    $buttonUrl,
-                    "
-                    <center>
-                        <br>
-                        <p style=\"margin-bottom:2px\">Pulsa el enlace de abajo para dejar de recibir noticias</p>
-                        <p><a href=\"$verification_link\">$verification_link</a></p>
-                    </center>"
-                ];
 
+            $message = [
+                $buttonUrl
+            ];
+            foreach ($news as $key => $value) {
+
+                Carbon::setLocale('es');
+                $prettyDate = Carbon::parse(Carbon::parse($value->date)->format("Y-m-d") . ' ' . $value->start_time)->translatedFormat('d \d\e F \d\e Y \a \l\a\s g:i A');
+                $address = $value->meeting_link ? $value->meeting_link : $value->location;
+                $hour = Carbon::parse($value->start_time)->format('g:i A');
+                $description = Str::limit(strip_tags($value->description), 150);
                 Notification::route('mail', $recipient->email)
                     ->notify(new DynamicNotification([
-                        'subject' => "Nuevos eventos para estar al día con tus derechos",
+                        'subject' => "Recordatorio de asistencia al evento {$value->title}",
                         'message' => [
-                            'Hola',
-                            'Ya tienes disponibles los últimos eventos en Derecho Ciudadano. Esta semana te traemos eventos pensados para ayudarte a comprender y ejercer tus derechos de forma sencilla y práctica.',
-                            '<h1>Lo más reciente:</h1>',
-                            ...$message,
-                            '<small><strong>Recuerda: al estar suscrito, también puedes acceder a nuestros modelos de reclamación y formularios gratuitos, además de recibir orientación legal básica.</strong></small>'
+                            "<h1> Hola $recipient->email,</h1>",
+                            "Queremos recordarte que estás inscrito/a en el evento <strong>”{$value->title}”</strong>, que se celebrará el próximo $prettyDate, en {$address}.",
+                            "<h2> Detalles del evento:</h2>",
+                            [
+                                "📅 Fecha: $prettyDate",
+                                "🕒 Hora:  $hour",
+                                "📍 Lugar: $address",
+                                "📝 Tema: $description",
+                            ],
+                            "Te recomendamos llegar con unos minutos de antelación para facilitar la organización.",
+                            "En caso de no poder asistir, por favor avísanos respondiendo a este correo.",
+                            "¡Te esperamos!",
+                            ...$message
                         ]
                     ]));
             }
+
         }
+
     }
 
 
-    private function generateNewsHtml($news, $options = []): array
+    public function generateNewsHtml($news, $options = []): array
     {
         return $news->map(function ($item) use ($options) {
             return sprintf('
