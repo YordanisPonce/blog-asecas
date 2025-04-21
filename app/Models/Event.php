@@ -100,7 +100,7 @@ class Event extends Model
 
 
         $recipient->notify(new DynamicNotification([
-            'subject' => "Recordatorio de asistencia al evento {$value->title}",
+            'subject' => "Notificación de asistencia al evento {$value->title}",
             'message' => $message
         ]));
 
