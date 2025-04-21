@@ -316,7 +316,7 @@
                     <img src="https://derecho-ciudadano.com/assets/logo-withoutbg.png" alt="logo" width="60"
                         height="60">
                 </div>
-                <p class="montserrat-alternates-regular" style="font-size: 18px"> © {{ date('Y') }}
+                <p class="montserrat-alternates-regular" style="font-size: 18px;color: white"> © {{ date('Y') }}
                     {{ config('app.name') }}. Todos
                     los derechos reservados </p>
             </div>
