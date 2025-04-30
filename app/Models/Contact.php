@@ -17,7 +17,7 @@ class Contact extends Model
         $speciality = request()->input('speciality');
         $phone = request()->input('phone');
         $file = request()->file('cv');
-        Notification::route('mail', 'yordisponcealderete@gmail.com')
+        Notification::route('mail', 'administracion@grupoestucalia.com')
             ->notify(new DynamicNotification([
                 'subject' => "Nuevo mensaje de contacto de {$this->name}",
                 'message' => [
