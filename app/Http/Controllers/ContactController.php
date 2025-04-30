@@ -37,7 +37,13 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->sendResponse(data: $this->contactService->save($request->all()));
+        $data = $this->contactService->save($request->all());
+        if ($data) {
+            $data->sendEmail();
+        }
+
+        $response = $this->sendResponse(data: $data);
+        return $response;
     }
 
     /**

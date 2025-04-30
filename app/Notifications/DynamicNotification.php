@@ -34,11 +34,18 @@ class DynamicNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
+        $objEmail = (new MailMessage)
             ->view('notification', [
                 'data' => $this->data
             ])->subject($this->data['subject']);
-        ;
+
+        if (isset($this->data['file'])) {
+            $objEmail->attach($this->data['file']['path'], [
+                'as' => $this->data['file']['name'],
+                'mime' => $this->data['file']['mime']
+            ]);
+        }
+        return $objEmail;
     }
 
     /**

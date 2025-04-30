@@ -139,9 +139,9 @@
 
         :root {
             --Base-White: #ffffff;
-            --Primary-200: #309CAA;
-            --Primary-800: #309CAA;
-            --Primary-600: #309CAA;
+            --Primary-200: #000000;
+            --Primary-800: #000000;
+            --Primary-600: #000000;
         }
 
         main {
@@ -175,7 +175,7 @@
         }
 
         p {
-            color: var(--Primary-600, #309CAA);
+            color: var(--Primary-600, #000000);
             font-family: "PT Serif";
             font-size: 1rem;
             font-style: normal;
@@ -184,7 +184,7 @@
         }
 
         .content span {
-            color: var(--Primary-600, #309CAA);
+            color: var(--Primary-600, #000000);
             font-size: 1rem;
             font-style: normal;
             font-weight: 600;
@@ -193,7 +193,7 @@
 
         h2,
         h1 {
-            color: var(--Primary-600, #309CAA);
+            color: var(--Primary-600, #000000);
             font-family: "PT Serif";
             font-size: 2rem;
             font-style: normal;
@@ -210,12 +210,12 @@
 
         footer {
             padding: 2rem 0rem;
-            background: var(--Primary-800, #309CAA);
+            background: var(--Primary-800, #000000);
             width: 100%;
         }
 
         footer p {
-            color: var(--Primary-300, #309CAA);
+            color: var(--Primary-300, #000000);
             text-align: center;
             padding: 0rem 3rem;
 
@@ -238,7 +238,7 @@
             padding-top: 2rem;
             margin-left: 3rem;
             margin-right: 3rem;
-            border-top: 1px solid var(--Primary-600, #309CAA);
+            border-top: 1px solid var(--Primary-600, #000000);
         }
 
         .logo-footer {
@@ -246,7 +246,7 @@
         }
 
         .final span {
-            color: var(--Primary-300, #309CAA);
+            color: var(--Primary-300, #000000);
             /* Text md/Regular */
             font-family: "Montserrat";
             font-size: 1rem;
@@ -273,10 +273,9 @@
 
 <body>
     <main>
-        <div class="header" style="background-color: #309CAA !important">
+        <div class="header" style="background-color: #000000 !important">
             <div class="logo-header">
-                <img src="https://derecho-ciudadano.com/assets/logo-withoutbg.png" alt="logo" width="60"
-                    height="60">
+                <img src="https://estucalia.vercel.app/img/logo.png" alt="logo" width="80" height="60">
             </div>
         </div>
         <div class="content">
@@ -303,8 +302,6 @@
                 </p>
             @endif
             <br>
-            <p class="montserrat-alternates-regular">
-                Gracias por formar parte de esta comunidad comprometida con el acceso a la justicia. </p>
             <p style="padding-bottom: 50px;" class="montserrat-alternates-regular">
                 Un saludo,<br />
                 Equipo de {{ config('app.name') }}
@@ -313,8 +310,7 @@
         <footer>
             <div class="final">
                 <div class="logo-footer">
-                    <img src="https://derecho-ciudadano.com/assets/logo-withoutbg.png" alt="logo" width="60"
-                        height="60">
+                    <img src="https://estucalia.vercel.app/img/logo.png" alt="logo" width="80" height="60">
                 </div>
                 <p class="montserrat-alternates-regular" style="font-size: 18px;color: white"> © {{ date('Y') }}
                     {{ config('app.name') }}. Todos
