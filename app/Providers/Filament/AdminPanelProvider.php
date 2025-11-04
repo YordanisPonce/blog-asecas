@@ -38,6 +38,7 @@ class AdminPanelProvider extends PanelProvider
                 Home::class, // ← agrega esto
                 \App\Filament\Pages\Empresa::class,
                 \App\Filament\Pages\Contacto::class,
+                \App\Filament\Pages\AvisoLegal::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
