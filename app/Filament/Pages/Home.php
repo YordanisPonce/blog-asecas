@@ -97,7 +97,7 @@ class Home extends Page implements HasForms
             ]),
 
             // ---- CTA central (help) ----
-            Section::make('CTA Central – Help') . schema([
+            Section::make('CTA Central – Help')->schema([
                 \Filament\Forms\Components\Tabs::make('cta_help')->tabs([
                     \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([
                         TextInput::make('cta_help_title_es'),
@@ -124,7 +124,7 @@ class Home extends Page implements HasForms
             ]),
 
             // ---- Applications (3 tarjetas) ----
-            Section::make('Applications (Home)') . schema([
+            Section::make('Applications (Home)')->schema([
                 Repeater::make('applications_items')
                     ->helperText('Máximo 3 para el carrusel de la home')
                     ->maxItems(3)
@@ -142,7 +142,7 @@ class Home extends Page implements HasForms
             ]),
 
             // ---- Finishes (tabs + cards) ----
-            Section::make('Finishes (Home)') . schema([
+            Section::make('Finishes (Home)')->schema([
                 Repeater::make('finishes_tabs')
                     ->label('Pestañas')
                     ->schema([
