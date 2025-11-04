@@ -21,6 +21,8 @@ class WriterResource extends Resource
 
     protected static ?string $label = 'escritor';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $pluralModelLabel = 'escritores';
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
@@ -108,4 +110,4 @@ class WriterResource extends Resource
             'edit' => Pages\EditWriter::route('/{record}/edit'),
         ];
     }
-} 
+}

@@ -19,6 +19,8 @@ class SuscriptionEmailResource extends Resource
     
     protected static ?string $model = SubscriptionEmail::class;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
     protected static ?string $navigationGroup = 'Marketing';

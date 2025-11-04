@@ -20,6 +20,8 @@ class EventResource extends Resource
 
     protected static ?string $label = 'evento';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -93,7 +95,7 @@ class EventResource extends Resource
                     ->label('Tipo'),
                 Tables\Columns\TextColumn::make('meeting_link')
                     ->label('Link de la reunión')
-                    ->url(fn ($record) => $record->meeting_link)
+                    ->url(fn($record) => $record->meeting_link)
                     ->openUrlInNewTab()
                     ->limit(30),
             ])

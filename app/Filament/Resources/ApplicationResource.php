@@ -2,35 +2,35 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BlogCategoryResource\Pages;
-use App\Models\BlogCategory;
+use App\Filament\Resources\ApplicationResource\Pages;
+use App\Filament\Resources\ApplicationResource\RelationManagers;
+use App\Models\Application;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BlogCategoryResource extends Resource
+class ApplicationResource extends Resource
 {
-    protected static ?string $model = BlogCategory::class;
+    protected static ?string $model = Application::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Blog';
-
-    protected static ?int $navigationSort = 2;
-
-  protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $navigationLabel = 'Aplicaciones';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
+                Forms\Components\TextInput::make('photo')
                     ->maxLength(255)
-                    ->label('Nombre')
-                    ->placeholder('Ingrese el nombre de la categoría'),
+                    ->default(null),
+                Forms\Components\TextInput::make('name')
+                    ->maxLength(255)
+                    ->default(null),
             ]);
     }
 
@@ -38,19 +38,17 @@ class BlogCategoryResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('photo')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable()
-                    ->sortable()
-                    ->label('Nombre'),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
-                    ->label('Creado')
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->label('Actualizado')
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
@@ -58,7 +56,6 @@ class BlogCategoryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -77,19 +74,9 @@ class BlogCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBlogCategories::route('/'),
-            'create' => Pages\CreateBlogCategory::route('/create'),
-            'edit' => Pages\EditBlogCategory::route('/{record}/edit'),
+            'index' => Pages\ListApplications::route('/'),
+            'create' => Pages\CreateApplication::route('/create'),
+            'edit' => Pages\EditApplication::route('/{record}/edit'),
         ];
-    }
-
-    public static function getModelLabel(): string
-    {
-        return 'Categoría de Blog';
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return 'Categorías de Blog';
     }
 }
