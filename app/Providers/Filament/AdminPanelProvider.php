@@ -7,6 +7,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -39,11 +40,34 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Pages\Empresa::class,
                 \App\Filament\Pages\Contacto::class,
                 \App\Filament\Pages\AvisoLegal::class,
+                \App\Filament\Pages\Privacidad::class,
+                \App\Filament\Pages\Cookies::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Escritorio')
+
+                    ->collapsed(false),
+
+                NavigationGroup::make()
+                    ->label('Sitio')
+
+                    ->collapsed(false),
+
+                NavigationGroup::make()
+                    ->label('Legal')
+
+                    ->collapsed(),
+
+                NavigationGroup::make()
+                    ->label('Blog')
+
+                    ->collapsed(),
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -21,11 +21,11 @@ class Empresa extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationIcon  = 'heroicon-o-building-office-2';
-    protected static ?string $navigationLabel = 'Empresa';
-    protected static ?string $title           = 'Contenido – Empresa';
-    protected static ?string $navigationGroup = 'Contenido';
-    protected static string $view             = 'filament.pages.empresa';
+    protected static ?string $navigationGroup = 'Sitio';
+    protected static ?int $navigationSort = 20;
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+    protected static ?string $title = 'Contenido – Empresa';
+    protected static string $view = 'filament.pages.empresa';
 
     /** Singleton record */
     public EmpresaModel $record;

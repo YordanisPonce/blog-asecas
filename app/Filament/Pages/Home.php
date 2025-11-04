@@ -18,10 +18,11 @@ class Home extends Page implements HasForms
 {
     use InteractsWithForms;
 
+    protected static ?string $navigationGroup = 'Sitio';
+    protected static ?int $navigationSort = 10;
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
-    protected static ?string $navigationLabel = 'Home';
+
     protected static ?string $title = 'Contenido de la Home';
-    protected static ?string $navigationGroup = 'Contenido';
     protected static string $view = 'filament.pages.home';
 
     public HomeModel $record;
@@ -41,111 +42,151 @@ class Home extends Page implements HasForms
         return $this->record;
     }
 
+    // ... encabezado igual
+
     public function form(Form $form): Form
     {
-        return $form
-            // ->model($this->record) // alternativo a getFormModel(); cualquiera de los dos
-            ->schema([
-                Section::make('Hero / Primer bloque')
-                    ->description('Textos principales e info de la primera imagen.')
+        return $form->schema([
+            Section::make('Hero / Primer bloque')->schema([
+                \Filament\Forms\Components\Tabs::make('hero')->tabs([
+                    \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([
+                        Textarea::make('first_description_es')->rows(3),
+                    ]),
+                    \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([
+                        Textarea::make('first_description_en')->rows(3),
+                    ]),
+                    \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([
+                        Textarea::make('first_description_fr')->rows(3),
+                    ]),
+                ]),
+                Grid::make(4)->schema([
+                    TextInput::make('first_image_url')->label('Imagen (URL)')->url()->columnSpan(2),
+                    TextInput::make('first_image_title_es')->label('title (ES)'),
+                    TextInput::make('first_image_alt_es')->label('alt (ES)'),
+                    TextInput::make('first_image_title_en')->label('title (EN)'),
+                    TextInput::make('first_image_alt_en')->label('alt (EN)'),
+                    TextInput::make('first_image_title_fr')->label('title (FR)'),
+                    TextInput::make('first_image_alt_fr')->label('alt (FR)'),
+                ]),
+            ]),
+
+            Section::make('Segundo bloque')->schema([
+                \Filament\Forms\Components\Tabs::make('second')->tabs([
+                    \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([
+                        TextInput::make('second_title_es'),
+                        Textarea::make('second_description_es')->rows(3),
+                    ]),
+                    \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([
+                        TextInput::make('second_title_en'),
+                        Textarea::make('second_description_en')->rows(3),
+                    ]),
+                    \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([
+                        TextInput::make('second_title_fr'),
+                        Textarea::make('second_description_fr')->rows(3),
+                    ]),
+                ]),
+                Grid::make(4)->schema([
+                    TextInput::make('second_image_url')->label('Imagen (URL)')->url()->columnSpan(2),
+                    TextInput::make('second_image_title_es')->label('title (ES)'),
+                    TextInput::make('second_image_alt_es')->label('alt (ES)'),
+                    TextInput::make('second_image_title_en')->label('title (EN)'),
+                    TextInput::make('second_image_alt_en')->label('alt (EN)'),
+                    TextInput::make('second_image_title_fr')->label('title (FR)'),
+                    TextInput::make('second_image_alt_fr')->label('alt (FR)'),
+                ]),
+            ]),
+
+            // ---- CTA central (help) ----
+            Section::make('CTA Central – Help') . schema([
+                \Filament\Forms\Components\Tabs::make('cta_help')->tabs([
+                    \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([
+                        TextInput::make('cta_help_title_es'),
+                        Textarea::make('cta_help_text_es')->rows(3),
+                        TextInput::make('cta_help_button_es')->label('Texto botón (ES)'),
+                    ]),
+                    \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([
+                        TextInput::make('cta_help_title_en'),
+                        Textarea::make('cta_help_text_en')->rows(3),
+                        TextInput::make('cta_help_button_en')->label('Button text (EN)'),
+                    ]),
+                    \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([
+                        TextInput::make('cta_help_title_fr'),
+                        Textarea::make('cta_help_text_fr')->rows(3),
+                        TextInput::make('cta_help_button_fr')->label('Texte du bouton (FR)'),
+                    ]),
+                ]),
+                Grid::make(4)->schema([
+                    TextInput::make('cta_help_url')->url()->label('URL del botón')->columnSpan(2),
+                    TextInput::make('cta_help_image_url')->url()->label('Imagen BG (URL)')->columnSpan(2),
+                    TextInput::make('cta_help_image_title')->label('BG title')->columnSpan(2),
+                    TextInput::make('cta_help_image_alt')->label('BG alt')->columnSpan(2),
+                ]),
+            ]),
+
+            // ---- Applications (3 tarjetas) ----
+            Section::make('Applications (Home)') . schema([
+                Repeater::make('applications_items')
+                    ->helperText('Máximo 3 para el carrusel de la home')
+                    ->maxItems(3)
                     ->schema([
-                        Grid::make(3)->schema([
-                            Textarea::make('first_description_es')->label('Descripción (ES)')->rows(3),
-                            Textarea::make('first_description_en')->label('Descripción (EN)')->rows(3),
-                            Textarea::make('first_description_fr')->label('Descripción (FR)')->rows(3),
+                        TextInput::make('image_url')->label('Imagen (URL)')->url()->required(),
+                        TextInput::make('image_title')->label('Imagen title'),
+                        TextInput::make('image_alt')->label('Imagen alt'),
+                        \Filament\Forms\Components\Tabs::make('app_i18n')->tabs([
+                            \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([TextInput::make('title_es')->label('Título (ES)')->required()]),
+                            \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([TextInput::make('title_en')->label('Title (EN)')->required()]),
+                            \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([TextInput::make('title_fr')->label('Titre (FR)')->required()]),
                         ]),
-                        Grid::make(3)->schema([
-                            TextInput::make('first_image_title_es')->label('Imagen: title (ES)'),
-                            TextInput::make('first_image_title_en')->label('Imagen: title (EN)'),
-                            TextInput::make('first_image_title_fr')->label('Imagen: title (FR)'),
-                        ]),
-                        Grid::make(3)->schema([
-                            TextInput::make('first_image_alt_es')->label('Imagen: alt (ES)'),
-                            TextInput::make('first_image_alt_en')->label('Imagen: alt (EN)'),
-                            TextInput::make('first_image_alt_fr')->label('Imagen: alt (FR)'),
-                        ]),
-                    ])->columns(1),
+                        TextInput::make('link_url')->label('Enlace')->url(),
+                    ])->collapsed()->addActionLabel('Agregar tarjeta'),
+            ]),
 
-                Section::make('Segundo bloque')
+            // ---- Finishes (tabs + cards) ----
+            Section::make('Finishes (Home)') . schema([
+                Repeater::make('finishes_tabs')
+                    ->label('Pestañas')
                     ->schema([
-                        Grid::make(3)->schema([
-                            TextInput::make('sencond_title_es')->label('Título (ES)'),
-                            TextInput::make('sencond_title_en')->label('Título (EN)'),
-                            TextInput::make('sencond_title_fr')->label('Título (FR)'),
+                        \Filament\Forms\Components\Tabs::make('fin_tab_i18n')->tabs([
+                            \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([TextInput::make('tab_title_es')->label('Título pestaña (ES)')->required()]),
+                            \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([TextInput::make('tab_title_en')->label('Tab title (EN)')->required()]),
+                            \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([TextInput::make('tab_title_fr')->label('Titre onglet (FR)')->required()]),
                         ]),
-                        Grid::make(3)->schema([
-                            Textarea::make('sencond_description_es')->label('Descripción (ES)')->rows(3),
-                            Textarea::make('sencond_description_en')->label('Descripción (EN)')->rows(3),
-                            Textarea::make('sencond_description_fr')->label('Descripción (FR)')->rows(3),
-                        ]),
-                        Grid::make(3)->schema([
-                            TextInput::make('second_image_title_es')->label('Imagen: title (ES)'),
-                            TextInput::make('second_image_title_en')->label('Imagen: title (EN)'),
-                            TextInput::make('second_image_title_fr')->label('Imagen: title (FR)'),
-                        ]),
-                        Grid::make(3)->schema([
-                            TextInput::make('second_image_alt_es')->label('Imagen: alt (ES)'),
-                            TextInput::make('second_image_alt_en')->label('Imagen: alt (EN)'),
-                            TextInput::make('second_image_alt_fr')->label('Imagen: alt (FR)'),
-                        ]),
-                    ])->columns(1),
+                        Repeater::make('items')->label('Cards')->schema([
+                            TextInput::make('icon_url')->label('Icono (URL)')->url()->required(),
+                            TextInput::make('icon_title')->label('Icon title'),
+                            TextInput::make('icon_alt')->label('Icon alt'),
+                            \Filament\Forms\Components\Tabs::make('fin_i18n')->tabs([
+                                \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([TextInput::make('title_es')->label('Título (ES)')->required()]),
+                                \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([TextInput::make('title_en')->label('Title (EN)')->required()]),
+                                \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([TextInput::make('title_fr')->label('Titre (FR)')->required()]),
+                            ]),
+                            TextInput::make('link_url')->label('Enlace')->url(),
+                        ])->collapsed(),
+                    ])->collapsed()->addActionLabel('Agregar pestaña'),
+            ]),
 
-                Section::make('Tercer bloque')
-                    ->schema([
-                        Grid::make(3)->schema([
-                            TextInput::make('third_title_es')->label('Título (ES)'),
-                            TextInput::make('third_title_en')->label('Título (EN)'),
-                            TextInput::make('third_title_fr')->label('Título (FR)'),
-                        ]),
-                        Grid::make(3)->schema([
-                            Textarea::make('third_description_es')->label('Descripción (ES)')->rows(3),
-                            Textarea::make('third_description_en')->label('Descripción (EN)')->rows(3),
-                            Textarea::make('third_description_fr')->label('Descripción (FR)')->rows(3),
-                        ]),
-                    ])->columns(1),
+            // (Mantén tus secciones de Tercer bloque, Inspiración y Blog como ya las tienes)
 
-                Section::make('Inspiración')
-                    ->schema([
-                        Grid::make(3)->schema([
-                            TextInput::make('inspiration_text_es')->label('Texto (ES)'),
-                            TextInput::make('inspiration_text_en')->label('Texto (EN)'),
-                            TextInput::make('inspiration_text_fr')->label('Texto (FR)'),
-                        ]),
-                        Grid::make(3)->schema([
-                            Repeater::make('inspiration_images_es')
-                                ->label('Imágenes (ES)')
-                                ->schema([
-                                    TextInput::make('url')->label('URL')->url()->required(),
-                                    TextInput::make('alt')->label('Alt'),
-                                ])->collapsed()->addActionLabel('Agregar imagen')->columnSpan(1),
-
-                            Repeater::make('inspiration_images_en')
-                                ->label('Imágenes (EN)')
-                                ->schema([
-                                    TextInput::make('url')->label('URL')->url()->required(),
-                                    TextInput::make('alt')->label('Alt'),
-                                ])->collapsed()->addActionLabel('Agregar imagen')->columnSpan(1),
-
-                            Repeater::make('inspiration_images_fr')
-                                ->label('Imágenes (FR)')
-                                ->schema([
-                                    TextInput::make('url')->label('URL')->url()->required(),
-                                    TextInput::make('alt')->label('Alt'),
-                                ])->collapsed()->addActionLabel('Agregar imagen')->columnSpan(1),
-                        ])->columnSpanFull(),
-                    ])->columns(1),
-
-                Section::make('Blog / CTA final')
-                    ->schema([
-                        Grid::make(3)->schema([
-                            Textarea::make('blog_text_es')->label('Texto (ES)')->rows(2),
-                            Textarea::make('blog_text_en')->label('Texto (EN)')->rows(2),
-                            Textarea::make('blog_text_fr')->label('Texto (FR)')->rows(2),
-                        ]),
-                    ])->columns(1),
-            ])
-            ->statePath('data');
+            // ---- SEO ----
+            Section::make('SEO (opcional)')->schema([
+                \Filament\Forms\Components\Tabs::make('seo')->tabs([
+                    \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([
+                        TextInput::make('seo_title_es')->maxLength(70),
+                        TextInput::make('seo_description_es')->maxLength(300),
+                    ]),
+                    \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([
+                        TextInput::make('seo_title_en')->maxLength(70),
+                        TextInput::make('seo_description_en')->maxLength(300),
+                    ]),
+                    \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([
+                        TextInput::make('seo_title_fr')->maxLength(70),
+                        TextInput::make('seo_description_fr')->maxLength(300),
+                    ]),
+                ]),
+            ]),
+        ])->statePath('data');
     }
+
 
     protected function getFormActions(): array
     {

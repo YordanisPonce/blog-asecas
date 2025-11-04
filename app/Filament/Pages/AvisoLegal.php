@@ -19,11 +19,11 @@ class AvisoLegal extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationIcon  = 'heroicon-o-scale';
-    protected static ?string $navigationLabel = 'Aviso Legal';
-    protected static ?string $title           = 'Contenido – Aviso Legal';
-    protected static ?string $navigationGroup = 'Contenido';
-    protected static string $view             = 'filament.pages.aviso-legal';
+    protected static ?string $navigationGroup = 'Legal';
+    protected static ?int $navigationSort = 10;
+    protected static ?string $navigationIcon = 'heroicon-o-scale';
+    protected static ?string $title = 'Contenido – Aviso Legal';
+    protected static string $view = 'filament.pages.aviso-legal';
 
     public LegalModel $record;
     public ?array $data = [];
