@@ -13,6 +13,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Repeater;
+use Filament\Notifications\Notification;
 
 class Home extends Page implements HasForms
 {
@@ -205,7 +206,10 @@ class Home extends Page implements HasForms
         // Recomendado: fill + save
         $this->record->fill($data);
         $this->record->save();
+        Notification::make()
+            ->title('Cambios guardados satisfactoriamente')
+            ->success()
+            ->send();
 
-        $this->notify('success', 'Contenido de la Home actualizado.');
     }
 }

@@ -16,6 +16,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Tabs;
+use Filament\Notifications\Notification;
 
 class Empresa extends Page implements HasForms
 {
@@ -276,6 +277,10 @@ class Empresa extends Page implements HasForms
         $data = $this->form->getState();
         $this->record->fill($data);
         $this->record->save();
-        $this->notify('success', 'Contenido de Empresa actualizado.');
+        Notification::make()
+            ->title('Cambios guardados satisfactoriamente')
+            ->success()
+            ->send();
+
     }
 }

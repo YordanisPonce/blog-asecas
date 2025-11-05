@@ -16,6 +16,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\DatePicker;
+use Filament\Notifications\Notification;
 
 class Privacidad extends Page implements HasForms
 {
@@ -193,6 +194,10 @@ class Privacidad extends Page implements HasForms
         $data = $this->form->getState();
         $this->record->fill($data);
         $this->record->save();
-        $this->notify('success', 'Contenido de la Política de Privacidad actualizado.');
+        Notification::make()
+            ->title('Cambios guardados satisfactoriamente')
+            ->success()
+            ->send();
+
     }
 }
