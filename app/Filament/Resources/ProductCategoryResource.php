@@ -20,6 +20,8 @@ class ProductCategoryResource extends Resource
     protected static ?string $navigationGroup = 'Catálogo';
     protected static ?int $navigationSort = 10;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function getModelLabel(): string
     {
         return 'categoría de producto';

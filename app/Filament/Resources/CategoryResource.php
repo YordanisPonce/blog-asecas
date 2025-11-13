@@ -2,8 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ApplicationResource\Pages;
-use App\Models\Application;
+use App\Filament\Resources\CategoryResource\Pages;
 use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,14 +11,13 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 
-class ApplicationResource extends Resource
+class CategoryResource extends Resource
 {
-    protected static ?string $model = Application::class;
+    protected static ?string $model = Category::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-cube';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Productos';
-
+    protected static ?string $navigationGroup = 'Catálogo';
     public static function form(Form $form): Form
     {
         return $form
@@ -47,19 +45,12 @@ class ApplicationResource extends Resource
                             ->label('Activo'),
                     ])->columns(2),
 
-                Forms\Components\Section::make('Medios')
+                Forms\Components\Section::make('Imagen')
                     ->schema([
-                        Forms\Components\FileUpload::make('icon')
-                            ->label('Icono')
-                            ->image()
-                            ->directory('applications/icons')
-                            ->preserveFilenames()
-                            ->maxSize(1024),
-
                         Forms\Components\FileUpload::make('image')
-                            ->label('Imagen principal')
+                            ->label('Imagen de la categoría')
                             ->image()
-                            ->directory('applications')
+                            ->directory('categories')
                             ->preserveFilenames()
                             ->maxSize(2048),
 
@@ -93,17 +84,6 @@ class ApplicationResource extends Resource
                             ]),
                     ]),
 
-                Forms\Components\Section::make('Categorías Asociadas')
-                    ->schema([
-                        Forms\Components\Select::make('categories')
-                            ->relationship('categories', 'name')
-                            ->multiple()
-                            ->preload()
-                            ->searchable()
-                            ->options(Category::active()->ordered()->pluck('name', 'id'))
-                            ->label('Seleccionar Categorías'),
-                    ]),
-
                 Forms\Components\Section::make('Descripciones Cortas')
                     ->schema([
                         Forms\Components\Textarea::make('short_description_en')
@@ -121,13 +101,13 @@ class ApplicationResource extends Resource
                     ->schema([
                         Forms\Components\RichEditor::make('description_en')
                             ->label('Descripción Completa (Inglés)')
-                            ->fileAttachmentsDirectory('applications/descriptions'),
+                            ->fileAttachmentsDirectory('categories/descriptions'),
                         Forms\Components\RichEditor::make('description_es')
                             ->label('Descripción Completa (Español)')
-                            ->fileAttachmentsDirectory('applications/descriptions'),
+                            ->fileAttachmentsDirectory('categories/descriptions'),
                         Forms\Components\RichEditor::make('description_fr')
                             ->label('Descripción Completa (Francés)')
-                            ->fileAttachmentsDirectory('applications/descriptions'),
+                            ->fileAttachmentsDirectory('categories/descriptions'),
                     ]),
             ]);
     }
@@ -136,10 +116,6 @@ class ApplicationResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('icon')
-                    ->label('Icono')
-                    ->circular(),
-
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Imagen')
                     ->circular(),
@@ -152,11 +128,6 @@ class ApplicationResource extends Resource
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable()
                     ->sortable(),
-
-                Tables\Columns\TextColumn::make('categories.name')
-                    ->label('Categorías')
-                    ->badge()
-                    ->separator(','),
 
                 Tables\Columns\TextColumn::make('order')
                     ->label('Orden')
@@ -175,12 +146,6 @@ class ApplicationResource extends Resource
                 Tables\Filters\Filter::make('is_active')
                     ->label('Solo activos')
                     ->query(fn($query) => $query->where('is_active', true)),
-
-                Tables\Filters\SelectFilter::make('categories')
-                    ->relationship('categories', 'name')
-                    ->multiple()
-                    ->preload()
-                    ->label('Filtrar por Categoría'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -204,19 +169,19 @@ class ApplicationResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListApplications::route('/'),
-            'create' => Pages\CreateApplication::route('/create'),
-            'edit' => Pages\EditApplication::route('/{record}/edit'),
+            'index' => Pages\ListCategories::route('/'),
+            'create' => Pages\CreateCategory::route('/create'),
+            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 
     public static function getModelLabel(): string
     {
-        return 'Aplicación';
+        return 'Categoría';
     }
 
     public static function getPluralModelLabel(): string
     {
-        return 'Aplicaciones';
+        return 'Categorías';
     }
 }

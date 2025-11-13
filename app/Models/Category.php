@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Application extends Model
+class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
         'slug',
-        'icon',
         'image',
         'image_alt',
         'image_title',
@@ -33,10 +33,10 @@ class Application extends Model
         'is_active' => 'boolean',
     ];
 
-    // Relación many-to-many con Category
-    public function categories(): BelongsToMany
+    // Relación many-to-many con Application
+    public function applications(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'application_category')
+        return $this->belongsToMany(Application::class, 'application_category')
             ->withPivot('order')
             ->withTimestamps()
             ->orderByPivot('order');
@@ -67,7 +67,7 @@ class Application extends Model
         return $this->image_title[$locale] ?? $this->image_title['en'] ?? '';
     }
 
-    // Scopes
+    // ✅ AGREGAR ESTOS SCOPES QUE FALTABAN
     public function scopeActive($query)
     {
         return $query->where('is_active', true);

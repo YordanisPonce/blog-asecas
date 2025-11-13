@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\BlogCategoryController;
+use App\Models\Category;
 use App\Models\Home;
 
 use App\Models\Empresa;
@@ -143,3 +144,6 @@ Route::get('/home/inspiration', fn() => response()->json([
         'fr' => optional(Home::first())->inspiration_images_fr ?? [],
     ],
 ]));
+
+
+Route::get('/categories', fn() => response()->json(Category::all()));
