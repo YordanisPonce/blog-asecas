@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ApplicationController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Middleware\IsUserMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -147,3 +150,28 @@ Route::get('/home/inspiration', fn() => response()->json([
 
 
 Route::get('/categories', fn() => response()->json(Category::all()));
+
+// Public routes
+Route::prefix('v1')->group(function () {
+
+    // Categories endpoints
+    Route::get('/categories', [CategoryController::class, 'index']);
+    Route::get('/categories/{slug}', [CategoryController::class, 'show']);
+    Route::get('/categories/{slug}/products', [CategoryController::class, 'products']);
+    Route::get('/categories/{slug}/applications', [CategoryController::class, 'applications']);
+
+    // Products endpoints
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/products/{slug}', [ProductController::class, 'show']);
+    Route::get('/products/{slug}/documents', [ProductController::class, 'documents']);
+    Route::get('/products/category/{categorySlug}', [ProductController::class, 'byCategory']);
+
+    // Applications endpoints
+    Route::get('/applications', [ApplicationController::class, 'index']);
+    Route::get('/applications/{slug}', [ApplicationController::class, 'show']);
+    Route::get('/applications/{slug}/categories', [ApplicationController::class, 'categories']);
+
+    // Search endpoints
+    Route::get('/search', [ProductController::class, 'search']);
+    Route::get('/search/categories', [CategoryController::class, 'search']);
+});
