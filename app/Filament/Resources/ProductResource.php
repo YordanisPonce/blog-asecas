@@ -36,6 +36,7 @@ class ProductResource extends Resource
                             ->label('Categoría'),
 
                         Forms\Components\TextInput::make('name')
+                            ->label('Nombre')
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
@@ -45,10 +46,12 @@ class ProductResource extends Resource
                                 $set('slug', Str::slug($state));
                             }),
                         Forms\Components\TextInput::make('slug')
+                            ->label('Slug')
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
                         Forms\Components\TextInput::make('name_en')
+                            ->label('Nombre (Inglés)')
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
@@ -58,10 +61,12 @@ class ProductResource extends Resource
                                 $set('slug_en', Str::slug($state));
                             }),
                         Forms\Components\TextInput::make('slug_en')
+                            ->label('Slug (Inglés)')
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
                         Forms\Components\TextInput::make('name_fr')
+                            ->label('Nombre (Francés)')
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
@@ -70,24 +75,30 @@ class ProductResource extends Resource
                                     return;
                                 $set('slug_fr', Str::slug($state));
                             }),
+                        Forms\Components\TextInput::make('slug_fr')
+                            ->label('Slug (Francés)')
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
 
                         Forms\Components\TextInput::make('subtitle')
                             ->label('Subtítulo')
                             ->maxLength(255),
 
                         Forms\Components\TextInput::make('order')
+                            ->label('Orden')
                             ->numeric()
                             ->default(0),
 
                         Forms\Components\Toggle::make('is_active')
-                            ->default(true)
-                            ->label('Activo'),
+                            ->label('Activo')
+                            ->default(true),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Imagen del Producto')
                     ->schema([
                         Forms\Components\FileUpload::make('image')
-                            ->label('Imagen principal')
+                            ->label('Imagen Principal')
                             ->image()
                             ->directory('products')
                             ->preserveFilenames()
@@ -95,7 +106,7 @@ class ProductResource extends Resource
 
                         Forms\Components\Grid::make(3)
                             ->schema([
-                                Forms\Components\Fieldset::make('Alt Text (SEO)')
+                                Forms\Components\Fieldset::make('Texto Alternativo (SEO)')
                                     ->schema([
                                         Forms\Components\TextInput::make('image_alt.en')
                                             ->label('Inglés')
@@ -108,7 +119,7 @@ class ProductResource extends Resource
                                             ->maxLength(255),
                                     ]),
 
-                                Forms\Components\Fieldset::make('Title Text')
+                                Forms\Components\Fieldset::make('Texto del Título')
                                     ->schema([
                                         Forms\Components\TextInput::make('image_title.en')
                                             ->label('Inglés')
@@ -141,13 +152,13 @@ class ProductResource extends Resource
                 Forms\Components\Section::make('Composición')
                     ->schema([
                         Forms\Components\RichEditor::make('composition_en')
-                            ->label('Inglés')
+                            ->label('Composición (Inglés)')
                             ->fileAttachmentsDirectory('products/composition'),
                         Forms\Components\RichEditor::make('composition_es')
-                            ->label('Español')
+                            ->label('Composición (Español)')
                             ->fileAttachmentsDirectory('products/composition'),
                         Forms\Components\RichEditor::make('composition_fr')
-                            ->label('Francés')
+                            ->label('Composición (Francés)')
                             ->fileAttachmentsDirectory('products/composition'),
                     ])->columns(1),
 
@@ -155,52 +166,52 @@ class ProductResource extends Resource
                     ->description('Usa guiones (-) para crear listas')
                     ->schema([
                         Forms\Components\Textarea::make('features_en')
-                            ->label('Inglés')
+                            ->label('Características (Inglés)')
                             ->rows(5),
                         Forms\Components\Textarea::make('features_es')
-                            ->label('Español')
+                            ->label('Características (Español)')
                             ->rows(5),
                         Forms\Components\Textarea::make('features_fr')
-                            ->label('Francés')
+                            ->label('Características (Francés)')
                             ->rows(5),
                     ])->columns(1),
 
                 Forms\Components\Section::make('Recomendaciones')
                     ->schema([
                         Forms\Components\RichEditor::make('recommendations_en')
-                            ->label('Inglés')
+                            ->label('Recomendaciones (Inglés)')
                             ->fileAttachmentsDirectory('products/recommendations'),
                         Forms\Components\RichEditor::make('recommendations_es')
-                            ->label('Español')
+                            ->label('Recomendaciones (Español)')
                             ->fileAttachmentsDirectory('products/recommendations'),
                         Forms\Components\RichEditor::make('recommendations_fr')
-                            ->label('Francés')
+                            ->label('Recomendaciones (Francés)')
                             ->fileAttachmentsDirectory('products/recommendations'),
                     ])->columns(1),
 
                 Forms\Components\Section::make('Portadores')
                     ->schema([
                         Forms\Components\RichEditor::make('carriers_en')
-                            ->label('Inglés')
+                            ->label('Portadores (Inglés)')
                             ->fileAttachmentsDirectory('products/carriers'),
                         Forms\Components\RichEditor::make('carriers_es')
-                            ->label('Español')
+                            ->label('Portadores (Español)')
                             ->fileAttachmentsDirectory('products/carriers'),
                         Forms\Components\RichEditor::make('carriers_fr')
-                            ->label('Francés')
+                            ->label('Portadores (Francés)')
                             ->fileAttachmentsDirectory('products/carriers'),
                     ])->columns(1),
 
                 Forms\Components\Section::make('Información Relevante')
                     ->schema([
                         Forms\Components\RichEditor::make('relevant_info_en')
-                            ->label('Inglés')
+                            ->label('Información Relevante (Inglés)')
                             ->fileAttachmentsDirectory('products/relevant-info'),
                         Forms\Components\RichEditor::make('relevant_info_es')
-                            ->label('Español')
+                            ->label('Información Relevante (Español)')
                             ->fileAttachmentsDirectory('products/relevant-info'),
                         Forms\Components\RichEditor::make('relevant_info_fr')
-                            ->label('Francés')
+                            ->label('Información Relevante (Francés)')
                             ->fileAttachmentsDirectory('products/relevant-info'),
                     ])->columns(1),
             ]);
@@ -242,29 +253,32 @@ class ProductResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Creado')
+                    ->label('Fecha de Creación')
                     ->dateTime()
                     ->sortable(),
             ])
             ->filters([
                 Tables\Filters\Filter::make('is_active')
-                    ->label('Solo activos')
+                    ->label('Solo Activos')
                     ->query(fn($query) => $query->where('is_active', true)),
 
                 Tables\Filters\SelectFilter::make('category')
+                    ->label('Categoría')
                     ->relationship('category', 'name')
                     ->multiple()
-                    ->preload()
-                    ->label('Filtrar por Categoría'),
+                    ->preload(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('Editar'),
+                Tables\Actions\DeleteAction::make()
+                    ->label('Eliminar'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->label('Eliminar Seleccionados'),
+                ])->label('Acciones en Lote'),
             ])
             ->defaultSort('order', 'asc');
     }
@@ -291,6 +305,11 @@ class ProductResource extends Resource
     }
 
     public static function getPluralModelLabel(): string
+    {
+        return 'Productos';
+    }
+
+    public static function getNavigationLabel(): string
     {
         return 'Productos';
     }
