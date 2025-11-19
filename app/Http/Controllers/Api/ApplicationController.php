@@ -45,6 +45,8 @@ class ApplicationController extends Controller
             }
         ])
             ->where('slug', $slug)
+            ->where('slug_en', $slug)
+            ->where('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug', 'icon', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'description_en', 'description_es', 'description_fr', 'order']);
 
@@ -68,6 +70,8 @@ class ApplicationController extends Controller
     public function categories(string $slug): JsonResponse
     {
         $application = Application::where('slug', $slug)
+            ->where('slug_en', $slug)
+            ->where('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 

@@ -12,7 +12,11 @@ class Application extends Model
 
     protected $fillable = [
         'name',
+        'name_en',
+        'name_fr',
         'slug',
+        'slug_en',
+        'slug_fr',
         'icon',
         'image',
         'image_alt',

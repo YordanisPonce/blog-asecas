@@ -69,8 +69,9 @@ class ProductController extends Controller
                 $query->select('id', 'name', 'slug');
             },
             'documents'
-        ])
-            ->where('slug', $slug)
+        ])->where('slug', $slug)
+            ->where('slug_en', $slug)
+            ->where('slug_fr', $slug)
             ->active()
             ->first();
 
@@ -94,6 +95,8 @@ class ProductController extends Controller
     public function documents(string $slug): JsonResponse
     {
         $product = Product::where('slug', $slug)
+            ->where('slug_en', $slug)
+            ->where('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 
@@ -121,9 +124,11 @@ class ProductController extends Controller
     /**
      * Get products by category slug.
      */
-    public function byCategory(string $categorySlug): JsonResponse
+    public function byCategory(string $slug): JsonResponse
     {
-        $category = Category::where('slug', $categorySlug)
+        $category = Category::where('slug', $slug)
+            ->where('slug_en', $slug)
+            ->where('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 

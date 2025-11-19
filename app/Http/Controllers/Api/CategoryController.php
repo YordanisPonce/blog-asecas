@@ -50,6 +50,8 @@ class CategoryController extends Controller
             }
         ])
             ->where('slug', $slug)
+            ->where('slug_en', $slug)
+            ->where('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'description_en', 'description_es', 'description_fr', 'order']);
 
@@ -73,6 +75,8 @@ class CategoryController extends Controller
     public function products(string $slug): JsonResponse
     {
         $category = Category::where('slug', $slug)
+            ->where('slug_en', $slug)
+            ->where('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 
@@ -104,6 +108,8 @@ class CategoryController extends Controller
     public function applications(string $slug): JsonResponse
     {
         $category = Category::where('slug', $slug)
+            ->where('slug_en', $slug)
+            ->where('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 

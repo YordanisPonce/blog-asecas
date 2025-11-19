@@ -9,7 +9,13 @@ class ProductCategory extends Model
 {
     protected $fillable = [
         'image_path',
+        'name',
+        'name',
+        'name_en',
+        'name_fr',
         'slug',
+        'slug_en',
+        'slug_fr',
         'position',
         'is_active',
         'title_es',

@@ -44,11 +44,32 @@ class ProductResource extends Resource
                                     return;
                                 $set('slug', Str::slug($state));
                             }),
-
                         Forms\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
+                        Forms\Components\TextInput::make('name_en')
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                                if ($operation === 'edit')
+                                    return;
+                                $set('slug_en', Str::slug($state));
+                            }),
+                        Forms\Components\TextInput::make('slug_en')
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
+                        Forms\Components\TextInput::make('name_fr')
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                                if ($operation === 'edit')
+                                    return;
+                                $set('slug_fr', Str::slug($state));
+                            }),
 
                         Forms\Components\TextInput::make('subtitle')
                             ->label('Subtítulo')
