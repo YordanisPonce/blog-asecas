@@ -18,7 +18,7 @@ class CategoryController extends Controller
             'applications' => function ($query) {
                 $query->select('applications.id', 'applications.name', 'applications.slug', 'applications.icon')
                     ->where('is_active', true)
-                    ->orderBy('order');
+                    ->orderBy('categories.order');
             }
         ])
             ->active()
