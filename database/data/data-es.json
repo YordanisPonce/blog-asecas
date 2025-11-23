@@ -1,0 +1,1482 @@
+{
+    "categorias": [
+        {
+            "id": "morteroCal",
+            "parentId": "limeMortar",
+            "titulo": "Mortero cal",
+            "descripcion": "El mortero de cal es una mezcla tradicional compuesta por cal, arena y agua. Se utiliza en restauraciones de edificios históricos y construcciones ecológicas debido a sus propiedades transpirables y su capacidad para regular la humedad.  ",
+            "descripcion1": "Ofrece una excelente transpirabilidad, lo que evita la acumulación de humedad en las paredes. Su flexibilidad reduce el riesgo de fisuras y grietas. Además, es un material ecológico y sostenible, ideal para restauraciones patrimoniales y construcciones bioclimáticas.",
+            "imagen": "/img/mortero-cal.svg",
+            "aplicaciones": [
+                "Revestimientos",
+                "Revocos y enlucidos",
+                "Aislamiento térmico",
+                "Impermeabilización",
+                "Deshumidificación / hidrofugante"
+            ],
+            "acabados": [
+                {
+                    "nombre": "Abujardado / raspado",
+                    "imagen": "/img/acabados/raspado_abujardado.jpg"
+                },
+                {
+                    "nombre": "Lavado / fratasado",
+                    "imagen": "/img/acabados/lavado_fratasado.jpg"
+                },
+                {
+                    "nombre": "Impreso",
+                    "imagen": "/img/acabados/impreso.jpg"
+                },
+                {
+                    "nombre": "Liso",
+                    "imagen": "/img/acabados/liso.jpg"
+                }
+            ],
+            "productos": [
+                {
+                    "nombre": "MORTERO CAL NHL",
+                    "subtitulo": "Mortero cal",
+                    "imagen": "/img/productos/01-ARGAMASA.png",
+                    "composicion": "Mortero a base de Cal Hidráulica Natural (NHL) PURA, áridos seleccionados y aditivos que proporcionan un producto de alta calidad para la ejecución de revestimientos, muros y reparación de superficies. Este mortero se distingue por su gran adherencia, flexibilidad y transpirabilidad, lo que lo hace ideal para aplicaciones en Obra Nueva y en Obras de restauración, tanto en interiores como en exteriores.",
+                    "caracteristicas": [
+                        "Alta resistencia a la compresión y flexión y secado rápido.",
+                        "Transpirable, permitiendo la evacuación de la humedad y evitando la acumulación de sales.",
+                        "Ideal para obras de restauración y conservación de patrimonio arquitectónico.",
+                        "Alta adherencia a superficies tradicionales y modernas.",
+                        "No emite compuestos orgánicos volátiles (COV), siendo una opción ecológica.",
+                        "Resistente al agua, permitiendo la evaporación de la humedad del ambiente.",
+                        "Compatible con sistemas de aislamiento térmico (SATE).",
+                        "Apto para aplicaciones en murales, fachadas, paredes de ladrillo, piedra natural y otras superficies porosas."
+                    ],
+                    "recomendaciones": [
+                        "Soportes Tradicionales en construcción (ladrillo, bloque, etc.). Deben estar sanos, limpios, sin polvo, restos de pinturas, moho, etc.",
+                        "No utilizar a temperaturas inferiores a 5ºC ni superiores a 30ºC."
+                    ],
+                    "precauciones": [
+                        "No utilizar en ambientes donde el nivel de humedad sea excesivamente alto.",
+                        "No aplicar sobre superficies extremadamente lisas o no porosas sin un tratamiento previo adecuado: Puente de Unión RHINO.",
+                        "Evitar su aplicación en condiciones de heladas o lluvias intensas."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 kg. Palets de 1400 kg (56 sacos).",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en un lugar seco, ventilado y fresco."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "MORTERO CAL MIXTO",
+                    "subtitulo": "Mortero cal y cemento",
+                    "imagen": "/img/productos/02-ARGAMASA M.png",
+                    "composicion": "Mortero compuesto por cal aérea y cemento blanco, junto con áridos seleccionados y aditivos que garantizan un excelente comportamiento mecánico, alta durabilidad y flexibilidad. Su formulación es adecuada para aplicaciones en obra nueva, reformas y reparaciones de muros, fachadas y pavimentos, combinando lo mejor de ambos materiales: la elasticidad e impermeabilidad de la cal y la resistencia del cemento.",
+                    "caracteristicas": [
+                        "Alta resistencia mecánica, ideal para estructuras que requieren gran durabilidad.",
+                        "Flexibilidad para adaptarse a movimientos sin agrietarse.",
+                        "Fácil de trabajar y aplicar, permitiendo un acabado liso, fratasado o raspado.",
+                        "Ideal para interiores y exteriores, incluyendo zonas con exposición a agentes climáticos.",
+                        "Resistente a las heladas, ofreciendo alta estabilidad térmica.",
+                        "Sin tendencia a la fisuración de otros morteros tradicionales."
+                    ],
+                    "recomendaciones": [
+                        "Evitar temperaturas extremas durante la aplicación (inferiores a 5ºC o superiores a 30ºC).",
+                        "No aplicar en condiciones de exposición directa a lluvias intensas o viento fuerte durante el proceso de secado.",
+                        "No aplicar en juntas de dilatación o zonas sujetas a movimientos estructurales.",
+                        "No utilizar en superficies muy absorbentes sin un tratamiento previo de sellado."
+                    ],
+                    "precauciones": [
+                        "No aplicar sobre superficies con humedad excesiva.",
+                        "Proteger el mortero fresco de condiciones climáticas adversas.",
+                        "Seguir estrictamente las proporciones de mezcla recomendadas.",
+                        "Utilizar equipos de protección personal durante la aplicación."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 kg.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en lugar seco y protegido de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "tileAdhesive",
+            "titulo": "Mortero cola",
+            "descripcion": "El mortero cola es una mezcla adhesiva utilizada para la colocación de baldosas y cerámicas en paredes y suelos.",
+            "descripcion1": "Su composición incluye cemento, resinas y aditivos que mejoran la adherencia y flexibilidad, permitiendo una instalación resistente incluso en zonas húmedas o con variaciones de temperatura.",
+            "imagen": "/img/mortero-cola.svg",
+            "aplicaciones": [
+                "Albañilería",
+                "Baldosas",
+                "Pavimentos",
+                "Aislamiento térmico"
+            ],
+            "productos": [
+                {
+                    "nombre": "KOLATEC",
+                    "subtitulo": "Estándar C1",
+                    "imagen": "/img/productos/03-KOLATEC CCOLA.png",
+                    "composicion": "Adhesivo Cementoso a base de áridos seleccionados, cemento blanco y aditivos para Baldosas Cerámicas de fraguado Normal. Sin descuelgue. Se fabrica en color Blanco y clase FINO.",
+                    "caracteristicas": [
+                        "Adhesión de piezas cerámicas con grado de absorción medio-alto.",
+                        "Aplicación en interiores y pavimentos exteriores."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Para espesores superiores a 2 cm se recomienda aplicar el producto en dos capas.",
+                        "El espesor final mínimo de empleo deberá ser de 10 mm."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: blanco y gris (este último según demanda).",
+                        "Rendimiento: aprox. 4 Kg/m2 en soporte sensiblemente plano.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/KOLATEC Standar C1.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-cementos-cola-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "KOLATEC",
+                    "subtitulo": "Piscinas C1T",
+                    "imagen": "/img/productos/03-KOLATEC CCOLA.png",
+                    "composicion": "Adhesivo Cementoso a base de áridos seleccionados, cemento blanco y aditivos para Baldosas Cerámicas de fraguado Normal. Sin descuelgue. Se fabrica en color Blanco y en dos clases: FINO y GRUESO.",
+                    "caracteristicas": [
+                        "Adhesión de piezas cerámicas con grado de absorción medio-alto.",
+                        "Aplicación en interiores y pavimentos exteriores."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Para espesores superiores a 2 cm se recomienda aplicar el producto en dos capas.",
+                        "El espesor final mínimo de empleo deberá ser de 10 mm."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: blanco y gris (este último según demanda).",
+                        "Rendimiento: aprox. 4 Kg/m2 en soporte sensiblemente plano.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/KOLATEC Piscinas C1.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-cementos-cola-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "KOLATEC LANIC",
+                    "subtitulo": "Cemento cola C2TE",
+                    "imagen": "/img/productos/04-KOLATEC LANI.png",
+                    "composicion": "Adhesivo cementoso de ligantes mixtos con deslizamiento reducido y tiempo abierto ampliado para la colocación de todo tipo de piezas cerámicas, piedra natural, granito y mármol en pavimentos interiores y exteriores y revestimientos interiores.",
+                    "caracteristicas": [
+                        "Deslizamiento reducido. Adherencia inicial excelente.",
+                        "Tiempo abierto elevado, permite la rectificación de piezas.",
+                        "Evita tener que humedecer piezas o soportes gracias a su poder de retención de agua.",
+                        "Adhesión de todo tipo de piezas cerámicas, gres porcelánico, mármol, granito y piedra natural.",
+                        "Aplicación en interiores y pavimentos exteriores.",
+                        "Revestimiento de piscinas con mosaico vítreo."
+                    ],
+                    "recomendaciones": [
+                        "No aplicar sobre yesos o pinturas.",
+                        "Los soportes deben ser resistentes, estables, sanos y estar limpios, exentos de polvo, restos de desencofrantes, productos orgánicos, etc."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Las temperaturas, ventilación y absorción del soporte pueden variar los tiempos de trabajabilidad y fraguado.",
+                        "En condiciones climatológicas extremas (mucho viento o altas temperaturas) se produce un secado más rápido de lo normal."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: blanco y gris (este último según demanda).",
+                        "Rendimiento: aprox. 4 Kg/m2 en soporte sensiblemente plano.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/Cemento.Cola.-.KOLATEC.LANIC.C2TE.-.FICHA.TECNICA.-.GE.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-cementos-cola-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "KOLATEC FLEX",
+                    "subtitulo": "Cemento cola C2TE S1",
+                    "imagen": "/img/productos/05-KOLATEC FLEX .png",
+                    "composicion": " Adhesivo Cementoso para Baldosas Cerámicas de baja absorción superficial y tiempo abierto prolongado. Sin descuelgue y con Adherencia Inicial excelente. Para la colocación de alicatados directos sobre fábrica de ladrillo y bloques de hormigón, sin necesidad de enfoscado previo y en solados con fondos irregulares. Aplicación en interior y exterior de piezas cerámicas de porcelánico, absorción baja y gran formato.",
+                    "informacion_general": "Adhesivo Cementoso para Baldosas Cerámicas de baja absorción superficial y tiempo abierto prolongado. Sin descuelgue y con Adherencia Inicial excelente. Para la colocación de alicatados directos sobre fábrica de ladrillo y bloques de hormigón, sin necesidad de enfoscado previo y en solados con fondos irregulares. Aplicación en interior y exterior de piezas cerámicas de porcelánico, absorción baja y gran formato.",
+                    "caracteristicas": [
+                        "Excelente trabajabilidad y gran blancura.",
+                        "Reológicamente mejorados con elevada estabilidad y excelente desempeño.",
+                        "Cremosa tixotropía.",
+                        "Tecnológicamente avanzado, compatible con un amplio espectro de soportes.",
+                        "Estable en un amplio rango de mezcla.",
+                        "Alta eficiencia tixotrópica, mayor comodidad y menos esfuerzo.",
+                        "Evita tener que humedecer piezas o soportes gracias a su poder de retención de agua.",
+                        "Deslizamiento reducido. Adherencia inicial excelente.",
+                        "Tiempo abierto elevado, permite la rectificación de piezas.",
+                        "Deformable. Tipo S1 (UNE EN 12002).",
+                        "Espesores de aplicación hasta 15 mm, sin merma.",
+                        "Adhesión de todo tipo de piezas cerámicas, gres porcelánico, mármol, granito y piedra natural.",
+                        "Aplicación interior y exterior (incluyendo fachadas).",
+                        "Adhesión de piezas de gran formato.",
+                        "Encolado de grandes superficies con tráfico intenso, suelos con calefacción radiante, cámaras frigoríficas y superposiciones.",
+                        "Revestimiento de piscinas."
+                    ],
+                    "recomendaciones": [
+                        "Los soportes deben tener la planeidad adecuada. Si no es así, realizar recrecidos de hasta 5 mm con el mismo producto 48 horas antes del encolado."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Las temperaturas, ventilación y absorción del soporte pueden variar los tiempos de trabajabilidad y fraguado.",
+                        "En condiciones climatológicas extremas (mucho viento o altas temperaturas) se produce un secado más rápido de lo normal."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: blanco y gris (este último según demanda).",
+                        "Rendimiento: aprox. 4 Kg/m2 en soporte sensiblemente plano.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/KOLATEC FLEX C2TE S1.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-cementos-cola-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "singleLayerMortar",
+            "titulo": "Mortero monocapa",
+            "descripcion": "El mortero monocapa es un revestimiento diseñado principalmente para fachadas. Se aplica en una sola capa y combina funciones de protección e impermeabilidad con acabados estéticos.",
+            "descripcion1": " Está compuesto por cemento, áridos seleccionados, aditivos y pigmentos que le proporcionan distintas texturas y colores.",
+            "imagen": "/img/mortero-monocapa.svg",
+            "aplicaciones": [
+                "Revestimientos",
+                "Revocos y enlucidos",
+                "Aislamiento térmico",
+                "Impermeabilización",
+                "Deshumidificación / hidrofugante"
+            ],
+            "acabados": [
+                {
+                    "nombre": "Abujardado / raspado",
+                    "imagen": "/img/acabados/raspado_abujardado.jpg"
+                },
+                {
+                    "nombre": "Lavado / fratasado",
+                    "imagen": "/img/acabados/lavado_fratasado.jpg"
+                },
+                {
+                    "nombre": "Liso",
+                    "imagen": "/img/acabados/liso.jpg"
+                }
+            ],
+            "productos": [
+                {
+                    "nombre": "CRISOLEX R",
+                    "subtitulo": "Raspado",
+                    "imagen": "/img/productos/CRISOLEX MONOCAPA.png",
+                    "composicion": "Producto fabricado a base de cemento blanco de alta resistencia, áridos seleccionados, aditivos orgánicos y pigmentos.",
+                    "caracteristicas": [
+                        "Aplicación directa a la pared de cerramiento sin necesidad de enfoscar.",
+                        "Aplicación en interiores y exteriores.",
+                        "Revestimiento impermeable.",
+                        "Permeable al vapor de agua, permitiendo transpirabilidad al soporte.",
+                        "Proteger las aristas superiores del revestimiento frente a la penetración del agua de lluvia."
+                    ],
+                    "recomendaciones": [
+                        "No aplicar sobre hormigón celular, yeso, pinturas, superficies de metal, plástico, aislamientos y materiales de poca resistencia mecánica.",
+                        "En caso de calor, viento o soportes muy absorbentes, humedecer el soporte y esperar a la desaparición de la película de agua.",
+                        "En puntos singulares (uniones entre materiales distintos, forjados, pilares, etc.) armar el mortero con malla de fibra de vidrio para evitar fisuras.",
+                        "Sobre soportes poco porosos, aplicar imprimación (RHINO) o mejorar rugosidad por medios mecánicos.",
+                        "Los soportes deben ser resistentes, estables, sanos y limpios."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Para espesores superiores a 2 cm, aplicar el producto en dos capas.",
+                        "Espesor final mínimo: 10 mm."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: extensa gama de más de 150 colores ampliable según necesidades del cliente.",
+                        "Rendimiento: 1,5 kg/m2 y mm de espesor en soporte plano.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/CRISOLEX R mortero monocapa raspado.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/Declaracion.conformidad.morteros.monocapa_grupo.estucalia.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "MORE-BEST",
+                    "subtitulo": "Raspado blanco",
+                    "imagen": "/img/productos/11-MORE BEST.png",
+                    "composicion": "Producto fabricado a base de cemento blanco de alta resistencia, áridos seleccionados, aditivos orgánicos y pigmentos.",
+                    "caracteristicas": [
+                        "Aplicación directa a la pared de cerramiento sin necesidad de enfoscar.",
+                        "Aplicación en interiores y exteriores.",
+                        "Revestimiento impermeable.",
+                        "Permeable al vapor de agua, permitiendo transpirabilidad al soporte.",
+                        "Proteger las aristas superiores del revestimiento frente a la penetración del agua de lluvia."
+                    ],
+                    "recomendaciones": [
+                        "No aplicar sobre hormigón celular, yeso, pinturas, superficies de metal, plástico, aislamientos y materiales de poca resistencia mecánica.",
+                        "En caso de calor, viento o sobre soportes muy absorbentes, se recomienda humedecer el soporte y esperar a la desaparición de la película de agua.",
+                        "En puntos singulares (uniones entre materiales distintos, forjados, pilares, etc.) armar el mortero con malla de fibra de vidrio para evitar fisuras.",
+                        "Sobre soportes poco porosos, aplicar una imprimación (RHINO) o mejorar la rugosidad por medios mecánicos.",
+                        "Los soportes deben ser resistentes, estables, sanos y estar limpios."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Para espesores superiores a 2 cm, se recomienda aplicar el producto en dos capas.",
+                        "El espesor final mínimo de empleo de revoco deberá ser de 10 mm."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: extensa gama de más de 150 colores ampliable según necesidades del cliente.",
+                        "Rendimiento: 1,5 kg/m2 y mm de espesor en soporte plano.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en el envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/Mortero.Monocapa.Raspado.MoreBest.-.FICHA.TECNICA.-.GE.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/Declaracion.conformidad.morteros.monocapa_grupo.estucalia.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "EURO MONEY F'",
+                    "subtitulo": "Hidrófugo capa gruesa",
+                    "imagen": "/img/productos/10-EUROMONEY CGRUESA.png",
+                    "composicion": "Mortero Hidrófugo a base de áridos seleccionados, cemento blanco o gris y aditivos.",
+                    "caracteristicas": [
+                        "Realización de terminaciones blancas o colores suaves.",
+                        "Aplicación en interiores y exteriores.",
+                        "Revestimiento impermeable.",
+                        "Permeable al vapor de agua, permitiendo que el soporte transpire.",
+                        "Excelente adherencia y gran plasticidad.",
+                        "Enlucido sobre enfoscado o aplicación directa."
+                    ],
+                    "recomendaciones": [
+                        "Proteger las aristas superiores del revestimiento frente a la penetración del agua de lluvia.",
+                        "Espesores de hasta 1 cm sin descuelgue.",
+                        "Acabado liso o fratasado.",
+                        "En caso de calor, viento o sobre soportes muy absorbentes, humedecer el soporte y esperar a la desaparición de la película de agua.",
+                        "Sobre soportes poco porosos, aplicar imprimación (RHINO) o mejorar rugosidad por medios mecánicos.",
+                        "Los soportes deben ser resistentes, estables, sanos y limpios.",
+                        "El espesor final mínimo tras la aplicación debe ser de 10 mm para asegurar impermeabilidad en soportes sin resistencia a filtraciones."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Para espesores superiores a 2 cm se recomienda aplicar el producto en dos capas.",
+                        "El espesor final mínimo de empleo del producto debe ser de 10 mm."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: blanco y colores suaves según demanda.",
+                        "Rendimiento: aprox. 14 Kg/m2 en 10 mm de espesor sobre soporte sensiblemente plano.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/EURO MONEY  F' mortero monocapa hidrofugo capa gruesa.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/Declaracion.conformidad.morteros.monocapa_grupo.estucalia.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "EURO MONEY F'",
+                    "subtitulo": "Hidrófugo capa fina",
+                    "imagen": "/img/productos/09-EUROMONEY CFINA.png",
+                    "composicion": "Mortero Hidrófugo a base de áridos seleccionados, cemento blanco o gris y aditivos.",
+                    "caracteristicas": [
+                        "Realización de terminaciones blancas o colores suaves.",
+                        "Aplicación en interiores y exteriores.",
+                        "Revestimiento impermeable.",
+                        "Permeable al vapor de agua, permitiendo que el soporte transpire.",
+                        "Excelente adherencia y gran plasticidad.",
+                        "Enlucido sobre enfoscado o aplicación directa."
+                    ],
+                    "recomendaciones": [
+                        "Proteger las aristas superiores del revestimiento frente a la penetración del agua de lluvia.",
+                        "Espesores de hasta 1 cm sin descuelgue.",
+                        "En caso de calor, viento o sobre soportes muy absorbentes, se recomienda humedecer el soporte y esperar a la desaparición de la película de agua.",
+                        "Sobre soportes poco porosos, aplicar una imprimación (RHINO) o mejorar la rugosidad por medios mecánicos.",
+                        "Los soportes deben ser resistentes, estables, sanos y estar limpios.",
+                        "El espesor final mínimo tras la aplicación debe ser de 10 mm para asegurar la impermeabilidad del agua de lluvia del paramento cuando el soporte no posea resistencia a la filtración del agua."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Para espesores superiores a 2 cm, se recomienda aplicar el producto en dos capas.",
+                        "El espesor final mínimo de empleo del producto debe ser de 10 mm."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: blanco y colores suaves según demanda.",
+                        "Rendimiento: aprox. 14 Kg/m2 en 10 mm de espesor sobre soporte sensiblemente plano.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/EURO MONEY  F' mortero monocapa hidrofugo capa fina.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/Declaracion.conformidad.morteros.monocapa_grupo.estucalia.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "stampedMortar",
+            "titulo": "Mortero impreso",
+            "descripcion": "El mortero impreso es un revestimiento decorativo que permite crear texturas y relieves en paredes, imitando materiales como piedra o ladrillo.",
+            "descripcion1": "Ofrece gran versatilidad de acabados, alta resistencia a impactos y durabilidad ante condiciones climáticas adversas. Se aplica directamente sobre la pared y permite una terminación rápida y estética.",
+            "imagen": "/img/mortero-impreso.svg",
+            "aplicaciones": [
+                "Revestimientos",
+                "Revocos y enlucidos",
+                "Aislamiento térmico",
+                "Impermeabilización",
+                "Deshumidificación / hidrofugante"
+            ],
+            "acabados": [
+                {
+                    "nombre": "Abujardado / raspado",
+                    "imagen": "/img/acabados/raspado_abujardado.jpg"
+                },
+                {
+                    "nombre": "Lavado / fratasado",
+                    "imagen": "/img/acabados/lavado_fratasado.jpg"
+                },
+                {
+                    "nombre": "Impreso",
+                    "imagen": "/img/acabados/impreso.jpg"
+                },
+                {
+                    "nombre": "Liso",
+                    "imagen": "/img/acabados/liso.jpg"
+                }
+            ],
+            "productos": [
+                {
+                    "nombre": "PLASTITE M' ",
+                    "subtitulo": "Mortero impreso. Multi acabado",
+                    "imagen": "/img/productos/12-PLASTITE.png",
+                    "composicion": "Monocapa fabricado a base de cemento blanco de alta resistencia, áridos seleccionados, aditivos orgánicos y pigmentos.",
+                    "caracteristicas": [
+                        "Aplicación directa a la pared de cerramiento sin necesidad de enfoscar.",
+                        "Aplicación en interiores y exteriores.",
+                        "Revestimiento impermeable.",
+                        "Permeable al vapor de agua, permitiendo que el soporte transpire.",
+                        "No cuartea."
+                    ],
+                    "recomendaciones": [
+                        "Proteger las aristas superiores del revestimiento frente a la penetración del agua de lluvia.",
+                        "No aplicar sobre hormigón celular, yeso, pinturas, superficies de metal, plástico, aislamientos y materiales de poca resistencia mecánica.",
+                        "En caso de calor, viento o sobre soportes muy absorbentes, se recomienda humedecer el soporte y esperar a la desaparición de la película de agua.",
+                        "En puntos singulares (uniones entre materiales distintos, etc.) armar el mortero con malla de fibra de vidrio para evitar fisuras.",
+                        "Sobre soportes poco porosos, aplicar una imprimación (RHINO) o mejorar la rugosidad por medios mecánicos.",
+                        "Los soportes deben ser resistentes, estables, sanos y estar limpios, exentos de polvo, restos de desencofrantes, productos orgánicos, etc."
+                    ],
+                    "aplicacion": [
+                        "Extender el material sobre el paramento, debidamente amaestrado, dejándolo completamente alisado.",
+                        "Una vez extendido completamente, pulverizar con Desmoldeante (EURO-SOL) el paño a sellar o imprimir, así como el molde, rodillo o herramienta a emplear. Ambos deben quedar bien impregnados, pero no en exceso.",
+                        "Con los moldes y material bien impregnados, proceder a imprimir el dibujo deseado, con rodillo o con uno de los distintos moldes al efecto. Cuando finalices, corrige posibles defectos con la paleta u otra herramienta adecuada.",
+                        "El Plastite permite rectificar antes de su fraguado superficial (10-15 minutos). Si se hace después, se puede romper la película superficial, produciendo fisuras.",
+                        "Una vez el mortero Plastite ha endurecido lo suficiente (habitualmente al día siguiente), se puede comenzar su tintado con Eurotint."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Para espesores superiores a 2 cm se recomienda aplicar el producto en dos capas.",
+                        "El espesor final mínimo de empleo de revoco deberá ser de 10 mm."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: extensa gama de más de 150 colores ampliable según necesidades del cliente.",
+                        "Rendimiento teórico por m2 y 1 mm de espesor: 1,4 Kg.",
+                        "Rendimiento práctico en espesores de 12 a 15 mm: de 12 a 14 Kg/m2.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en el envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/PLASTITE M' multiacabado.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "groutMortar",
+            "titulo": "Mortero juntas",
+            "descripcion": "El mortero polivalente para juntas es una mezcla diseñada para rellenar las juntas entre baldosas y cerámicas en paredes y suelos.",
+            "descripcion1": "Gracias a sus aditivos, ofrece alta impermeabilidad, buena adherencia y flexibilidad, garantizando un acabado uniforme y duradero. Está disponible en diferentes colores para adaptarse al diseño. ",
+            "imagen": "/img/mortero-juntas.svg",
+            "aplicaciones": [
+                "Revestimientos",
+                "Revocos y enlucidos",
+                "Aislamiento térmico",
+                "Impermeabilización",
+                "Deshumidificación / hidrofugante"
+            ],
+            "productos": [
+                {
+                    "nombre": "FOREVER",
+                    "subtitulo": "Mortero juntas alta gama profesional",
+                    "imagen": "/img/productos/FOREVER BOLSA.png",
+                    "composicion": "Mortero formulado a base de áridos seleccionados, cemento blanco, y aditivos para el relleno de juntas entre baldosas cerámicas, gres y piedra natural. Diseñado para juntas de hasta 15 mm. este mortero ofrece una amplia gama de colores. Su textura fina y su alta adherencia garantizan un acabado estético y duradero, evitando fisuras y retracciones.",
+                    "caracteristicas": [
+                        "Alta resistencia mecánica y larga durabilidad.",
+                        "Impermeable y de baja absorción de agua, evitando filtraciones y eflorescencias.",
+                        "Fácil limpieza y aplicación, sin residuos difíciles de eliminar",
+                        "Apto para calefacción radiante, manteniendo su integridad sin fisuras.",
+                        "Aplicación en interiores y exteriores, ideal para baños, cocinas, terrazas y fachadas.",
+                        "Resistente al agrietamiento, abrasión y productos de limpieza convencionales."
+                    ],
+                    "recomendaciones": [
+                        "En el caso de baldosas muy absorbentes o temperaturas elevadas, humedecer ligeramente las juntas antes de la aplicación con una esponja húmeda, evitando el encharcamiento.",
+                        "En rehabilitaciones o renovaciones, vaciar completamente la junta antes de la aplicación para garantizar una correcta adherencia.",
+                        " Para obtener un acabado uniforme, utilizar herramientas adecuadas y respetar los tiempos de fraguado indicados."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "Evitar su aplicación con riesgo de heladas, lluvias intensas, fuertes vientos o exposición directa al sol.",
+                        "No usar en juntas de dilatación o sujetas a movimientos estructurales.",
+                        "No limpiar con un exceso de agua o cuando el material aún esté fresco, evitando carbonataciones y cambios de tonalidad por dispersión de pigmentos."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de plástico 5 kg | Sacos de papel 8 kg.",
+                        "Colores: Más de 30 colores en nuestra gama, ampliable según demanda.",
+                        "Conservación: 24 meses (sacos de papel) / 12 meses (sacos de plástico) a partir de la fecha de fabricación."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "KOLATEC",
+                    "subtitulo": "Mortero juntas",
+                    "imagen": "/img/productos/KOLATEC BOLSA.png",
+                    "composicion": "Mortero a base de áridos seleccionados, cemento blanco, resinas, pigmentos y aditivos coloreado para Juntas entre Baldosas Cerámicas de hasta 15 mm con amplia gama de colores, impermeable, sin retracción y de fácil limpieza.",
+                    "caracteristicas": [
+                        "Elevada dureza.",
+                        "Color intenso.",
+                        "Fácil limpieza.",
+                        "Textura muy fina.",
+                        "Baja absorción de agua.",
+                        "Resistente al agrietamiento y a la abrasión.",
+                        "Aplicación en interiores y exteriores.",
+                        "Apto para calefacción radiante."
+                    ],
+                    "recomendaciones": [
+                        "En el caso de baldosas muy absorbentes o temperaturas elevadas, antes de rellenar las juntas, humedecer las mismas con agua limpia, pasando sobre estas una esponja húmeda evitando el encharcamiento de agua en su interior.",
+                        "En rehabilitaciones vaciar completamente la junta antes de la aplicación."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "En rehabilitaciones vaciar completamente la junta antes de la aplicación."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de plástico 5 kg | Sacos de papel 8 kg.",
+                        "Colores: Más de 30 colores en nuestra gama, ampliable según demanda.",
+                        "Conservación: 24 meses (sacos de papel) / 12 meses (sacos de plástico) a partir de la fecha de fabricación."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/KOLATEC juntas.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "accessoriesAndTools",
+            "titulo": "Complementos y accesorios",
+            "descripcion": "Desmoldante, tinte natural, moldes, cenefas y rodillos. Un conjunto de complementos y accesorios para el acabado final de tus proyectos.",
+            "descripcion1": "Permiten personalizar, desmoldar y dar color al mortero, consiguiendo resultados más creativos y profesionales.",
+            "imagen": "/img/accerios-y-herramientas.svg",
+            "productos": [
+                {
+                    "nombre": "EUROSOL",
+                    "subtitulo": "Desmodelante",
+                    "imagen": "/img/productos/EUROSOL_1.png",
+                    "imagen2": "/img/productos/EUROSOL_25L.png",
+                    "composicion": "Desencofrante líquido para desencofrar inmediatamente.Sobre la superficie de contacto de hormigón del molde, forma una películadelgada no grasa que permite un desencofrado inmediato.",
+                    "caracteristicas": [
+                        "Aspecto: Líquido oleoso e incoloro.",
+                        "Olor: Inodoro.",
+                        "Punto de congelación: 4ºC (máx.).",
+                        "Temperatura de autoignición: 271ºC.",
+                        "Densidad (15ºC): 0,760 – 0,770 g/cm3.",
+                        "Solubilidad: Disolventes orgánicos.",
+                        "Rendimiento: 100 ml/m2."
+                    ],
+                    "recomendaciones": [
+                        "Pulverizar ambos soportes formando una película delgada."
+                    ],
+                    "precauciones": [
+                        "No aplicar a temperaturas inferiores a +5ºC ni superiores a +35ºC.",
+                        "No aplicar con lluvia.",
+                        "Limpiar adecuadamente los utensilios una vez terminado el trabajo.",
+                        "Evitar el contacto con la piel y los ojos."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Envases de plástico de 5 o 20 Litros.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase cerrado y al amparo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/EUROSOL desmoldeante.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "EUROTINT",
+                    "subtitulo": "Tinte natural",
+                    "imagen": "/img/productos/EUROTINT.png",
+                    "composicion": "Tinte compuesto por mezcla de cera natural (99%) y pigmentos inorgánicos (1%). Se fabrica en varios colores: Blanco, Rojo, Negro, Pardo, Ocre, Amarillo, Verde, Azul y Neutro.",
+                    "caracteristicas": [
+                        "Euro-Tint es idóneo para colorear trabajos con PLASTITE Multiacabado por sus múltiples combinaciones y resultado final.",
+                        "Gran naturalidad en distintos acabados.",
+                        "Admite mezcla de los distintos colores entre sí."
+                    ],
+                    "recomendaciones": [
+                        "Cuando pasa tiempo prolongado sin uso, se contrae y pierde volumen en su envase original; para recuperarlo, mezclar con un poco de disolvente normal."
+                    ],
+                    "precauciones": [
+                        "No acercarlo al fuego. Al ser su base de cera natural, tiende a licuarse."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Envases de plástico de 4 kg (aprox.).",
+                        "Colores: Blanco, Rojo, Negro, Pardo, Ocre, Amarillo, Verde, Azul y Neutro.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase cerrado y al amparo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/EUROSOL desmoldeante.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "MALLA REFUERZO",
+                    "subtitulo": "Malla mortero monocapa fibra de vidrio",
+                    "imagen": "/img/productos/malla._azul.png",
+                    "imagen2": "/img/productos/malla_blanca.png",
+                    "composicion": "Fibra de vidrio con recubrimiento fijador de fibras y resistencia alcalina.",
+                    "caracteristicas": [
+                        "Previene la aparición de grietas",
+                        "Alta resistencia a la tracción",
+                        "Fácil de aplicar",
+                        "Gran estabilidad dimensional",
+                        "Ligera y flexible"
+                    ],
+                    "recomendaciones": [
+                        "Conservar en lugar seco, protegido de la luz solar directa y fuentes de calor.",
+                        "Almacenar en posición vertical, sobre palet, en su embalaje original.",
+                        "Temperatura recomendada de almacenamiento: entre -10 °C y +50 °C."
+                    ],
+                    "precauciones": [],
+                    "informacion_relevante": [
+                        "Presentación: rollos de 1 m × 50 m = 50 m² por rollo",
+                        "Tamaño de malla: 5 × 5 mm o 10 × 10 mm según modelo",
+                        "Peso: 75 g/m² o 90 g/m² según referencia",
+                        "Resistencia a la tracción: hasta 1700 N/5 cm (según modelo)",
+                        "Color: Azul"
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica Fiberglass Mesh ",
+                            "accion": "Descargar",
+                            "enlace": "/files/Ficha técnica Fiberglass mesh.pdf"
+                        },
+                        {
+                            "nombre": "Ficha Técnica Mesh Blue ",
+                            "accion": "Descargar",
+                            "enlace": "/files/Ficha Técnica Mesh.Blue.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "Junquillo PVC",
+                    "subtitulo": "Perfil de PVC para revestimientos de monocapa en los exteriores de las fachadas",
+                    "imagen": "/img/productos/Junquillo-PVC.png",
+                    "composicion": "PVC",
+                    "caracteristicas": [
+                        "Fácil colocación del material",
+                        "Crean formas distintas mejorando la estética de cada fachada",
+                        "Flexibles y resistentes"
+                    ],
+                    "recomendaciones": [
+                        "Conservar en un lugar fresco y seco",
+                        "Mantener horizontal en almacén y durante el transporte"
+                    ],
+                    "precauciones": [],
+                    "informacion_relevante": [
+                        "Presentación: Cajas de 125-130 unidades"
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/Ficha.tecnica.junquillo.PVC.Blanco.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "Esquinero PVC",
+                    "subtitulo": "Perfil cantonera para la formación de cantos perpendiculares y alineados en revestimientos interiores y exteriores",
+                    "imagen": "/img/productos/esquinero-PVC.png",
+                    "imagen1": "",
+                    "composicion": "PVC",
+                    "caracteristicas": [
+                        "Fácil colocación del material",
+                        "Crean formas distintas mejorando la estética de cada fachada",
+                        "Flexibles y resistentes"
+                    ],
+                    "recomendaciones": [
+                        "Conservar en un lugar fresco y seco",
+                        "Mantener horizontal en almacén y durante el transporte"
+                    ],
+                    "precauciones": [],
+                    "informacion_relevante": [
+                        "Presentación: Cajas de 50 unidades"
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/Ficha.tecnica.Guardavivo.PVC.Blanco.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "MOLDES CENEFAS RODILLOS",
+                    "subtitulo": "Accesorios",
+                    "imagen": "/img/productos/449031446-a8005594-ea7f-474d-b5f8-20a776bcaa40.svg",
+                    "informacion_general": "",
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/Moldes_cenefas_rodillos.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "HERRAMIENTAS",
+                    "subtitulo": "Accesorios",
+                    "imagen": "/img/productos/449031446-a8005594-ea7f-474d-b5f8-20a776bcaa40.svg",
+                    "informacion_general": "",
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/Herramientas_GRUPO.ESTUCALIA.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "stoneMortar",
+            "titulo": "Mortero piedra decorativa",
+            "descripcion": "El mortero de china proyectada es una mezcla especial utilizada para revestir superficies mediante la proyección de pequeñas partículas de áridos decorativos.",
+            "descripcion1": "Es ideal para acabados en fachadas y muros exteriores. Ofrece una excelente adherencia y resistencia a las condiciones climáticas extremas. Su acabado rugoso y decorativo aporta un valor estético distintivo a las superficies. Además, su aplicación por proyección facilita una cobertura uniforme y rápida.",
+            "imagen": "/img/mortero-piedra.svg",
+            "aplicaciones": [
+                "Revestimientos",
+                "Albañilería",
+                "Revocos y enlucidos",
+                "Impermeabilización",
+                "Deshumidificación / hidrofugante"
+            ],
+            "acabados": [
+                {
+                    "nombre": "Piedra proyectada",
+                    "imagen": "/img/acabados/piedra proyectada.jpg"
+                }
+            ],
+            "productos": [
+                {
+                    "nombre": "CRISOLEX P",
+                    "subtitulo": "Piedra",
+                    "imagen": "/img/productos/06-CRYSOLEX PC.png",
+                    "composicion": "Monocapa fabricado a base de cemento blanco de alta resistencia, áridos seleccionados, aditivos orgánicos y pigmentos.",
+                    "caracteristicas": [
+                        "Aplicación directa a la pared de cerramiento sin necesidad de enfoscar.",
+                        "Aplicación en interiores y exteriores.",
+                        "Revestimiento impermeable.",
+                        "Permeable al vapor de agua, evitando condensaciones."
+                    ],
+                    "recomendaciones": [
+                        "Proteger las aristas superiores del revestimiento frente a la penetración del agua de lluvia.",
+                        "No aplicar sobre hormigón celular, yeso, pinturas, superficies de metal, plástico, aislamientos y materiales de poca resistencia mecánica.",
+                        "En caso de calor, viento o sobre soportes muy absorbentes, se recomienda humedecer el soporte y esperar a la desaparición de la película de agua.",
+                        "En puntos singulares (uniones entre materiales distintos, forjados, pilares, etc.) armar el mortero con malla de fibra de vidrio para evitar fisuras.",
+                        "Sobre soportes poco porosos, aplicar una imprimación (RHINO) o mejorar la rugosidad por medios mecánicos.",
+                        "Los soportes deben ser resistentes, estables, sanos y estar limpios, exentos de polvo, restos de desencofrantes, productos orgánicos, etc."
+                    ],
+                    "precauciones": [
+                        "No aplicar por debajo de 5ºC ni por encima de 30ºC.",
+                        "No aplicar con riesgo de heladas, lluvias, fuertes vientos o sol directo.",
+                        "Para espesores superiores a 2 cm se recomienda aplicar el producto en dos capas.",
+                        "El espesor final mínimo de empleo de revoco deberá ser de 10 mm.",
+                        "Es necesario que la piedra de proyectar esté seca y libre de polvo."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de 25 Kg. Palets de 1400 kg (56 sacos).",
+                        "Colores: gama de 12 colores ampliable según necesidades del cliente.",
+                        "Rendimiento teórico: 12 (+-0,5) Kgs./m2.",
+                        "Rendimiento práctico sobre soporte plano en 9-12 mm: 12-14 Kg/m2.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en el envase original cerrado y al abrigo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/CRISOLEX.P.piedra.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "MÁRMOL TRITURADO",
+                    "subtitulo": "Colores naturales",
+                    "imagen": "/img/productos/MARMOL TRITURADO.png",
+                    "composicion": "Mármol triturado en colores naturales (Marfil, Madera, Rosa, Rojo, Blanco, Gris, Verde y Negro) en varias granulometrías.",
+                    "caracteristicas": [
+                        "Producto Natural.",
+                        "No Inflamable.",
+                        "No tóxico.",
+                        "No perecedero."
+                    ],
+                    "recomendaciones": [
+                        "Aplicar o incrustar sobre el mortero monocapa Crysolex piedra mientras este fresco."
+                    ],
+                    "precauciones": [
+                        "Evitar suciedad y altas temperaturas que puedan ocasionar rotura del saco de plástico.",
+                        "Posibilidad de lavar el producto si se almacena durante un largo período."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Sacos de plástico de 30 kg, posibilidad de sacos de 25 kg.",
+                        "Conservación: No perecedero."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/MÁRMOL TRITURADO colores naturales.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "waterProtector",
+            "titulo": "Protector de agua",
+            "descripcion": "El barniz protector de agua es un recubrimiento diseñado para impermeabilizar y proteger superficies contra la humedad, manchas y suciedad. Puede aplicarse en suelos, fachadas y elementos decorativos.",
+            "descripcion1": "Forma una barrera impermeable que prolonga la vida útil de las superficies tratadas, facilitando la limpieza y el mantenimiento. No altera significativamente el color o la textura original.",
+            "imagen": "/img/mortero-protector-agua.svg",
+            "aplicaciones": [
+                "Impermeabilización",
+                "Deshumidificación/ hidrofugante",
+                "Protector/fijación"
+            ],
+            "productos": [
+                {
+                    "nombre": "EURO-PROTECT",
+                    "subtitulo": "Barniz protector de agua",
+                    "imagen": "/img/productos/EUROPROTECT_5L.png",
+                    "imagen2": "/img/productos/EUROPROTECT.png",
+                    "composicion": "Emulsión de copolímero acrílico-estireno para proteger los morteros monocapa, con alta resistencia al agua, a los álcalis y gran plasticidad termal.",
+                    "caracteristicas": [
+                        "Excelentes propiedades como hidrofugante.",
+                        "Reduce el ensuciamiento del paramento y la proliferación de algas.",
+                        "Alta resistencia al ataque por álcalis.",
+                        "Buena resistencia a rayos ultravioleta.",
+                        "Producto incoloro con acabado brillo o mate."
+                    ],
+                    "recomendaciones": [
+                        "Aplicar con un cepillo o rodillo sobre la superficie terminada del mortero monocapa, dejando una capa uniforme que cubra todo el paramento."
+                    ],
+                    "precauciones": [
+                        "Almacenar en lugares protegidos del sol o fuentes excesivas de calor.",
+                        "El envase debe estar correctamente cerrado.",
+                        "Se aconseja utilizar el producto dentro del primer año de vida."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Envases de plástico de 5 o 15 Litros.",
+                        "Conservación: 12 meses a partir de la fecha de fabricación, en envase cerrado y al amparo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/EURO-PROTEC barniz protector.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                },
+                {
+                    "nombre": "EURO-HYDRO",
+                    "subtitulo": "Resina de Acabado",
+                    "imagen": "/img/productos/EUROHYDRO_5L.png",
+                    "imagen2": "/img/productos/EUROHYDRO_25L.png",
+                    "composicion": "Impregnación hidrofugante a base de resinas acrílicas puras para sellar los soportes minerales sin modificar el aspecto natural de los mismos",
+                    "caracteristicas": [
+                        "Excelentes propiedades como hidrofugante",
+                        "Reduce el ensuciamiento del paramento y la proliferación de algas",
+                        "Eficaz resistencia al ataque por álcalis",
+                        "Adecuada resistencia a los rayos ultravioletas",
+                        "Renovación y protección de obra en ambiente muy húmedo"
+                    ],
+                    "recomendaciones": [
+                        "Aplique con un cepillo o rodillo en la superficie terminada del mortero monocapa, tratando de dejar una capa uniforme que cubre toda la superficie"
+                    ],
+                    "precauciones": [
+                        "Almacenar en lugares protegidos del sol o fuentes excesivas de calor",
+                        "El envase debe estar correctamente cerrado",
+                        "Es aconsejable utilizar el producto en su primer año de vida"
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Envases de plástico de 5 o 15 Litros",
+                        "Conservación: 12 meses a partir fecha fabricación en envase cerrado y al amparo de la humedad"
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/EURO-HYDRO_ Resina de Acabado.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "bondingBridge",
+            "titulo": "Puente de unión",
+            "descripcion": "El puente de unión es una imprimación que mejora la adherencia entre diferentes capas de mortero o entre mortero y otras superficies como hormigón o cerámica.",
+            "descripcion1": "Se aplica antes del mortero para asegurar una fijación sólida, evitando desprendimientos y fisuras. Mejora la durabilidad de las superficies tratadas y facilita la construcción o reparación.",
+            "imagen": "/img/mortero puente union.svg",
+            "aplicaciones": [
+                "Revestimientos",
+                "Albañilería",
+                "Revocos y enlucidos",
+                "Aislamiento térmico"
+            ],
+            "productos": [
+                {
+                    "nombre": "RHINO",
+                    "subtitulo": "Resina puente de unión",
+                    "imagen": "/img/productos/RHINO.png",
+                    "imagen2": "/img/productos/RHINO_20L.png",
+                    "composicion": "Imprimación para Morteros Monocapa y Morteros en General aplicados sobre hormigón liso y soportes con baja o nula absorción superficial.",
+                    "caracteristicas": [
+                        "Aplicación en interiores y exteriores.",
+                        "Aplicación en paramentos verticales y techos.",
+                        "Buena adherencia, favoreciendo la posterior aplicación del revestimiento.",
+                        "No inflamable.",
+                        "Gran penetración sobre el soporte."
+                    ],
+                    "recomendaciones": [
+                        "Extender homogéneamente EuroFix-plus con una brocha sobre la superficie a tratar y, a continuación, aplicar el Mortero directamente.",
+                        "Los soportes deben estar limpios, libres de polvo, grasas, aceites y desencofrantes."
+                    ],
+                    "precauciones": [
+                        "No aplicar con lluvias o heladas.",
+                        "Limpiar con agua las herramientas tras su uso.",
+                        "No aplicar con temperaturas inferiores a 5ºC o superiores a 30ºC.",
+                        "Hormigón Liso o Fratasado, vigas de hierro, etc., en general soportes sin absorción superficial."
+                    ],
+                    "informacion_relevante": [
+                        "Presentación: Envases de plástico de 5 o 20 Litros.",
+                        "Conservación: 24 meses a partir de la fecha de fabricación en envase cerrado y al amparo de la humedad."
+                    ],
+                    "documentacion": [
+                        {
+                            "nombre": "Ficha Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/RHINO resina puente de unión.pdf"
+                        },
+                        {
+                            "nombre": "Certificado AENOR",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-aenor.pdf"
+                        },
+                        {
+                            "nombre": "Certificado IQNet",
+                            "accion": "Descargar",
+                            "enlace": "/files/certificado-iqnet.pdf"
+                        },
+                        {
+                            "nombre": "Declaración de Conformidad",
+                            "accion": "Descargar",
+                            "enlace": "/files/declaracion-conformidad-estucalia-morteros.pdf"
+                        },
+                        {
+                            "nombre": "Documento de Idoneidad Técnica",
+                            "accion": "Descargar",
+                            "enlace": "/files/dit-plus-espanol.pdf"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
