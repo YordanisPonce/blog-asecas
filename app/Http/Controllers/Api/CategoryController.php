@@ -18,12 +18,12 @@ class CategoryController extends Controller
             'applications' => function ($query) {
                 $query->select('applications.id', 'applications.name', 'applications.slug', 'applications.icon')
                     ->where('is_active', true)
-                    ->orderBy('categories.order');
+                    ->orderBy('applications.order');
             }
         ])
             ->active()
             ->ordered()
-            ->get(['id', 'name', 'slug', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'order']);
+            ->get(['id', 'name', 'slug', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'categories.order']);
 
         return response()->json([
             'success' => true,
