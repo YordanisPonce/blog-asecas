@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
@@ -37,6 +38,7 @@ class CategoryController extends Controller
      */
     public function show(string $slug): JsonResponse
     {
+        Log::debug('Fetching category with slug: ' . $slug);
         $category = Category::with([
             'products' => function ($query) {
                 $query->select('products.id', 'products.name', 'products.slug', 'products.subtitle', 'products.image', 'products.category_id')
@@ -50,8 +52,8 @@ class CategoryController extends Controller
             }
         ])
             ->where('slug', $slug)
-            ->where('slug_en', $slug)
-            ->where('slug_fr', $slug)
+            ->orWhere('slug_en', $slug)
+            ->orWhere('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'description_en', 'description_es', 'description_fr', 'order']);
 
@@ -75,8 +77,8 @@ class CategoryController extends Controller
     public function products(string $slug): JsonResponse
     {
         $category = Category::where('slug', $slug)
-            ->where('slug_en', $slug)
-            ->where('slug_fr', $slug)
+            ->orWhere('slug_en', $slug)
+            ->orWhere('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 
@@ -108,8 +110,8 @@ class CategoryController extends Controller
     public function applications(string $slug): JsonResponse
     {
         $category = Category::where('slug', $slug)
-            ->where('slug_en', $slug)
-            ->where('slug_fr', $slug)
+            ->orWhere('slug_en', $slug)
+            ->orWhere('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 

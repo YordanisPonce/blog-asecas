@@ -70,8 +70,8 @@ class ProductController extends Controller
             },
             'documents'
         ])->where('slug', $slug)
-            ->where('slug_en', $slug)
-            ->where('slug_fr', $slug)
+            ->orWhere('slug_en', $slug)
+            ->orWhere('slug_fr', $slug)
             ->active()
             ->first();
 
@@ -95,8 +95,8 @@ class ProductController extends Controller
     public function documents(string $slug): JsonResponse
     {
         $product = Product::where('slug', $slug)
-            ->where('slug_en', $slug)
-            ->where('slug_fr', $slug)
+            ->orWhere('slug_en', $slug)
+            ->orWhere('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 
@@ -127,8 +127,8 @@ class ProductController extends Controller
     public function byCategory(string $slug): JsonResponse
     {
         $category = Category::where('slug', $slug)
-            ->where('slug_en', $slug)
-            ->where('slug_fr', $slug)
+            ->orWhere('slug_en', $slug)
+            ->orWhere('slug_fr', $slug)
             ->active()
             ->first(['id', 'name', 'slug']);
 

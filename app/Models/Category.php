@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use PhpParser\Builder\Function_;
 
 class Category extends Model
 {
@@ -79,6 +80,11 @@ class Category extends Model
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('order')->orderBy('name');
+        return $query->orderBy('categories.order')->orderBy('name');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class)->ordered();
     }
 }

@@ -121,7 +121,7 @@ class Product extends Model
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('order')->orderBy('name');
+        return $query->orderBy('products.order')->orderBy('name');
     }
 
     public function scopeByCategory($query, $categoryId)

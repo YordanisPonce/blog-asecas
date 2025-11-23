@@ -79,6 +79,6 @@ class Application extends Model
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('order')->orderBy('name');
+        return $query->orderBy('applications.order')->orderBy('name');
     }
 }
