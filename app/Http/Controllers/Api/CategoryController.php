@@ -24,7 +24,7 @@ class CategoryController extends Controller
         ])
             ->active()
             ->ordered()
-            ->get(['id', 'name', 'slug', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'categories.order']);
+            ->get();
 
         return response()->json([
             'success' => true,
@@ -92,7 +92,7 @@ class CategoryController extends Controller
         $products = $category->products()
             ->active()
             ->ordered()
-            ->get(['id', 'name', 'slug', 'subtitle', 'image', 'image_alt', 'image_title', 'presentation', 'order']);
+            ->get();
 
         return response()->json([
             'success' => true,
@@ -125,7 +125,7 @@ class CategoryController extends Controller
         $applications = $category->applications()
             ->active()
             ->ordered()
-            ->get(['id', 'name', 'slug', 'icon', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'order']);
+            ->get();
 
         return response()->json([
             'success' => true,
@@ -157,7 +157,7 @@ class CategoryController extends Controller
             ->orWhere('short_description_fr', 'like', "%{$query}%")
             ->active()
             ->ordered()
-            ->get(['id', 'name', 'slug', 'image', 'short_description_en', 'short_description_es', 'short_description_fr', 'order']);
+            ->get();
 
         return response()->json([
             'success' => true,

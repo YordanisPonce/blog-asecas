@@ -23,7 +23,7 @@ class ApplicationController extends Controller
         ])
             ->active()
             ->ordered()
-            ->get(['id', 'name', 'slug', 'icon', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'order']);
+            ->get();
 
         return response()->json([
             'success' => true,
@@ -85,7 +85,7 @@ class ApplicationController extends Controller
         $categories = $application->categories()
             ->active()
             ->ordered()
-            ->get(['id', 'name', 'slug', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'order']);
+            ->get();
 
         return response()->json([
             'success' => true,

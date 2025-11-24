@@ -109,7 +109,7 @@ class ProductController extends Controller
 
         $documents = $product->documents()
             ->ordered()
-            ->get(['id', 'name', 'file_path', 'file_type', 'order']);
+            ->get();
 
         return response()->json([
             'success' => true,
@@ -143,25 +143,7 @@ class ProductController extends Controller
             ->where('category_id', $category->id)
             ->active()
             ->ordered()
-            ->get([
-                'id',
-                'name',
-                'slug',
-                'subtitle',
-                'image',
-                'image_alt',
-                'image_title',
-                'composition_en',
-                'composition_es',
-                'composition_fr',
-                'features_en',
-                'features_es',
-                'features_fr',
-                'presentation',
-                'pallet_info',
-                'storage_info',
-                'order'
-            ]);
+            ->get();
 
         return response()->json([
             'success' => true,
@@ -204,19 +186,7 @@ class ProductController extends Controller
             })
             ->active()
             ->ordered()
-            ->get([
-                'id',
-                'name',
-                'slug',
-                'subtitle',
-                'category_id',
-                'image',
-                'composition_en',
-                'composition_es',
-                'composition_fr',
-                'presentation',
-                'order'
-            ]);
+            ->get();
 
         return response()->json([
             'success' => true,
