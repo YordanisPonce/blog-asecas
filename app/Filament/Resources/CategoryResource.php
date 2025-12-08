@@ -81,12 +81,8 @@ class CategoryResource extends Resource
 
                 Forms\Components\Section::make('Imagen')
                     ->schema([
-                        Forms\Components\FileUpload::make('image')
-                            ->label('Imagen de la Categoría')
-                            ->image()
-                            ->directory('categories')
-                            ->preserveFilenames()
-                            ->maxSize(2048),
+                        Forms\Components\TextInput::make('image')
+                            ->label('Imagen de la Categoría'),
 
                         Forms\Components\Grid::make(3)
                             ->schema([
