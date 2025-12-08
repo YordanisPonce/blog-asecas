@@ -81,4 +81,5 @@ class Application extends Model
     {
         return $query->orderBy('applications.order')->orderBy('name');
     }
+
 }

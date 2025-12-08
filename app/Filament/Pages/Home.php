@@ -124,48 +124,6 @@ class Home extends Page implements HasForms
                 ]),
             ]),
 
-            // ---- Applications (3 tarjetas) ----
-            Section::make('Applications (Home)')->schema([
-                Repeater::make('applications_items')
-                    ->helperText('Máximo 3 para el carrusel de la home')
-                    ->maxItems(3)
-                    ->schema([
-                        TextInput::make('image_url')->label('Imagen (URL)')->url()->required(),
-                        TextInput::make('image_title')->label('Imagen title'),
-                        TextInput::make('image_alt')->label('Imagen alt'),
-                        \Filament\Forms\Components\Tabs::make('app_i18n')->tabs([
-                            \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([TextInput::make('title_es')->label('Título (ES)')->required()]),
-                            \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([TextInput::make('title_en')->label('Title (EN)')->required()]),
-                            \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([TextInput::make('title_fr')->label('Titre (FR)')->required()]),
-                        ]),
-                        TextInput::make('link_url')->label('Enlace')->url(),
-                    ])->collapsed()->addActionLabel('Agregar tarjeta'),
-            ]),
-
-            // ---- Finishes (tabs + cards) ----
-            Section::make('Finishes (Home)')->schema([
-                Repeater::make('finishes_tabs')
-                    ->label('Pestañas')
-                    ->schema([
-                        \Filament\Forms\Components\Tabs::make('fin_tab_i18n')->tabs([
-                            \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([TextInput::make('tab_title_es')->label('Título pestaña (ES)')->required()]),
-                            \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([TextInput::make('tab_title_en')->label('Tab title (EN)')->required()]),
-                            \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([TextInput::make('tab_title_fr')->label('Titre onglet (FR)')->required()]),
-                        ]),
-                        Repeater::make('items')->label('Cards')->schema([
-                            TextInput::make('icon_url')->label('Icono (URL)')->url()->required(),
-                            TextInput::make('icon_title')->label('Icon title'),
-                            TextInput::make('icon_alt')->label('Icon alt'),
-                            \Filament\Forms\Components\Tabs::make('fin_i18n')->tabs([
-                                \Filament\Forms\Components\Tabs\Tab::make('ES')->schema([TextInput::make('title_es')->label('Título (ES)')->required()]),
-                                \Filament\Forms\Components\Tabs\Tab::make('EN')->schema([TextInput::make('title_en')->label('Title (EN)')->required()]),
-                                \Filament\Forms\Components\Tabs\Tab::make('FR')->schema([TextInput::make('title_fr')->label('Titre (FR)')->required()]),
-                            ]),
-                            TextInput::make('link_url')->label('Enlace')->url(),
-                        ])->collapsed(),
-                    ])->collapsed()->addActionLabel('Agregar pestaña'),
-            ]),
-
             // (Mantén tus secciones de Tercer bloque, Inspiración y Blog como ya las tienes)
 
             // ---- SEO ----

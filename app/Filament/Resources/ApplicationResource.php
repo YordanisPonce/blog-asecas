@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class ApplicationResource extends Resource
@@ -78,7 +79,9 @@ class ApplicationResource extends Resource
                         Forms\Components\Toggle::make('is_active')
                             ->label('Activo')
                             ->default(true),
+
                     ])->columns(2),
+
 
                 Forms\Components\Section::make('Medios')
                     ->schema([
@@ -89,12 +92,8 @@ class ApplicationResource extends Resource
                             ->preserveFilenames()
                             ->maxSize(1024),
 
-                        Forms\Components\FileUpload::make('image')
-                            ->label('Imagen Principal')
-                            ->image()
-                            ->directory('applications')
-                            ->preserveFilenames()
-                            ->maxSize(2048),
+                        Forms\Components\TextInput::make('image')
+                            ->label('Imagen Principal'),
 
                         Forms\Components\Grid::make(3)
                             ->schema([
@@ -125,18 +124,19 @@ class ApplicationResource extends Resource
                                     ]),
                             ]),
                     ]),
-
                 Forms\Components\Section::make('Categorías Asociadas')
                     ->schema([
                         Forms\Components\Select::make('categories')
                             ->label('Categorías')
-                            ->relationship('categories', 'name')
+                            ->relationship(
+                                name: 'categories',
+                                titleAttribute: 'name',
+                                modifyQueryUsing: fn(Builder $query) => $query->active()->ordered()
+                            )
                             ->multiple()
                             ->preload()
-                            ->searchable()
-                            ->options(Category::active()->ordered()->pluck('name', 'id')),
+                            ->searchable(),
                     ]),
-
                 Forms\Components\Section::make('Descripciones Cortas')
                     ->schema([
                         Forms\Components\Textarea::make('short_description_en')
