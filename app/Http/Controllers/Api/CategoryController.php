@@ -76,7 +76,8 @@ class CategoryController extends Controller
      */
     public function products(string $slug): JsonResponse
     {
-        $category = Category::where('slug', $slug)
+        $category = Category::
+            where('slug', $slug)
             ->orWhere('slug_en', $slug)
             ->orWhere('slug_fr', $slug)
             ->active()
@@ -90,6 +91,9 @@ class CategoryController extends Controller
         }
 
         $products = $category->products()
+            ->with([
+                'documents'
+            ])
             ->active()
             ->ordered()
             ->get();
