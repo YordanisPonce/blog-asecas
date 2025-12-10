@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Storage;
 
 class Application extends Model
 {
@@ -37,6 +38,7 @@ class Application extends Model
         'is_active' => 'boolean',
     ];
 
+    protected $appends = ['icon_url'];
     // Relación many-to-many con Category
     public function categories(): BelongsToMany
     {
@@ -80,6 +82,11 @@ class Application extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('applications.order')->orderBy('name');
+    }
+
+    public function getIconUrlAttribute()
+    {
+        return Storage::disk('public')->url($this->icon);
     }
 
 }

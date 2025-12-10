@@ -48,7 +48,7 @@ class ApplicationController extends Controller
             ->orWhere('slug_en', $slug)
             ->orWhere('slug_fr', $slug)
             ->active()
-            ->first(['id', 'name', 'slug', 'icon', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'description_en', 'description_es', 'description_fr', 'order']);
+            ->first();
 
         if (!$application) {
             return response()->json([
