@@ -41,7 +41,7 @@ class ApplicationController extends Controller
             'categories' => function ($query) {
                 $query->select('categories.id', 'categories.name', 'categories.slug', 'categories.image', 'categories.short_description_en', 'categories.short_description_es', 'categories.short_description_fr')
                     ->where('is_active', true)
-                    ->orderBy('order');
+                    ->orderBy('categories.order');
             }
         ])
             ->where('slug', $slug)
