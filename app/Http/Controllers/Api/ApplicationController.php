@@ -39,7 +39,7 @@ class ApplicationController extends Controller
     {
         $application = Application::with([
             'categories' => function ($query) {
-                $query->select('categories.id', 'categories.name', 'categories.slug', 'categories.image', 'categories.short_description_en', 'categories.short_description_es', 'categories.short_description_fr')
+                $query
                     ->where('is_active', true)
                     ->orderBy('categories.order');
             }
