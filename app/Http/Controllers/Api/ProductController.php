@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductDocument;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -107,9 +108,7 @@ class ProductController extends Controller
             ], 404);
         }
 
-        $documents = $product->documents()
-            ->ordered()
-            ->get();
+        $documents = ProductDocument::where('product_id', $product->id)->get();
 
         return response()->json([
             'success' => true,

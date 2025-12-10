@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,6 +18,8 @@ class ProductDocument extends Model
         'file_type',
         'order',
     ];
+
+    protected $appends = ['file_url'];
 
     public function product(): BelongsTo
     {
@@ -42,5 +45,10 @@ class ProductDocument extends Model
             return number_format(filesize(storage_path('app/public/' . $this->file_path)) / 1024, 2) . ' KB';
         }
         return 'N/A';
+    }
+
+    public function getFileUrlAttribute()
+    {
+        return Storage::disk('public')->url($this->file_path);
     }
 }
