@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Dom\Attr;
+use Illuminate\Container\Attributes\Storage;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class Product extends Model
 {
@@ -127,5 +131,24 @@ class Product extends Model
     public function scopeByCategory($query, $categoryId)
     {
         return $query->where('category_id', $categoryId);
+    }
+
+    protected function image(): Attribute
+    {
+
+        return Attribute::make(
+            get: function ($item) {
+                $is_user = request()->input('is_user', false);
+                if ($is_user) {
+                    if (FacadesStorage::disk('public')->exists($item)) {
+                        return FacadesStorage::disk('public')->url($item);
+                    }
+                    return $item;
+                } else {
+                    return $item;
+                }
+
+            }
+        );
     }
 }

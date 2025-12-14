@@ -100,7 +100,6 @@ class ProductResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Imagen Principal')
                             ->image()
-                            ->directory('products')
                             ->preserveFilenames()
                             ->maxSize(2048),
 
