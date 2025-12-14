@@ -55,6 +55,10 @@ class Product extends Model
         'is_active' => 'boolean',
     ];
 
+    protected $appends = [
+        'image_url'
+    ];
+
     // Relación con categoría
     public function category(): BelongsTo
     {
@@ -133,22 +137,11 @@ class Product extends Model
         return $query->where('category_id', $categoryId);
     }
 
-    protected function image(): Attribute
+    public function getImageUrlAttribute()
     {
-
-        return Attribute::make(
-            get: function ($item) {
-                $is_user = request()->input('is_user', false);
-                if ($is_user) {
-                    if (FacadesStorage::disk('public')->exists($item)) {
-                        return FacadesStorage::disk('public')->url($item);
-                    }
-                    return $item;
-                } else {
-                    return $item;
-                }
-
-            }
-        );
+        if (FacadesStorage::disk('public')->exists($this->image)) {
+            return FacadesStorage::disk('public')->url($this->image);
+        }
+        return $this->image;
     }
 }
