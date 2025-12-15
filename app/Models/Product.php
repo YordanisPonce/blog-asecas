@@ -139,7 +139,7 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
-        if (FacadesStorage::disk('public')->exists($this->image)) {
+        if (!is_null($this->image) && FacadesStorage::disk('public')->exists($this->image)) {
             return FacadesStorage::disk('public')->url($this->image);
         }
         return $this->image;
