@@ -113,7 +113,18 @@ class CategoryResource extends Resource
                                     ]),
                             ]),
                     ]),
-
+                Forms\Components\Section::make('Descripciones Completas')
+                    ->schema([
+                        Forms\Components\RichEditor::make('description_en')
+                            ->label('Descripción Completa (Inglés)')
+                            ->fileAttachmentsDirectory('categories/descriptions'),
+                        Forms\Components\RichEditor::make('description_es')
+                            ->label('Descripción Completa (Español)')
+                            ->fileAttachmentsDirectory('categories/descriptions'),
+                        Forms\Components\RichEditor::make('description_fr')
+                            ->label('Descripción Completa (Francés)')
+                            ->fileAttachmentsDirectory('categories/descriptions'),
+                    ]),
                 Forms\Components\Section::make('Descripciones Cortas')
                     ->schema([
                         Forms\Components\Textarea::make('short_description_en')
@@ -127,18 +138,6 @@ class CategoryResource extends Resource
                             ->rows(3),
                     ]),
 
-                Forms\Components\Section::make('Descripciones Completas')
-                    ->schema([
-                        Forms\Components\RichEditor::make('description_en')
-                            ->label('Descripción Completa (Inglés)')
-                            ->fileAttachmentsDirectory('categories/descriptions'),
-                        Forms\Components\RichEditor::make('description_es')
-                            ->label('Descripción Completa (Español)')
-                            ->fileAttachmentsDirectory('categories/descriptions'),
-                        Forms\Components\RichEditor::make('description_fr')
-                            ->label('Descripción Completa (Francés)')
-                            ->fileAttachmentsDirectory('categories/descriptions'),
-                    ]),
             ]);
     }
 
