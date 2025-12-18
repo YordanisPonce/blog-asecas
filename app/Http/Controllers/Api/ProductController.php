@@ -18,7 +18,7 @@ class ProductController extends Controller
     {
         $query = Product::with([
             'category' => function ($query) {
-                $query->select('id', 'name', 'slug');
+                $query->selectRaw('categories.*');
             },
             'documents'
         ])
@@ -32,26 +32,7 @@ class ProductController extends Controller
             });
         }
 
-        $products = $query->get([
-            'id',
-            'name',
-            'slug',
-            'subtitle',
-            'category_id',
-            'image',
-            'image_alt',
-            'image_title',
-            'composition_en',
-            'composition_es',
-            'composition_fr',
-            'features_en',
-            'features_es',
-            'features_fr',
-            'presentation',
-            'pallet_info',
-            'storage_info',
-            'order'
-        ]);
+        $products = $query->get();
 
         return response()->json([
             'success' => true,
@@ -67,7 +48,7 @@ class ProductController extends Controller
     {
         $product = Product::with([
             'category' => function ($query) {
-                $query->select('id', 'name', 'slug');
+                $query->selectRaw('categories.*');
             },
             'documents'
         ])->where('slug', $slug)
@@ -99,7 +80,7 @@ class ProductController extends Controller
             ->orWhere('slug_en', $slug)
             ->orWhere('slug_fr', $slug)
             ->active()
-            ->first(['id', 'name', 'slug']);
+            ->first();
 
         if (!$product) {
             return response()->json([
@@ -129,7 +110,7 @@ class ProductController extends Controller
             ->orWhere('slug_en', $slug)
             ->orWhere('slug_fr', $slug)
             ->active()
-            ->first(['id', 'name', 'slug']);
+            ->first();
 
         if (!$category) {
             return response()->json([
