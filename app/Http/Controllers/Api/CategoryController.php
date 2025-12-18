@@ -41,12 +41,12 @@ class CategoryController extends Controller
         Log::debug('Fetching category with slug: ' . $slug);
         $category = Category::with([
             'products' => function ($query) {
-                $query->select('products.id', 'products.name', 'products.slug', 'products.subtitle', 'products.image', 'products.category_id')
+                $query->select('products.*')
                     ->active()
                     ->ordered();
             },
             'applications' => function ($query) {
-                $query->select('applications.id', 'applications.name', 'applications.slug', 'applications.icon')
+                $query->select('applications.*')
                     ->active()
                     ->ordered();
             }
@@ -55,7 +55,7 @@ class CategoryController extends Controller
             ->orWhere('slug_en', $slug)
             ->orWhere('slug_fr', $slug)
             ->active()
-            ->first(['id', 'name', 'slug', 'image', 'image_alt', 'image_title', 'short_description_en', 'short_description_es', 'short_description_fr', 'description_en', 'description_es', 'description_fr', 'order']);
+            ->first();
 
         if (!$category) {
             return response()->json([
@@ -117,7 +117,7 @@ class CategoryController extends Controller
             ->orWhere('slug_en', $slug)
             ->orWhere('slug_fr', $slug)
             ->active()
-            ->first(['id', 'name', 'slug']);
+            ->first();
 
         if (!$category) {
             return response()->json([
