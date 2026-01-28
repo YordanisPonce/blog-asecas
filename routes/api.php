@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ApplicationController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\FinishController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\InspirationController;
 use App\Http\Controllers\Api\InspirationPageController;
 use App\Http\Controllers\Api\ProductController;
@@ -157,6 +158,9 @@ Route::get('/categories', fn() => response()->json(Category::all()));
 
 // Public routes
 Route::prefix('v1')->group(function () {
+
+    Route::get('/home', [HomeController::class, 'show']);
+
 
     // Categories endpoints
     Route::get('/categories', [CategoryController::class, 'index']);

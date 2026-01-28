@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             FinishSeeder::class,
             InspirationSeeder::class,
             SpacesSeeder::class,
+            HomeSeeder::class,
         ]);
     }
 }
