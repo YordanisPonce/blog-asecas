@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\FinishController;
 use App\Http\Controllers\Api\InspirationController;
 use App\Http\Controllers\Api\InspirationPageController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\SpaceController;
 use App\Http\Middleware\IsUserMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -183,4 +184,8 @@ Route::prefix('v1')->group(function () {
 
     Route::get('/inspiration-page', [InspirationPageController::class, 'show']);
     Route::get('/inspirations', [InspirationController::class, 'index']);
+
+    Route::get('/spaces', [SpaceController::class, 'index']);
+    Route::get('/spaces/{slug}', [SpaceController::class, 'show']);
+    Route::get('/spaces/{slug}/applications', [SpaceController::class, 'applications']);
 });

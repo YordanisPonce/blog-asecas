@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             ApplicationSeeder::class,
             FinishSeeder::class,
             InspirationSeeder::class,
+            SpacesSeeder::class,
         ]);
     }
 }

@@ -38,7 +38,7 @@ class Application extends Model
         'is_active' => 'boolean',
     ];
 
-    protected $appends = ['icon_url'];
+    protected $appends = ['image_url'];
     // Relación many-to-many con Category
     public function categories(): BelongsToMany
     {
@@ -47,6 +47,15 @@ class Application extends Model
             ->withTimestamps()
             ->orderByPivot('order');
     }
+
+    public function spaces(): BelongsToMany
+    {
+        return $this->belongsToMany(Space::class, 'application_space')
+            ->withPivot('order')
+            ->withTimestamps()
+            ->orderByPivot('order');
+    }
+
 
     // Métodos para traducciones
     public function getTranslatedShortDescriptionAttribute()
@@ -73,6 +82,22 @@ class Application extends Model
         return $this->image_title[$locale] ?? $this->image_title['en'] ?? '';
     }
 
+    public function getImageUrlAttribute()
+    {
+        if (!$this->image) return null;
+
+        if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
+            return $this->image;
+        }
+
+        if (Storage::disk('public')->exists($this->image)) {
+            return Storage::disk('public')->url($this->image);
+        }
+
+        return $this->image; // fallback
+    }
+
+
     // Scopes
     public function scopeActive($query)
     {
@@ -81,8 +106,9 @@ class Application extends Model
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('applications.order')->orderBy('name');
+        return $query->orderBy('order')->orderBy('name');
     }
+
 
     public function getIconUrlAttribute()
     {

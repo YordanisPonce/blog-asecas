@@ -26,6 +26,7 @@ class Acabados extends Page implements HasForms
     protected static ?string $title = 'Contenido – Acabados';
     protected static ?string $navigationGroup = 'Sitio';
     protected static ?int $navigationSort = 25;
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.pages.acabados';
 

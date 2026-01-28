@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('icon')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image')->nullable(); 
             $table->json('image_alt')->nullable();
             $table->json('image_title')->nullable();
             $table->text('short_description_en')->nullable();

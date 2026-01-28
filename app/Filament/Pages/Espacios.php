@@ -24,6 +24,7 @@ class Espacios extends Page implements HasForms
     protected static ?string $title = 'Contenido – Espacios';
     protected static ?string $navigationGroup = 'Sitio';
     protected static ?int $navigationSort = 30;
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.pages.espacios';
 
