@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ApplicationController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\FinishController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Middleware\IsUserMiddleware;
 use Illuminate\Http\Request;
@@ -170,6 +171,9 @@ Route::prefix('v1')->group(function () {
     Route::get('/applications', [ApplicationController::class, 'index']);
     Route::get('/applications/{slug}', [ApplicationController::class, 'show']);
     Route::get('/applications/{slug}/categories', [ApplicationController::class, 'categories']);
+
+    Route::get('/finishes', [FinishController::class, 'index']);
+    Route::get('/finishes/{slug}', [FinishController::class, 'show']);
 
     // Search endpoints
     Route::get('/search', [ProductController::class, 'search']);

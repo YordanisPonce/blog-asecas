@@ -49,7 +49,12 @@ class CategoryController extends Controller
                 $query->select('applications.*')
                     ->active()
                     ->ordered();
-            }
+            },
+            'finishes' => function ($query) {
+                $query->select('finishes.*')
+                    ->active()
+                    ->ordered();
+            },
         ])
             ->where('slug', $slug)
             ->orWhere('slug_en', $slug)

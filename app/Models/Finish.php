@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use PhpParser\Builder\Function_;
-use App\Models\Finish;
+use Illuminate\Support\Facades\Storage;
 
-class Category extends Model
+class Finish extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -20,15 +19,12 @@ class Category extends Model
         'slug',
         'slug_en',
         'slug_fr',
-        'image',
-        'image_alt',
-        'image_title',
-        'short_description_en',
-        'short_description_es',
-        'short_description_fr',
         'description_en',
         'description_es',
         'description_fr',
+        'image',
+        'image_alt',
+        'image_title',
         'order',
         'is_active',
     ];
@@ -39,22 +35,16 @@ class Category extends Model
         'is_active' => 'boolean',
     ];
 
-    // Relación many-to-many con Application
-    public function applications(): BelongsToMany
+    protected $appends = ['image_url'];
+
+    public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Application::class, 'application_category')
-            ->withPivot('order')
-            ->withTimestamps()
-            ->orderByPivot('order');
+        return $this->belongsToMany(Category::class, 'category_finish')
+            ->withTimestamps();
     }
 
-    // Métodos para traducciones
-    public function getTranslatedShortDescriptionAttribute()
-    {
-        $locale = app()->getLocale();
-        return $this->{"short_description_{$locale}"} ?? $this->short_description_en;
-    }
 
+    // Traducciones
     public function getTranslatedDescriptionAttribute()
     {
         $locale = app()->getLocale();
@@ -73,7 +63,7 @@ class Category extends Model
         return $this->image_title[$locale] ?? $this->image_title['en'] ?? '';
     }
 
-    // ✅ AGREGAR ESTOS SCOPES QUE FALTABAN
+    // Scopes
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
@@ -81,17 +71,15 @@ class Category extends Model
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('categories.order')->orderBy('name');
+        return $query->orderBy('finishes.order')->orderBy('name');
     }
 
-    public function products()
+    // URL final de imagen (igual que Product)
+    public function getImageUrlAttribute()
     {
-        return $this->hasMany(Product::class)->ordered();
-    }
-
-    public function finishes(): BelongsToMany
-    {
-        return $this->belongsToMany(Finish::class, 'category_finish')
-            ->withTimestamps();
+        if (!is_null($this->image) && Storage::disk('public')->exists($this->image)) {
+            return Storage::disk('public')->url($this->image);
+        }
+        return $this->image;
     }
 }
