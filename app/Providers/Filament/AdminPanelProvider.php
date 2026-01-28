@@ -42,8 +42,8 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Pages\AvisoLegal::class,
                 \App\Filament\Pages\Privacidad::class,
                 \App\Filament\Pages\Cookies::class,
-                \App\Filament\Pages\Acabados::class,
-                \App\Filament\Pages\Espacios::class,
+                // \App\Filament\Pages\Acabados::class,
+                // \App\Filament\Pages\Espacios::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([

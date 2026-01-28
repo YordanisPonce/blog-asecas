@@ -10,7 +10,12 @@ class FinishController extends Controller
 {
     public function index(): JsonResponse
     {
-        $finishes = Finish::active()->ordered()->get();
+        $finishes = Finish::with([
+            'categories' => fn($q) => $q->active()->ordered()
+        ])
+            ->active()
+            ->ordered()
+            ->get();
 
         return response()->json([
             'success' => true,
@@ -18,6 +23,7 @@ class FinishController extends Controller
             'message' => 'Finishes retrieved successfully.'
         ]);
     }
+
 
     public function show(string $slug): JsonResponse
     {
