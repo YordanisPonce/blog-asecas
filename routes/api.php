@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\ApplicationController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\FinishController;
+use App\Http\Controllers\Api\InspirationController;
+use App\Http\Controllers\Api\InspirationPageController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Middleware\IsUserMiddleware;
 use Illuminate\Http\Request;
@@ -178,4 +180,7 @@ Route::prefix('v1')->group(function () {
     // Search endpoints
     Route::get('/search', [ProductController::class, 'search']);
     Route::get('/search/categories', [CategoryController::class, 'search']);
+
+    Route::get('/inspiration-page', [InspirationPageController::class, 'show']);
+    Route::get('/inspirations', [InspirationController::class, 'index']);
 });

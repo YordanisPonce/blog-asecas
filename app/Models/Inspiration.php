@@ -4,6 +4,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Inspiration extends Model
 {
@@ -24,11 +25,27 @@ class Inspiration extends Model
         'is_active' => 'boolean',
     ];
 
-    // Orden por defecto
+    protected $appends = ['image_url'];
+
     protected static function booted(): void
     {
         static::addGlobalScope('ordered', function ($q) {
             $q->orderBy('position')->orderBy('id');
         });
+    }
+
+    // ✅ Scope para API
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
+    // ✅ URL final (como Finish)
+    public function getImageUrlAttribute(): ?string
+    {
+        if ($this->image_path && Storage::disk('public')->exists($this->image_path)) {
+            return Storage::disk('public')->url($this->image_path);
+        }
+        return $this->image_path; // fallback por si ya viene una url
     }
 }

@@ -17,7 +17,7 @@ class InspirationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-sparkles';
     protected static ?string $navigationLabel = 'Inspiración';
-    protected static ?string $navigationGroup = 'Sitio';
+    protected static ?string $navigationGroup = 'Catálogo';
     protected static ?int $navigationSort = 35;
 
     public static function getModelLabel(): string
@@ -49,15 +49,15 @@ class InspirationResource extends Resource
             Forms\Components\Section::make('Metadatos por idioma')->schema([
                 Forms\Components\Tabs::make('i18n')->tabs([
                     Forms\Components\Tabs\Tab::make('ES')->schema([
-                        Forms\Components\TextInput::make('title_es')->label('Title (ES)')->maxLength(255),
+                        Forms\Components\TextInput::make('title_es')->label('Texto/Título de la imagen (ES)')->maxLength(255),
                         Forms\Components\TextInput::make('alt_es')->label('Alt (ES)')->maxLength(255),
                     ]),
                     Forms\Components\Tabs\Tab::make('EN')->schema([
-                        Forms\Components\TextInput::make('title_en')->label('Title (EN)')->maxLength(255),
+                        Forms\Components\TextInput::make('title_en')->label('Texto/Título de la imagen (EN)')->maxLength(255),
                         Forms\Components\TextInput::make('alt_en')->label('Alt (EN)')->maxLength(255),
                     ]),
                     Forms\Components\Tabs\Tab::make('FR')->schema([
-                        Forms\Components\TextInput::make('title_fr')->label('Title (FR)')->maxLength(255),
+                        Forms\Components\TextInput::make('title_fr')->label('Texto/Título de la imagen (FR)')->maxLength(255),
                         Forms\Components\TextInput::make('alt_fr')->label('Alt (FR)')->maxLength(255),
                     ]),
                 ]),
@@ -84,7 +84,7 @@ class InspirationResource extends Resource
                     ->width(80),
 
                 Tables\Columns\TextColumn::make('title_es')
-                    ->label('Título (ES)')
+                    ->label('Título Imagen (ES)')
                     ->limit(40)
                     ->searchable(),
 
