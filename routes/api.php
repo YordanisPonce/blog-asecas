@@ -194,4 +194,6 @@ Route::prefix('v1')->group(function () {
     Route::get('/spaces/{slug}/applications', [SpaceController::class, 'applications']);
 
     Route::get('/constructores-arquitectos', [\App\Http\Controllers\Api\BuildersArchitectsPageController::class, 'show']);
+    
+    Route::get('/aplicadores', [\App\Http\Controllers\Api\ApplicatorsPageController::class, 'show']);
 });

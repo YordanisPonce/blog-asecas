@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             SpacesSeeder::class,
             HomeSeeder::class,
             BuildersArchitectsPageSeeder::class,
+            ApplicatorsPageSeeder::class,
         ]);
     }
 }
