@@ -12,17 +12,17 @@ class EmpresaSeeder extends Seeder
         Empresa::updateOrCreate(
             ['id' => 1],
             [
-                'hero_title_es' => 'Empresa',
-                'hero_title_en' => 'Company',
-                'hero_title_fr' => 'Entreprise',
+                'hero_title_es' => '<h1 class="text-white text-2xl md:text-5xl font-[600] max-w-6xl mx-auto leading-tight">Más de 25 años en el sector de revestimientos de fachadas y cerámicos a nivel internacional.</h1>',
+                'hero_title_en' => '<h1 class="text-white text-2xl md:text-5xl font-[600] max-w-6xl mx-auto leading-tight">More than 25 years in the facade cladding and ceramic sector internationally.</h1>',
+                'hero_title_fr' => '<h1 class="text-white text-2xl md:text-5xl font-[600] max-w-6xl mx-auto leading-tight">Plus de 25 ans dans le secteur des revêtements de façades et de céramiques à linternational.</h1>',
                 'hero_video_url' => 'https://uploads.innet.es/videos-estucalia/exterior.mp4',
                 'hero_image' => 'empresa/hero.jpg',
                 'hero_image_title' => 'Hero',
                 'hero_image_alt' => 'Hero',
 
-                'about_title_es' => 'Somos Grupo Estucalia',
-                'about_title_en' => 'We are Grupo Estucalia',
-                'about_title_fr' => 'Nous sommes Grupo Estucalia',
+                'about_title_es' => '<h2 class="text-3xl font-[600] mb-2">Somos Grupo Estucalia</h2>',
+                'about_title_en' => '<h2 class="text-3xl font-[600] mb-2">We are Grupo Estucalia</h2>',
+                'about_title_fr' => '<h2 class="text-3xl font-[600] mb-2">Nous sommes le Groupe Estucalia</h2>',
                 'about_text_es' => 'Grupo Estucalia está compuesto por varias empresas especializadas en fabricación, comercialización y exportación de morteros monocapa para el revestimiento de fachadas, y cementos cola y rejuntado para el revestimiento cerámico de suelos y paredes.',
                 'about_text_en' => 'Grupo Estucalia is made up of several companies specialized in the manufacturing, marketing and export of monocapa mortars for façade coatings, and tile adhesives and grouts for ceramic flooring and wall coverings.',
                 'about_text_fr' => 'Grupo Estucalia est composé de plusieurs entreprises spécialisées dans la fabrication, la commercialisation et l’exportation de mortiers monocouche pour le revêtement de façades, ainsi que de colles et joints pour le revêtement céramique des sols et des murs.',
