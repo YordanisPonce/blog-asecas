@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\BlogCategoryController;
+use App\Http\Controllers\Api\EmpresaPageController;
 use App\Models\Category;
 use App\Models\Home;
 
@@ -207,5 +208,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/trabaja-con-nosotros', [\App\Http\Controllers\Api\WorkWithUsPageController::class, 'show']);
 
     Route::post('/trabaja-con-nosotros', [\App\Http\Controllers\Api\WorkWithUsMessageController::class, 'store']);
+    
+    Route::get('/empresa', [EmpresaPageController::class, 'show']);
 });
 

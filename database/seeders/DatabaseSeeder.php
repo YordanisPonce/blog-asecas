@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             CertificationsDocumentationPageSeeder::class,
             ContactPageSeeder::class,
             WorkWithUsPageSeeder::class,
+            EmpresaSeeder::class,
         ]);
     }
 }

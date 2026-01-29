@@ -17,6 +17,12 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Tabs;
 use Filament\Notifications\Notification;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Get;
+use App\Models\Category;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Tabs\Tab;
+
 
 class Empresa extends Page implements HasForms
 {
@@ -36,7 +42,7 @@ class Empresa extends Page implements HasForms
 
     public function mount(): void
     {
-        $this->record = EmpresaModel::first() ?? EmpresaModel::create([]);
+        $this->record = EmpresaModel::firstOrCreate(['id' => 1]);
         $this->form->fill($this->record->toArray());
     }
 
@@ -65,12 +71,22 @@ class Empresa extends Page implements HasForms
                                 TextInput::make('hero_title_fr')->label('Titre (FR)'),
                             ]),
                         ]),
-                        Grid::make(3)->schema([
+                        Grid::make()->columns(4)->schema([
                             TextInput::make('hero_video_url')->label('Video URL')->url()->nullable(),
-                            TextInput::make('hero_image')->label('Imagen (URL)')->url()->nullable(),
+                            FileUpload::make('hero_image')
+                                ->label('Imagen (Hero)')
+                                ->image()
+                                ->disk('public')
+                                ->directory('empresa/hero')
+                                ->visibility('public')
+                                ->preserveFilenames()
+                                ->openable()
+                                ->downloadable()
+                                ->nullable(),
+
                             TextInput::make('hero_image_title')->label('Imagen title')->nullable(),
                             TextInput::make('hero_image_alt')->label('Imagen alt')->nullable(),
-                        ])->columns(4),
+                        ])
                     ])->columns(1),
 
                 /* ===================== ABOUT ===================== */
@@ -91,7 +107,17 @@ class Empresa extends Page implements HasForms
                             ]),
                         ]),
                         Grid::make(3)->schema([
-                            TextInput::make('about_illustration')->label('Ilustración (URL)')->url()->nullable(),
+                            FileUpload::make('about_illustration')
+                                ->label('Ilustración (About)')
+                                ->image()
+                                ->disk('public')
+                                ->directory('empresa/about')
+                                ->visibility('public')
+                                ->preserveFilenames()
+                                ->openable()
+                                ->downloadable()
+                                ->nullable(),
+
                             TextInput::make('about_illustration_title')->label('Ilustración title')->nullable(),
                             TextInput::make('about_illustration_alt')->label('Ilustración alt')->nullable(),
                         ]),
@@ -133,15 +159,19 @@ class Empresa extends Page implements HasForms
                                 Textarea::make('production_text_fr')->label('Texte (FR)')->rows(3),
                             ]),
                         ]),
-                        Grid::make(6)->schema([
-                            TextInput::make('production_stat')->label('Dato principal (ej. 100,000 tons/year)')->columnSpan(2),
-                            TextInput::make('production_media_url')->label('Media (video URL)')->url()->columnSpan(2),
-                            TextInput::make('production_image')->label('Imagen alternativa (URL)')->url()->columnSpan(2),
-                            TextInput::make('production_image_title')->label('Imagen title')->columnSpan(3),
-                            TextInput::make('production_image_alt')->label('Imagen alt')->columnSpan(3),
-                        ]),
+                    
                     ])->columns(1),
 
+                Section::make('Video intermedio (antes de Soluciones)')
+                    ->schema([
+                        TextInput::make('solutions_video_url')
+                            ->label('Video URL')
+                            ->url()
+                            ->nullable(),
+                    ])->columns(1),
+
+
+                /* ===================== SOLUCIONES ===================== */
                 /* ===================== SOLUCIONES ===================== */
                 Section::make('Soluciones de construcción')
                     ->schema([
@@ -149,41 +179,57 @@ class Empresa extends Page implements HasForms
                             Tabs\Tab::make('ES')->schema([
                                 TextInput::make('solutions_title_es')->label('Título (ES)'),
                                 Textarea::make('solutions_intro_es')->label('Intro (ES)')->rows(2),
-                                Repeater::make('solutions_items_es')->label('Items (ES)')
-                                    ->schema([
-                                        TextInput::make('icon')->label('Icono URL')->url()->nullable(),
-                                        TextInput::make('icon_title')->label('Icon title')->nullable(),
-                                        TextInput::make('icon_alt')->label('Icon alt')->nullable(),
-                                        TextInput::make('title')->label('Título')->required(),
-                                        TextInput::make('subtitle')->label('Subtítulo')->nullable(),
-                                    ])->collapsed()->addActionLabel('Agregar item'),
+
                             ]),
+
                             Tabs\Tab::make('EN')->schema([
                                 TextInput::make('solutions_title_en')->label('Title (EN)'),
                                 Textarea::make('solutions_intro_en')->label('Intro (EN)')->rows(2),
-                                Repeater::make('solutions_items_en')->label('Items (EN)')
-                                    ->schema([
-                                        TextInput::make('icon')->label('Icon URL')->url()->nullable(),
-                                        TextInput::make('icon_title')->label('Icon title')->nullable(),
-                                        TextInput::make('icon_alt')->label('Icon alt')->nullable(),
-                                        TextInput::make('title')->label('Title')->required(),
-                                        TextInput::make('subtitle')->label('Subtitle')->nullable(),
-                                    ])->collapsed()->addActionLabel('Add item'),
+
+                                
                             ]),
+
                             Tabs\Tab::make('FR')->schema([
                                 TextInput::make('solutions_title_fr')->label('Titre (FR)'),
                                 Textarea::make('solutions_intro_fr')->label('Intro (FR)')->rows(2),
-                                Repeater::make('solutions_items_fr')->label('Items (FR)')
+
+                        
+                            ]),
+
+                            // ✅ Tab extra para Categorías destacadas
+                            Tabs\Tab::make('Categorías')->schema([
+                                Repeater::make('featured_categories_items')
+                                    ->label('Categorías a mostrar (ordenable)')
                                     ->schema([
-                                        TextInput::make('icon')->label('Icône URL')->url()->nullable(),
-                                        TextInput::make('icon_title')->label('Icône title')->nullable(),
-                                        TextInput::make('icon_alt')->label('Icône alt')->nullable(),
-                                        TextInput::make('title')->label('Titre')->required(),
-                                        TextInput::make('subtitle')->label('Sous-titre')->nullable(),
-                                    ])->collapsed()->addActionLabel('Ajouter item'),
+                                        Select::make('category_id')
+                                            ->label('Categoría')
+                                            ->searchable()
+                                            ->required()
+                                            ->disableOptionsWhenSelectedInSiblingRepeaterItems()
+                                            ->options(function (Get $get) {
+                                                $selectedIds = collect($get('../../featured_categories_items') ?? [])
+                                                    ->pluck('category_id')
+                                                    ->filter()
+                                                    ->map(fn($v) => (int) $v)
+                                                    ->values()
+                                                    ->all();
+
+                                                return Category::query()
+                                                    ->when(count($selectedIds), fn($q) => $q->whereNotIn('id', $selectedIds))
+                                                    ->orderBy('name')
+                                                    ->pluck('name', 'id')
+                                                    ->toArray();
+                                            })
+                                            ->preload(),
+                                    ])
+                                    ->reorderable()
+                                    ->defaultItems(0)
+                                    ->collapsed(),
                             ]),
                         ]),
-                    ])->columns(1),
+                    ])
+                    ->columns(1),
+
 
                 /* ===================== INTERNACIONAL ===================== */
                 Section::make('Internacional')
@@ -203,7 +249,17 @@ class Empresa extends Page implements HasForms
                             ]),
                         ]),
                         Grid::make(3)->schema([
-                            TextInput::make('international_image')->label('Imagen (URL)')->url()->nullable(),
+                            FileUpload::make('international_image')
+                                ->label('Imagen (Internacional)')
+                                ->image()
+                                ->disk('public')
+                                ->directory('empresa/international')
+                                ->visibility('public')
+                                ->preserveFilenames()
+                                ->openable()
+                                ->downloadable()
+                                ->nullable(),
+
                             TextInput::make('international_image_title')->label('Imagen title')->nullable(),
                             TextInput::make('international_image_alt')->label('Imagen alt')->nullable(),
                         ]),
@@ -216,23 +272,45 @@ class Empresa extends Page implements HasForms
                             Tabs\Tab::make('ES')->schema([
                                 TextInput::make('certs_title_es')->label('Título (ES)'),
                                 Textarea::make('certs_text_es')->label('Texto (ES)')->rows(2),
+                                TextInput::make('certs_cta_text_es')->label('CTA texto (ES)')->nullable(),
                             ]),
                             Tabs\Tab::make('EN')->schema([
                                 TextInput::make('certs_title_en')->label('Title (EN)'),
                                 Textarea::make('certs_text_en')->label('Text (EN)')->rows(2),
+                                TextInput::make('certs_cta_text_en')->label('CTA text (EN)')->nullable(),
                             ]),
                             Tabs\Tab::make('FR')->schema([
                                 TextInput::make('certs_title_fr')->label('Titre (FR)'),
                                 Textarea::make('certs_text_fr')->label('Texte (FR)')->rows(2),
+                                TextInput::make('certs_cta_text_fr')->label('CTA texte (FR)')->nullable(),
                             ]),
                         ]),
+
+                        TextInput::make('certs_cta_url')
+                            ->label('CTA URL')
+                            ->nullable()
+                            ->helperText('Acepta URL completa (https://...) o ruta (/contacto).')
+                            ->rule('regex:/^(https?:\/\/|\/).+/'),
+
                         Repeater::make('certs_logos')->label('Logos')
                             ->schema([
-                                TextInput::make('logo_url')->label('Logo URL')->url()->required(),
+                                FileUpload::make('logo_url')
+                                    ->label('Logo')
+                                    ->image()
+                                    ->disk('public')
+                                    ->directory('empresa/certs')
+                                    ->visibility('public')
+                                    ->preserveFilenames()
+                                    ->openable()
+                                    ->downloadable()
+                                    ->required(),
+
                                 TextInput::make('title')->label('Logo title')->nullable(),
                                 TextInput::make('alt')->label('Logo alt')->nullable(),
                             ])->collapsed()->addActionLabel('Agregar logo'),
-                    ])->columns(1),
+                    ])
+                    ->columns(1),
+
 
                 /* ===================== CONSULTORÍA ===================== */
                 Section::make('Consultoría personalizada')
@@ -255,12 +333,47 @@ class Empresa extends Page implements HasForms
                             ]),
                         ]),
                         Grid::make(4)->schema([
-                            TextInput::make('consulting_cta_url')->label('CTA URL')->url()->columnSpan(2),
-                            TextInput::make('consulting_bg_image')->label('BG imagen (URL)')->url()->columnSpan(2),
+                            TextInput::make('consulting_cta_url')
+                                ->label('CTA URL')
+                                ->nullable()
+                                ->helperText('Acepta URL completa (https://...) o ruta (/contacto).')
+                                ->rule('regex:/^(https?:\/\/|\/).+/')
+                                ->columnSpan(2),
+
+                            FileUpload::make('consulting_bg_image')
+                                ->label('BG imagen (Consultoría)')
+                                ->image()
+                                ->disk('public')
+                                ->directory('empresa/consulting')
+                                ->visibility('public')
+                                ->preserveFilenames()
+                                ->openable()
+                                ->downloadable()
+                                ->columnSpan(2)
+                                ->nullable(),
+
                             TextInput::make('consulting_bg_image_title')->label('BG image title')->columnSpan(2),
                             TextInput::make('consulting_bg_image_alt')->label('BG image alt')->columnSpan(2),
                         ]),
                     ])->columns(1),
+
+                Section::make('Fondo final (Bottom)')
+                    ->schema([
+                        FileUpload::make('bottom_bg_image')
+                            ->label('BG final (Bottom)')
+                            ->image()
+                            ->disk('public')
+                            ->directory('empresa/bottom')
+                            ->visibility('public')
+                            ->preserveFilenames()
+                            ->openable()
+                            ->downloadable()
+                            ->nullable(),
+
+                        TextInput::make('bottom_bg_image_title')->label('BG title')->nullable(),
+                        TextInput::make('bottom_bg_image_alt')->label('BG alt')->nullable(),
+                    ])->columns(3),
+
             ])
             ->statePath('data');
     }
@@ -281,6 +394,5 @@ class Empresa extends Page implements HasForms
             ->title('Cambios guardados satisfactoriamente')
             ->success()
             ->send();
-
     }
 }
