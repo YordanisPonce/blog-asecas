@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             HomeSeeder::class,
             BuildersArchitectsPageSeeder::class,
             ApplicatorsPageSeeder::class,
+            IntegralProjectsPageSeeder::class,
         ]);
     }
 }
