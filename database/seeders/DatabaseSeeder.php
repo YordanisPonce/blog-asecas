@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ContactPageSeeder::class,
             WorkWithUsPageSeeder::class,
             EmpresaSeeder::class,
+            AdminUserSeeder::class,
         ]);
     }
 }

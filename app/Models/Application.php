@@ -38,7 +38,7 @@ class Application extends Model
         'is_active' => 'boolean',
     ];
 
-    protected $appends = ['image_url'];
+    protected $appends = ['image_url', 'icon_url'];
     // Relación many-to-many con Category
     public function categories(): BelongsToMany
     {
@@ -110,9 +110,20 @@ class Application extends Model
     }
 
 
+
     public function getIconUrlAttribute()
     {
-        return Storage::disk('public')->url($this->icon);
+        if (!$this->icon) return null;
+
+        if (str_starts_with($this->icon, 'http://') || str_starts_with($this->icon, 'https://')) {
+            return $this->icon;
+        }
+
+        if (Storage::disk('public')->exists($this->icon)) {
+            return Storage::disk('public')->url($this->icon);
+        }
+
+        return $this->icon; // fallback
     }
 
 }

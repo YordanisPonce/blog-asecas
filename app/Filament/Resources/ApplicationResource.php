@@ -85,24 +85,25 @@ class ApplicationResource extends Resource
 
                 Forms\Components\Section::make('Medios')
                     ->schema([
-                        // Forms\Components\FileUpload::make('icon')
-                        //     ->label('Icono')
-                        //     ->image()
-                        //     ->directory('applications/icons')
-                        //     ->preserveFilenames()
-                        //     ->maxSize(1024),
+                // Forms\Components\FileUpload::make('icon')
+                //     ->label('Icono')
+                //     ->image()
+                //     ->directory('applications/icons')
+                //     ->preserveFilenames()
+                //     ->maxSize(1024),
 
-                        Forms\Components\FileUpload::make('image')
-                            ->label('Imagen')
-                            ->image()
-                            ->disk('public')
-                            ->directory('products/images')
-                            ->preserveFilenames()
-                            ->maxSize(2048),
+                Forms\Components\FileUpload::make('image')
+                    ->label('Imagen')
+                    ->image()
+                    ->disk('public')
+                    ->directory('applications/images')
+                    ->preserveFilenames()
+                    ->maxSize(2048),
 
 
 
-                        Forms\Components\Grid::make(3)
+
+                Forms\Components\Grid::make(3)
                             ->schema([
                                 Forms\Components\Fieldset::make('Texto Alternativo (SEO)')
                                     ->schema([
