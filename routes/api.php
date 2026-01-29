@@ -198,5 +198,8 @@ Route::prefix('v1')->group(function () {
     Route::get('/aplicadores', [\App\Http\Controllers\Api\ApplicatorsPageController::class, 'show']);
     
     Route::get('/servicio-integral-proyectos', [\App\Http\Controllers\Api\IntegralProjectsPageController::class, 'show']);
+
+    Route::get('/certificaciones-documentacion', [\App\Http\Controllers\Api\CertificationsDocumentationPageController::class, 'show']);
+    Route::get('/certificaciones-documentacion/download/{key}', [\App\Http\Controllers\Api\CertificationsDocumentationPageController::class, 'download']);
 });
 

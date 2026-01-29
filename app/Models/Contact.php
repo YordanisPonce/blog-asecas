@@ -22,7 +22,7 @@ class Contact extends Model
                 'subject' => "Nuevo mensaje de contacto de {$this->name}",
                 'message' => [
                     "<p><strong>Nombre:</strong> {$this->name}</p>",
-                    "<p><strong>Email:</strong> {$this->attribyute}</p>",
+                    "<p><strong>Email:</strong> {$this->email}</p>",
                     $phone ? "<p><strong>Teléfono:</strong> {$phone}</p>" : "",
                     $speciality ? "<p><strong>Especialidad:</strong> {$speciality}</p>" : "",
                     "<p><strong>Mensaje:</strong></p>",

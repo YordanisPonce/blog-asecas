@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             BuildersArchitectsPageSeeder::class,
             ApplicatorsPageSeeder::class,
             IntegralProjectsPageSeeder::class,
+            CertificationsDocumentationPageSeeder::class,
         ]);
     }
 }
