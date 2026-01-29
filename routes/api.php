@@ -203,5 +203,9 @@ Route::prefix('v1')->group(function () {
     Route::get('/certificaciones-documentacion/download/{key}', [\App\Http\Controllers\Api\CertificationsDocumentationPageController::class, 'download']);
     Route::get('/contacto', [\App\Http\Controllers\Api\ContactPageController::class, 'show']);
     Route::post('/contacto', [\App\Http\Controllers\Api\ContactMessageController::class, 'store']);
+
+    Route::get('/trabaja-con-nosotros', [\App\Http\Controllers\Api\WorkWithUsPageController::class, 'show']);
+
+    Route::post('/trabaja-con-nosotros', [\App\Http\Controllers\Api\WorkWithUsMessageController::class, 'store']);
 });
 

@@ -73,7 +73,22 @@ class ContactResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('phone')->label('Teléfono')->searchable(),
                 Tables\Columns\TextColumn::make('subject')->label('Asunto')->searchable(),
-                Tables\Columns\IconColumn::make('consent_privacy')->label('Privacidad')->boolean(),
+            Tables\Columns\TextColumn::make('cv_original_name')
+                ->label('CV')
+                ->url(fn($record) => $record->cv_url)
+                ->openUrlInNewTab()
+                ->placeholder('-')
+            ,
+
+            Tables\Columns\BadgeColumn::make('type')
+                ->label('Tipo')
+                ->colors([
+                    'primary' => 'contact',
+                    'success' => 'work',
+                ])
+                ->sortable(),
+
+            Tables\Columns\IconColumn::make('consent_privacy')->label('Privacidad')->boolean(),
                 Tables\Columns\IconColumn::make('consent_commercial')->label('Comercial')->boolean(),
 
             ])
