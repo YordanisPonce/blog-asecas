@@ -201,5 +201,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('/certificaciones-documentacion', [\App\Http\Controllers\Api\CertificationsDocumentationPageController::class, 'show']);
     Route::get('/certificaciones-documentacion/download/{key}', [\App\Http\Controllers\Api\CertificationsDocumentationPageController::class, 'download']);
+    Route::get('/contacto', [\App\Http\Controllers\Api\ContactPageController::class, 'show']);
+    Route::post('/contacto', [\App\Http\Controllers\Api\ContactMessageController::class, 'store']);
 });
 

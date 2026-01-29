@@ -17,9 +17,25 @@ class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
 
-    protected static ?string $label = 'contacto';
+    protected static ?string $navigationGroup = 'Atención al cliente';
+    protected static ?string $navigationIcon = 'heroicon-o-inbox';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getModelLabel(): string
+    {
+        return 'Mensaje de contacto';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Mensajes de contacto';
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Mensajes de contacto';
+    }
+    protected static ?int $navigationSort = 80;
+
 
     public static function form(Form $form): Form
     {
@@ -55,6 +71,11 @@ class ContactResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('phone')->label('Teléfono')->searchable(),
+                Tables\Columns\TextColumn::make('subject')->label('Asunto')->searchable(),
+                Tables\Columns\IconColumn::make('consent_privacy')->label('Privacidad')->boolean(),
+                Tables\Columns\IconColumn::make('consent_commercial')->label('Comercial')->boolean(),
+
             ])
             ->filters([
                 //

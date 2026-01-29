@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ApplicatorsPageSeeder::class,
             IntegralProjectsPageSeeder::class,
             CertificationsDocumentationPageSeeder::class,
+            ContactPageSeeder::class,
         ]);
     }
 }

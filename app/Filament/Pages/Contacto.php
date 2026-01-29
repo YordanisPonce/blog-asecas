@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\Pages;
 
 use Filament\Pages\Page;
@@ -31,7 +32,7 @@ class Contacto extends Page implements HasForms
 
     public function mount(): void
     {
-        $this->record = ContactModel::first() ?? ContactModel::create([]);
+        $this->record = ContactModel::firstOrCreate(['id' => 1]);
         $this->form->fill($this->record->toArray());
     }
 
@@ -148,23 +149,47 @@ class Contacto extends Page implements HasForms
                             ]),
                         ]),
                         Grid::make(4)->schema([
-                            TextInput::make('cta_button_url')->label('URL botón')->url()->columnSpan(2),
-                            TextInput::make('cta_bg_image')->label('Imagen BG (URL)')->url()->columnSpan(2),
-                            TextInput::make('cta_bg_image_title')->label('BG image title')->columnSpan(2),
-                            TextInput::make('cta_bg_image_alt')->label('BG image alt')->columnSpan(2),
+                    TextInput::make('cta_button_url')
+                        ->label('URL botón')
+                        ->placeholder('/contacto o https://tusitio.com/contacto')
+                        ->columnSpan(2)
+                        ->rule(function () {
+                            return [
+                                'nullable',
+                                // acepta /ruta o http(s)://...
+                                'regex:/^(\/[^\s]*)$|^(https?:\/\/[^\s]+)$/i',
+                            ];
+                        })
+                        ->validationMessages([
+                            'regex' => 'Debe ser una ruta relativa (ej: /contacto) o una URL completa (https://...).',
                         ]),
+
+                    // \Filament\Forms\Components\FileUpload::make('cta_bg_image')
+                    //     ->label('Imagen BG')
+                    //     ->disk('public')
+                    //     ->directory('contact')
+                    //     ->visibility('public')
+                    //     ->image()
+                    //     ->imageEditor()
+                    //     ->openable()
+                    //     ->downloadable()
+                    //     ->columnSpan(2),
+
+                    // TextInput::make('cta_bg_image_title')->label('BG image title')->columnSpan(2),
+                    // TextInput::make('cta_bg_image_alt')->label('BG image alt')->columnSpan(2),
+                ]),
                     ]),
 
                 /* ===== REDES ===== */
-                Section::make('Redes sociales (footer)')
-                    ->schema([
-                        Grid::make(4)->schema([
-                            TextInput::make('social_linkedin')->label('LinkedIn')->url(),
-                            TextInput::make('social_facebook')->label('Facebook')->url(),
-                            TextInput::make('social_instagram')->label('Instagram')->url(),
-                            TextInput::make('social_youtube')->label('YouTube')->url(),
-                        ]),
-                    ]),
+                // Section::make('Redes sociales (footer)')
+                //     ->schema([
+                //         Grid::make(4)->schema([
+                //             TextInput::make('social_linkedin')->label('LinkedIn')->url(),
+                //             TextInput::make('social_facebook')->label('Facebook')->url(),
+                //             TextInput::make('social_instagram')->label('Instagram')->url(),
+                //             TextInput::make('social_youtube')->label('YouTube')->url(),
+                //         ]),
+                //     ]),
             ])
             ->statePath('data');
     }
