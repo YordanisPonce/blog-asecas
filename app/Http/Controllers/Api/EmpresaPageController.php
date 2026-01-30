@@ -18,32 +18,86 @@ class EmpresaPageController extends Controller
         $page = Empresa::firstOrCreate(['id' => 1]);
 
         // featured categories (preservar orden)
-        $ids = collect($page->featured_categories_items ?? [])
-            ->pluck('category_id')
-            ->filter()
-            ->map(fn($v) => (int) $v)
-            ->values()
-            ->all();
+        // featured categories (preservar orden) => soporta IDs o SLUGs
+        $raw = $page->featured_categories_items ?? [];
+
+        $ids = [];
+        $slugs = [];
+
+        foreach ((array) $raw as $item) {
+            // Caso 1: viene como [{category_id: 1}, ...]
+            if (is_array($item) && isset($item['category_id'])) {
+                $v = $item['category_id'];
+                if (is_numeric($v)) {
+                    $ids[] = (int) $v;
+                } elseif (is_string($v) && $v !== '') {
+                    $slugs[] = $v;
+                }
+                continue;
+            }
+
+            // Caso 2: viene como ["single-layer-mortar", ...] o ["12", ...]
+            if (is_string($item) || is_int($item)) {
+                $v = (string) $item;
+                if ($v === '') continue;
+
+                if (ctype_digit($v)) {
+                    $ids[] = (int) $v;
+                } else {
+                    $slugs[] = $v;
+                }
+            }
+        }
 
         $featuredCategories = [];
-        if (count($ids)) {
-            $rows = Category::whereIn('id', $ids)->get()->keyBy('id');
 
-            // Devuelve SOLO lo básico (ajústalo según tu UI)
-            $featuredCategories = collect($ids)
-                ->map(fn($id) => $rows->get($id))
-                ->filter()
-                ->map(function ($cat) use ($lang) {
-                    return [
-                        'id' => $cat->id,
-                        'name' => $this->t($cat, 'name', $lang) ?? ($cat->name ?? null),
-                        'slug' => $cat->slug ?? null,
-                        'image' => isset($cat->image) ? $this->img($cat->image) : null,
-                    ];
-                })
-                ->values()
-                ->all();
+        // 1) Resolver por ID (preservando orden)
+        if (count($ids)) {
+            $rowsById = Category::whereIn('id', $ids)->get()->keyBy('id');
+
+            $featuredCategories = array_merge(
+                $featuredCategories,
+                collect($ids)
+                    ->map(fn($id) => $rowsById->get($id))
+                    ->filter()
+                    ->map(function ($cat) use ($lang) {
+                        return [
+                            'id' => $cat->id,
+                            'name' => $this->t($cat, 'name', $lang) ?? ($cat->name ?? null),
+                            'slug' => $cat->slug ?? null,
+                            'image' => isset($cat->image) ? $this->img($cat->image) : null,
+                        ];
+                    })
+                    ->values()
+                    ->all()
+            );
         }
+
+        // 2) Resolver por SLUG (preservando orden) + evitar duplicados si vino también por ID
+        if (count($slugs)) {
+            $rowsBySlug = Category::whereIn('slug', $slugs)->get()->keyBy('slug');
+
+            $existingSlugs = collect($featuredCategories)->pluck('slug')->filter()->all();
+
+            $featuredCategories = array_merge(
+                $featuredCategories,
+                collect($slugs)
+                    ->map(fn($slug) => $rowsBySlug->get($slug))
+                    ->filter()
+                    ->reject(fn($cat) => in_array($cat->slug, $existingSlugs, true))
+                    ->map(function ($cat) use ($lang) {
+                        return [
+                            'id' => $cat->id,
+                            'name' => $this->t($cat, 'name', $lang) ?? ($cat->name ?? null),
+                            'slug' => $cat->slug ?? null,
+                            'image' => isset($cat->image) ? $this->img($cat->image) : null,
+                        ];
+                    })
+                    ->values()
+                    ->all()
+            );
+        }
+
 
         // logos normalizados (FileUpload => path => URL)
         $logos = collect($page->certs_logos ?? [])
