@@ -210,5 +210,10 @@ Route::prefix('v1')->group(function () {
     Route::post('/trabaja-con-nosotros', [\App\Http\Controllers\Api\WorkWithUsMessageController::class, 'store']);
     
     Route::get('/empresa', [EmpresaPageController::class, 'show']);
+    Route::get('/footer', [\App\Http\Controllers\Api\FooterPageController::class, 'show']);
+    Route::get('/aviso-legal', [\App\Http\Controllers\Api\LegalNoticePageController::class, 'show']);
+    Route::get('/politica-privacidad', [\App\Http\Controllers\Api\PrivacyPolicyPageController::class, 'show']);
+    Route::get('/politica-cookies', [\App\Http\Controllers\Api\CookiesPolicyPageController::class, 'show']);
+
 });
 

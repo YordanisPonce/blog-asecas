@@ -25,6 +25,10 @@ class DatabaseSeeder extends Seeder
             WorkWithUsPageSeeder::class,
             EmpresaSeeder::class,
             AdminUserSeeder::class,
+            FooterPageSeeder::class,
+            LegalPageSeeder::class,
+            PrivacyPageSeeder::class,
+            CookiesPageSeeder::class,
         ]);
     }
 }
