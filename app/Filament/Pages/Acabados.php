@@ -22,10 +22,10 @@ class Acabados extends Page implements HasForms
     use InteractsWithForms;
 
     protected static ?string $navigationIcon = 'heroicon-o-swatch';
-    protected static ?string $navigationLabel = 'Contenido – Acabados';
+    protected static ?string $navigationLabel = 'Acabados';
     protected static ?string $title = 'Contenido – Acabados';
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 25;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 75;
     protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.pages.acabados';

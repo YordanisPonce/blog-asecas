@@ -13,11 +13,11 @@ use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
 {
-    protected static ?string $model = Category::class;
-
+    protected static ?string $navigationGroup = 'Catálogo';
+    protected static ?int $navigationSort = 20;
+    protected static ?string $navigationLabel = 'Categorías';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Catálogo';
 
     public static function form(Form $form): Form
     {

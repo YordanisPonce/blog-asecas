@@ -22,8 +22,9 @@ class IntegralProjects extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 31;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 40;
+    protected static ?string $navigationLabel = 'Servicio Integral de Proyectos';
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     protected static ?string $title = 'Contenido – Servicio Integral de Proyectos';

@@ -3,17 +3,19 @@
 namespace App\Filament\Resources\ContactResource\Pages;
 
 use App\Filament\Resources\ContactResource;
-use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 
 class ViewContact extends ViewRecord
 {
     protected static string $resource = ContactResource::class;
 
-    protected function getHeaderActions(): array
+    public function mount($record): void
     {
-        return [
-            Actions\EditAction::make(),
-        ];
+        parent::mount($record);
+
+        // ✅ marcar como leído apenas abre el registro
+        if (filled($this->record) && ($this->record->is_read ?? null) === false) {
+            $this->record->forceFill(['is_read' => true])->save();
+        }
     }
 }

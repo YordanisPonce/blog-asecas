@@ -47,29 +47,16 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                \App\Filament\Widgets\ContactMessagesStats::class,
+                \App\Filament\Widgets\ContactMessagesChart::class,
+                \App\Filament\Widgets\LatestContactMessages::class,
             ])
             ->navigationGroups([
-                NavigationGroup::make()
-                    ->label('Escritorio')
-
-                    ->collapsed(false),
-
-                NavigationGroup::make()
-                    ->label('Sitio')
-
-                    ->collapsed(false),
-
-                NavigationGroup::make()
-                    ->label('Legal')
-
-                    ->collapsed(),
-
-                NavigationGroup::make()
-                    ->label('Blog')
-
-                    ->collapsed(),
+                NavigationGroup::make()->label('Catálogo')->collapsed(),
+                NavigationGroup::make()->label('Contenido web')->collapsed(),
+                NavigationGroup::make()->label('Atención al cliente'),
+                NavigationGroup::make()->label('Blog'),
+                NavigationGroup::make()->label('Legal')->collapsed(),
             ])
             ->middleware([
                 EncryptCookies::class,

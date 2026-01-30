@@ -21,8 +21,9 @@ class Home extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 10;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 100;
+    protected static ?string $navigationLabel = 'Ayuda';
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
     protected static ?string $title = 'Sección Ayuda';

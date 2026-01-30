@@ -19,9 +19,10 @@ class TrabajaConNosotros extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 31;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 70;
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $navigationLabel = 'Trabaja con nosotros';
     protected static ?string $title = 'Contenido – Trabaja con nosotros';
     protected static string $view = 'filament.pages.trabaja-con-nosotros';
 

@@ -21,8 +21,9 @@ class Contacto extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 30;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 80;
+    protected static ?string $navigationLabel = 'Contacto';
     protected static ?string $navigationIcon = 'heroicon-o-envelope-open';
     protected static ?string $title = 'Contenido – Contacto';
     protected static string $view = 'filament.pages.contacto';

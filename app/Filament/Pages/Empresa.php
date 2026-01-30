@@ -28,9 +28,12 @@ class Empresa extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 20;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 10;
+    protected static ?string $navigationLabel = 'Empresa'; // corto
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+
+    // deja el title largo si te gusta:
     protected static ?string $title = 'Contenido – Empresa';
     protected static string $view = 'filament.pages.empresa';
 

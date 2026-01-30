@@ -25,8 +25,9 @@ class CertificationsDocumentation extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 40;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 50;
+    protected static ?string $navigationLabel = 'Certificaciones y documentación';
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static ?string $title = 'Contenido – Certificaciones y documentación';

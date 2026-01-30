@@ -25,8 +25,9 @@ class BuildersArchitects extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 30;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 20;
+    protected static ?string $navigationLabel = 'Constructores y Arquitectos';
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     protected static ?string $title = 'Contenido – Constructores y Arquitectos';

@@ -15,11 +15,11 @@ use Illuminate\Support\Str;
 
 class ApplicationResource extends Resource
 {
-    protected static ?string $model = Application::class;
+    protected static ?string $navigationGroup = 'Catálogo';
+    protected static ?int $navigationSort = 30;
+    protected static ?string $navigationLabel = 'Aplicaciones';
+    protected static ?string $navigationIcon = 'heroicon-o-queue-list';
 
-    protected static ?string $navigationIcon = 'heroicon-o-cube';
-
-    protected static ?string $navigationGroup = 'Productos';
 
     public static function form(Form $form): Form
     {

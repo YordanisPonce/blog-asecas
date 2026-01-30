@@ -18,7 +18,21 @@ class ContactResource extends Resource
     protected static ?string $model = Contact::class;
 
     protected static ?string $navigationGroup = 'Atención al cliente';
+    protected static ?int $navigationSort = 10;
+    protected static ?string $navigationLabel = 'Mensajes de contacto';
     protected static ?string $navigationIcon = 'heroicon-o-inbox';
+
+    public static function getNavigationBadge(): ?string
+    {
+        $count = \App\Models\Contact::query()->where('is_read', false)->count();
+        return $count > 0 ? (string) $count : null;
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return 'warning';
+    }
+
 
     public static function getModelLabel(): string
     {
@@ -34,7 +48,7 @@ class ContactResource extends Resource
     {
         return 'Mensajes de contacto';
     }
-    protected static ?int $navigationSort = 80;
+
 
 
     public static function form(Form $form): Form

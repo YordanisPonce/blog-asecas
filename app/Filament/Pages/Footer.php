@@ -22,9 +22,10 @@ class Footer extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 50;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 90;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Footer';
     protected static ?string $title = 'Contenido – Footer';
     protected static string $view = 'filament.pages.footer';
 

@@ -22,8 +22,9 @@ class Applicators extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 31;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 30;
+    protected static ?string $navigationLabel = 'Aplicadores';
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $title = 'Contenido – Aplicadores';

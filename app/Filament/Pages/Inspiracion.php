@@ -19,10 +19,10 @@ class Inspiracion extends Page implements HasForms
     use InteractsWithForms;
 
     protected static ?string $navigationIcon = 'heroicon-o-sparkles';
-    protected static ?string $navigationLabel = 'Contenido – Inspiración';
+    protected static ?string $navigationLabel = 'Página Inspiración';
     protected static ?string $title = 'Contenido – Inspiración';
-    protected static ?string $navigationGroup = 'Sitio';
-    protected static ?int $navigationSort = 31;
+    protected static ?string $navigationGroup = 'Contenido web';
+    protected static ?int $navigationSort = 60;
 
     protected static string $view = 'filament.pages.inspiracion';
 
