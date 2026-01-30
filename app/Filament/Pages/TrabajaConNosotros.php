@@ -60,11 +60,15 @@ class TrabajaConNosotros extends Page implements HasForms
                             ->label('Imagen de fondo (Hero)')
                             ->disk('public')
                             ->directory('work-with-us')
-                            ->visibility('public')
-                            ->image()
-                            ->imageEditor()
+                        
+                            
+                            ->maxSize(2048) // 2MB
+                            ->imagePreviewHeight(250)
+                            ->downloadable()
                             ->openable()
-                            ->downloadable(),
+                            ->deletable(true)
+                            ->helperText('Formatos: JPG, PNG, WebP. Máximo 2MB')
+                            ->rules(['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048']),
                     ]),
 
                 Section::make('Sección (título + descripción)')

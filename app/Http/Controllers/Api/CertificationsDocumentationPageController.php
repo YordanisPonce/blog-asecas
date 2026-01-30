@@ -19,7 +19,6 @@ class CertificationsDocumentationPageController extends Controller
 
         $t = fn(string $key) => $page->{$key . '_' . $lang} ?: $page->{$key . '_es'} ?: null;
 
-        // ✅ Soporta: URLs externas, public/, y storage/public
         $url = function (?string $path) {
             if (!$path) return null;
 
@@ -27,16 +26,17 @@ class CertificationsDocumentationPageController extends Controller
                 return $path;
             }
 
-            // ✅ Si existe físicamente en /public (ej: public/files/...)
-            if (file_exists(public_path($path))) {
+            $path = ltrim($path, '/');
+
+            // si está en public/
+            if (is_file(public_path($path))) {
                 return asset($path);
             }
 
-            // ✅ fallback a storage/app/public
+            // storage/app/public/*
             return Storage::disk('public')->url($path);
         };
 
-        // Documents
         $documents = collect($page->documents ?? [])
             ->map(function ($doc) use ($lang, $url) {
                 $title = $doc['title_' . $lang] ?? $doc['title_es'] ?? null;
@@ -50,14 +50,15 @@ class CertificationsDocumentationPageController extends Controller
                         'url' => $url($filePath),
                         'path' => $filePath,
                     ],
-                    'download_url' => $key
+                    // ✅ camelCase para tu front
+                    'downloadUrl' => $key
                         ? url("/api/v1/certificaciones-documentacion/download/{$key}?lang={$lang}")
                         : null,
                 ];
             })
             ->values();
 
-        // ✅ Categorías seleccionadas (EN ORDEN) por SLUG, no por ID
+        // ✅ featured_categories son SLUGS
         $slugs = $page->featured_categories ?: [];
         $items = collect();
 
@@ -73,7 +74,6 @@ class CertificationsDocumentationPageController extends Controller
                     return [
                         'slug'  => $cat->slug,
                         'label' => $label,
-                        // (opcional, por si el front lo quiere)
                         'image' => $url($cat->image ?? null),
                     ];
                 })
@@ -113,24 +113,35 @@ class CertificationsDocumentationPageController extends Controller
             ], 404);
         }
 
-        $filePath = (string) $doc['file_path'];
+        $filePath = ltrim((string) $doc['file_path'], '/');
 
-        // Si es URL externa, redirige
+        // Si te guardaron algo tipo "storage/files/xxx.pdf", lo normalizamos
+        if (str_starts_with($filePath, 'storage/')) {
+            $filePath = Str::after($filePath, 'storage/');
+        }
+
+        // URL externa
         if (str_starts_with($filePath, 'http://') || str_starts_with($filePath, 'https://')) {
             return redirect()->away($filePath);
         }
 
-        if (!Storage::disk('public')->exists($filePath)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Archivo no encontrado en storage',
-            ], 404);
-        }
-
         $title = $doc['title_' . $lang] ?? $doc['title_es'] ?? 'documento';
         $ext = pathinfo($filePath, PATHINFO_EXTENSION);
-        $downloadName = \Illuminate\Support\Str::slug($title) . ($ext ? ".{$ext}" : '');
+        $downloadName = Str::slug($title) . ($ext ? ".{$ext}" : '');
 
-        return Storage::disk('public')->download($filePath, $downloadName);
+        // 1) public/
+        if (is_file(public_path($filePath))) {
+            return response()->download(public_path($filePath), $downloadName);
+        }
+
+        // 2) storage/app/public/
+        if (Storage::disk('public')->exists($filePath)) {
+            return Storage::disk('public')->download($filePath, $downloadName);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Archivo no encontrado',
+        ], 404);
     }
 }

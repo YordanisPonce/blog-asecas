@@ -19,9 +19,20 @@ class WorkWithUsPageController extends Controller
 
         $url = function (?string $path) {
             if (!$path) return null;
-            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) return $path;
+
+            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+                return $path;
+            }
+
+            // ✅ si existe en /public (ej: public/work-with-us/xxx.png)
+            if (file_exists(public_path($path))) {
+                return asset($path);
+            }
+
+            // ✅ fallback a storage/app/public
             return Storage::disk('public')->url($path);
         };
+
 
         return response()->json([
             'success' => true,
