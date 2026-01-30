@@ -25,7 +25,7 @@ class Home extends Page implements HasForms
     protected static ?int $navigationSort = 10;
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
-    protected static ?string $title = 'Contenido de la Home';
+    protected static ?string $title = 'Sección Ayuda';
     protected static string $view = 'filament.pages.home';
 
     public HomeModel $record;
@@ -48,66 +48,66 @@ class Home extends Page implements HasForms
         return $form
             ->schema([
                 // ---------------- HERO ----------------
-                Section::make('Hero')->schema([
-                    Grid::make(1)->schema([
+                // Section::make('Hero')->schema([
+                //     Grid::make(1)->schema([
 
-                        Tabs::make('hero_lang')
-                            ->tabs([
-                                Tab::make('ES')->schema([
-                                    TextInput::make('first_title_es')->label('Título (ES)')->required(),
-                                    Textarea::make('first_description_es')->label('Descripción (ES)')->rows(3),
+                //         Tabs::make('hero_lang')
+                //             ->tabs([
+                //                 Tab::make('ES')->schema([
+                //                     TextInput::make('first_title_es')->label('Título (ES)')->required(),
+                //                     Textarea::make('first_description_es')->label('Descripción (ES)')->rows(3),
 
-                                    TextInput::make('first_image_title_es')->label('Imagen title (ES)'),
-                                    TextInput::make('first_image_alt_es')->label('Imagen alt (ES)'),
-                                ]),
-                                Tab::make('EN')->schema([
-                                    TextInput::make('first_title_en')->label('Title (EN)'),
-                                    Textarea::make('first_description_en')->label('Description (EN)')->rows(3),
+                //                     TextInput::make('first_image_title_es')->label('Imagen title (ES)'),
+                //                     TextInput::make('first_image_alt_es')->label('Imagen alt (ES)'),
+                //                 ]),
+                //                 Tab::make('EN')->schema([
+                //                     TextInput::make('first_title_en')->label('Title (EN)'),
+                //                     Textarea::make('first_description_en')->label('Description (EN)')->rows(3),
 
-                                    TextInput::make('first_image_title_en')->label('Image title (EN)'),
-                                    TextInput::make('first_image_alt_en')->label('Image alt (EN)'),
-                                ]),
-                                Tab::make('FR')->schema([
-                                    TextInput::make('first_title_fr')->label('Titre (FR)'),
-                                    Textarea::make('first_description_fr')->label('Description (FR)')->rows(3),
+                //                     TextInput::make('first_image_title_en')->label('Image title (EN)'),
+                //                     TextInput::make('first_image_alt_en')->label('Image alt (EN)'),
+                //                 ]),
+                //                 Tab::make('FR')->schema([
+                //                     TextInput::make('first_title_fr')->label('Titre (FR)'),
+                //                     Textarea::make('first_description_fr')->label('Description (FR)')->rows(3),
 
-                                    TextInput::make('first_image_title_fr')->label('Image title (FR)'),
-                                    TextInput::make('first_image_alt_fr')->label('Image alt (FR)'),
-                                ]),
-                            ])
-                            ->columnSpan(1),
+                //                     TextInput::make('first_image_title_fr')->label('Image title (FR)'),
+                //                     TextInput::make('first_image_alt_fr')->label('Image alt (FR)'),
+                //                 ]),
+                //             ])
+                //             ->columnSpan(1),
 
-                        FileUpload::make('first_image_url')
-                            ->label('Imagen Hero')
-                            ->disk('public')
-                            ->directory('home')
-                            ->visibility('public')
-                            ->image()
-                            ->imageEditor()
-                            ->openable()
-                            ->downloadable()
-                            ->columnSpan(1),
+                //         FileUpload::make('first_image_url')
+                //             ->label('Imagen Hero')
+                //             ->disk('public')
+                //             ->directory('home')
+                //             ->visibility('public')
+                //             ->image()
+                //             ->imageEditor()
+                //             ->openable()
+                //             ->downloadable()
+                //             ->columnSpan(1),
 
-                    ]),
-                ]),
+                //     ]),
+                // ]),
 
                 // ---------------- BLOQUE 2 ----------------
-                Section::make('Bloque 2')->schema([
-                    Tabs::make('second_lang')->tabs([
-                        Tab::make('ES')->schema([
-                            TextInput::make('second_title_es')->label('Línea pequeña (ES)'),
-                            Textarea::make('second_description_es')->rows(2)->label('Línea grande (ES)'),
-                        ]),
-                        Tab::make('EN')->schema([
-                            TextInput::make('second_title_en')->label('Small line (EN)'),
-                            Textarea::make('second_description_en')->rows(2)->label('Big line (EN)'),
-                        ]),
-                        Tab::make('FR')->schema([
-                            TextInput::make('second_title_fr')->label('Ligne petite (FR)'),
-                            Textarea::make('second_description_fr')->rows(2)->label('Ligne grande (FR)'),
-                        ]),
-                    ]),
-                ]),
+                // Section::make('Bloque 2')->schema([
+                //     Tabs::make('second_lang')->tabs([
+                //         Tab::make('ES')->schema([
+                //             TextInput::make('second_title_es')->label('Línea pequeña (ES)'),
+                //             Textarea::make('second_description_es')->rows(2)->label('Línea grande (ES)'),
+                //         ]),
+                //         Tab::make('EN')->schema([
+                //             TextInput::make('second_title_en')->label('Small line (EN)'),
+                //             Textarea::make('second_description_en')->rows(2)->label('Big line (EN)'),
+                //         ]),
+                //         Tab::make('FR')->schema([
+                //             TextInput::make('second_title_fr')->label('Ligne petite (FR)'),
+                //             Textarea::make('second_description_fr')->rows(2)->label('Ligne grande (FR)'),
+                //         ]),
+                //     ]),
+                // ]),
 
                 // ---------------- CTA HELP ----------------
                 Section::make('CTA – Help')->schema([
@@ -154,30 +154,33 @@ class Home extends Page implements HasForms
                     ]),
 
                     Grid::make(2)->schema([
-                        TextInput::make('cta_help_url')
-                            ->label('URL del botón')
-                            ->url()
-                            ->columnSpan(1),
-                    ]),
+                    TextInput::make('cta_help_url')
+                        ->label('URL del botón')
+                        ->placeholder('/contacto')
+                        ->helperText('Puede ser una ruta interna (ej: /contacto) o una URL completa (https://...)')
+                        ->rule('regex:/^(\/[^\s]*)$|^(https?:\/\/[^\s]+)$/i')
+                        ->columnSpan(1),
+
+                ]),
                 ]),
 
                 // ---------------- SEO ----------------
-                Section::make('SEO (opcional)')->schema([
-                    Tabs::make('seo_lang')->tabs([
-                        Tab::make('ES')->schema([
-                            TextInput::make('seo_title_es')->maxLength(70)->label('SEO title (ES)'),
-                            Textarea::make('seo_description_es')->maxLength(300)->rows(2)->label('SEO description (ES)'),
-                        ]),
-                        Tab::make('EN')->schema([
-                            TextInput::make('seo_title_en')->maxLength(70)->label('SEO title (EN)'),
-                            Textarea::make('seo_description_en')->maxLength(300)->rows(2)->label('SEO description (EN)'),
-                        ]),
-                        Tab::make('FR')->schema([
-                            TextInput::make('seo_title_fr')->maxLength(70)->label('SEO title (FR)'),
-                            Textarea::make('seo_description_fr')->maxLength(300)->rows(2)->label('SEO description (FR)'),
-                        ]),
-                    ]),
-                ]),
+                // Section::make('SEO (opcional)')->schema([
+                //     Tabs::make('seo_lang')->tabs([
+                //         Tab::make('ES')->schema([
+                //             TextInput::make('seo_title_es')->maxLength(70)->label('SEO title (ES)'),
+                //             Textarea::make('seo_description_es')->maxLength(300)->rows(2)->label('SEO description (ES)'),
+                //         ]),
+                //         Tab::make('EN')->schema([
+                //             TextInput::make('seo_title_en')->maxLength(70)->label('SEO title (EN)'),
+                //             Textarea::make('seo_description_en')->maxLength(300)->rows(2)->label('SEO description (EN)'),
+                //         ]),
+                //         Tab::make('FR')->schema([
+                //             TextInput::make('seo_title_fr')->maxLength(70)->label('SEO title (FR)'),
+                //             Textarea::make('seo_description_fr')->maxLength(300)->rows(2)->label('SEO description (FR)'),
+                //         ]),
+                //     ]),
+                // ]),
             ])
             ->statePath('data');
     }

@@ -21,7 +21,9 @@ class IntegralProjectsPageSeeder extends Seeder
                 'hero_description_en' => null,
                 'hero_description_fr' => null,
 
-                'hero_image_url' => 'professionals/servicio-integral-proyectos-hero.jpg',
+                // ✅ Imagen real que dijiste
+                'hero_image_url' => 'professionals/bg-up.png',
+
                 'hero_image_title_es' => 'Servicio Integral de Proyectos',
                 'hero_image_title_en' => 'Comprehensive Project Service',
                 'hero_image_title_fr' => 'Service intégral de projets',
@@ -70,61 +72,73 @@ class IntegralProjectsPageSeeder extends Seeder
                 'col3_bullets_en' => null,
                 'col3_bullets_fr' => null,
 
-
+                // ---------------- CARDS (JSON) ----------------
+                // ✅ title/text con HTML y clases tailwind
                 'cards' => [
                     [
-                        'title_es' => 'Asesoramiento y soporte especializado',
-                        'text_es'  => 'Nuestro equipo especializado te facilitará las cotizaciones por partidas detalladas.',
-                        'title_en' => 'Specialized advice and support',
-                        'text_en'  => 'Our specialized team will provide detailed, itemized quotes.',
-                        'title_fr' => 'Conseil et support spécialisés',
-                        'text_fr'  => 'Notre équipe spécialisée vous fournira des devis détaillés par postes.',
+                        'title_es' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Asesoramiento y soporte especializado</h3>',
+                        'text_es'  => '<p class="text-xl mb-4">Nuestro equipo especializado te facilitará las cotizaciones por partidas detalladas.</p>',
+
+                        'title_en' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Specialized advice and support</h3>',
+                        'text_en'  => '<p class="text-xl mb-4">Our specialized team will provide detailed, itemized quotes.</p>',
+
+                        'title_fr' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Conseil et support spécialisés</h3>',
+                        'text_fr'  => '<p class="text-xl mb-4">Notre équipe spécialisée vous fournira des devis détaillés par postes.</p>',
                     ],
                     [
-                        'title_es' => 'Ayuda en la definición del proyecto',
-                        'text_es'  => 'Nos comprometemos a proporcionarte apoyo y asesoramiento sobre transporte, manipulación, aplicación y mantenimiento.',
-                        'title_en' => 'Help defining the project',
-                        'text_en'  => 'We provide support and advice on transport, handling, application and maintenance.',
-                        'title_fr' => 'Aide à la définition du projet',
-                        'text_fr'  => 'Nous vous accompagnons sur le transport, la manutention, l’application et la maintenance.',
+                        'title_es' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Ayuda en la definición del proyecto</h3>',
+                        'text_es'  => '<p class="text-xl mb-4">Nos comprometemos a proporcionarte apoyo y asesoramiento sobre transporte, manipulación, aplicación y mantenimiento.</p>',
+
+                        'title_en' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Help defining the project</h3>',
+                        'text_en'  => '<p class="text-xl mb-4">We provide support and advice on transport, handling, application and maintenance.</p>',
+
+                        'title_fr' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Aide à la définition du projet</h3>',
+                        'text_fr'  => '<p class="text-xl mb-4">Nous vous accompagnons sur le transport, la manutention, l’application et la maintenance.</p>',
                     ],
                     [
-                        'title_es' => 'Recursos para los proyectos',
-                        'text_es'  => 'Disfrutarás de un servicio exclusivo para poder desarrollar tus proyectos, plasmar tu visión y mejorarla con los morteros o cementos más avanzados.',
-                        'title_en' => 'Resources for projects',
-                        'text_en'  => 'An exclusive service to develop your projects, bring your vision to life and enhance it with advanced mortars and cements.',
-                        'title_fr' => 'Ressources pour les projets',
-                        'text_fr'  => 'Un service exclusif pour développer vos projets, concrétiser votre vision et l’améliorer avec des mortiers et ciments avancés.',
+                        'title_es' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Recursos para los proyectos</h3>',
+                        'text_es'  => '<p class="text-xl mb-4">Disfrutarás de un servicio exclusivo para poder desarrollar tus proyectos, plasmar tu visión y mejorarla con los morteros o cementos más avanzados.</p>',
+
+                        'title_en' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Resources for projects</h3>',
+                        'text_en'  => '<p class="text-xl mb-4">An exclusive service to develop your projects, bring your vision to life and enhance it with advanced mortars and cements.</p>',
+
+                        'title_fr' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Ressources pour les projets</h3>',
+                        'text_fr'  => '<p class="text-xl mb-4">Un service exclusif pour développer vos projets, concrétiser votre vision et l’améliorer avec des mortiers et ciments avancés.</p>',
                     ],
                     [
-                        'title_es' => 'Asistencia y soporte',
-                        'text_es'  => "Nuestros especialistas están a tu disposición para ayudarte a nivel comercial y en materia de seguridad.\nAsesoramos sobre transporte, manipulación, aplicación y mantenimiento.",
-                        'title_en' => 'Assistance and support',
-                        'text_en'  => "Our specialists are available to support you commercially and on safety matters.\nWe advise on transport, handling, application and maintenance.",
-                        'title_fr' => 'Assistance et support',
-                        'text_fr'  => "Nos spécialistes sont à votre disposition pour vous accompagner sur les aspects commerciaux et de sécurité.\nConseils sur le transport, la manutention, l’application et la maintenance.",
+                        'title_es' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Asistencia y soporte</h3>',
+                        'text_es'  => '<p class="text-xl mb-4">Nuestros especialistas están a tu disposición para ayudarte a nivel comercial y en materia de seguridad. Asesoramos sobre transporte, manipulación, aplicación y mantenimiento.</p>',
+
+                        'title_en' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Assistance and support</h3>',
+                        'text_en'  => '<p class="text-xl mb-4">Our specialists are available to support you commercially and on safety matters. We advise on transport, handling, application and maintenance.</p>',
+
+                        'title_fr' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Assistance et support</h3>',
+                        'text_fr'  => '<p class="text-xl mb-4">Nos spécialistes sont à votre disposition pour vous accompagner sur les aspects commerciaux et de sécurité. Conseils sur le transport, la manutention, l’application et la maintenance.</p>',
                     ],
                     [
-                        'title_es' => 'Servicio de entrega mundial',
-                        'text_es'  => 'Disfruta de un servicio de entrega de alcance mundial para hacer crecer tu proyecto.',
-                        'title_en' => 'Worldwide delivery service',
-                        'text_en'  => 'Enjoy worldwide delivery to help your project grow.',
-                        'title_fr' => 'Service de livraison mondial',
-                        'text_fr'  => 'Profitez d’un service de livraison mondial pour développer votre projet.',
+                        'title_es' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Servicio de entrega mundial</h3>',
+                        'text_es'  => '<p class="text-xl mb-4">Disfruta de un servicio de entrega de alcance mundial para hacer crecer tu proyecto.</p>',
+
+                        'title_en' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Worldwide delivery service</h3>',
+                        'text_en'  => '<p class="text-xl mb-4">Enjoy worldwide delivery to help your project grow.</p>',
+
+                        'title_fr' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Service de livraison mondial</h3>',
+                        'text_fr'  => '<p class="text-xl mb-4">Profitez d’un service de livraison mondial pour développer votre projet.</p>',
                     ],
                     [
-                        'title_es' => 'Sostenibilidad y eficiencia',
-                        'text_es'  => "Te ayudamos a conocer nuestro catálogo de productos,\nsus procesos de fabricación sostenibles y su diversidad de aplicaciones/usos.",
-                        'title_en' => 'Sustainability and efficiency',
-                        'text_en'  => "We help you explore our product catalogue,\nour sustainable manufacturing processes and the variety of applications/uses.",
-                        'title_fr' => 'Durabilité et efficacité',
-                        'text_fr'  => "Nous vous aidons à découvrir notre catalogue de produits,\nnos procédés de fabrication durables et la diversité des applications/usages.",
+                        'title_es' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Sostenibilidad y eficiencia</h3>',
+                        'text_es'  => '<p class="text-xl mb-4">Te ayudamos a conocer nuestro catálogo de productos, sus procesos de fabricación sostenibles y su diversidad de aplicaciones/usos.</p>',
+
+                        'title_en' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Sustainability and efficiency</h3>',
+                        'text_en'  => '<p class="text-xl mb-4">We help you explore our product catalogue, our sustainable manufacturing processes and the variety of applications/uses.</p>',
+
+                        'title_fr' => '<h3 class="text-xl font-semibold mb-2 border-b border-black border-solid">Durabilité et efficacité</h3>',
+                        'text_fr'  => '<p class="text-xl mb-4">Nous vous aidons à découvrir notre catalogue de produits, nos procédés de fabrication durables et la diversité des applications/usages.</p>',
                     ],
                 ],
 
-
                 // ---------------- BANNER ----------------
-                'banner_image_url' => 'professionals/servicio-integral-proyectos-banner.jpg',
+                'banner_image_url' => 'professionals/bg-up.png',
                 'banner_image_title_es' => 'Servicio Integral de Proyectos',
                 'banner_image_title_en' => 'Comprehensive Project Service',
                 'banner_image_title_fr' => 'Service intégral de projets',

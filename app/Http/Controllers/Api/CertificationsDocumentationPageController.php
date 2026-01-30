@@ -7,6 +7,7 @@ use App\Models\CertificationsDocumentationPage;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CertificationsDocumentationPageController extends Controller
 {
@@ -18,9 +19,20 @@ class CertificationsDocumentationPageController extends Controller
 
         $t = fn(string $key) => $page->{$key . '_' . $lang} ?: $page->{$key . '_es'} ?: null;
 
+        // ✅ Soporta: URLs externas, public/, y storage/public
         $url = function (?string $path) {
             if (!$path) return null;
-            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) return $path;
+
+            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+                return $path;
+            }
+
+            // ✅ Si existe físicamente en /public (ej: public/files/...)
+            if (file_exists(public_path($path))) {
+                return asset($path);
+            }
+
+            // ✅ fallback a storage/app/public
             return Storage::disk('public')->url($path);
         };
 
@@ -38,28 +50,31 @@ class CertificationsDocumentationPageController extends Controller
                         'url' => $url($filePath),
                         'path' => $filePath,
                     ],
-                    // para el botón “Descargar” (forzado)
-                    'download_url' => $key ? url("/api/v1/certificaciones-documentacion/download/{$key}?lang={$lang}") : null,
+                    'download_url' => $key
+                        ? url("/api/v1/certificaciones-documentacion/download/{$key}?lang={$lang}")
+                        : null,
                 ];
             })
             ->values();
 
-        // Categorías seleccionadas (en orden)
-        $ids = $page->featured_categories ?: [];
+        // ✅ Categorías seleccionadas (EN ORDEN) por SLUG, no por ID
+        $slugs = $page->featured_categories ?: [];
         $items = collect();
 
-        if (!empty($ids)) {
-            $categoriesById = Category::whereIn('id', $ids)->get()->keyBy('id');
+        if (!empty($slugs)) {
+            $categoriesBySlug = Category::whereIn('slug', $slugs)->get()->keyBy('slug');
 
-            $items = collect($ids)
-                ->map(fn($id) => $categoriesById->get($id))
+            $items = collect($slugs)
+                ->map(fn($slug) => $categoriesBySlug->get($slug))
                 ->filter()
-                ->map(function ($cat) use ($lang) {
+                ->map(function ($cat) use ($lang, $url) {
                     $label = $cat->{'name_' . $lang} ?? $cat->name ?? $cat->name_es ?? null;
 
                     return [
                         'slug'  => $cat->slug,
                         'label' => $label,
+                        // (opcional, por si el front lo quiere)
+                        'image' => $url($cat->image ?? null),
                     ];
                 })
                 ->values();
@@ -69,15 +84,12 @@ class CertificationsDocumentationPageController extends Controller
             'success' => true,
             'data' => [
                 'title' => $t('title'),
-
                 'documents' => $documents,
-
                 'solutions' => [
                     'title' => $t('solutions_title'),
                     'description' => $t('solutions_description'),
                     'items' => $items,
                 ],
-
                 'seo' => [
                     'title' => $t('seo_title'),
                     'description' => $t('seo_description'),

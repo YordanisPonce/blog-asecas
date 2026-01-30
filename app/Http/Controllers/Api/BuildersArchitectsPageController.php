@@ -25,25 +25,58 @@ class BuildersArchitectsPageController extends Controller
 
         // Productos seleccionados (en orden)
         // Productos seleccionados (en orden)
-        $ids = $page->featured_categories ?: [];
+        // Productos seleccionados (en orden)
+        $featured = $page->featured_categories ?? [];
         $items = collect();
 
-        if (!empty($ids)) {
-            $categoriesById = \App\Models\Category::whereIn('id', $ids)->get()->keyBy('id');
-
-            $items = collect($ids)
-                ->map(fn($id) => $categoriesById->get($id))
-                ->filter()
-                ->map(function ($cat) use ($lang) {
-                    $label = $cat->{'name_' . $lang} ?? $cat->name ?? $cat->name_es ?? null;
-
-                    return [
-                        'slug'  => $cat->slug,
-                        'label' => $label,
-                    ];
-                })
-                ->values();
+        // Si por algún motivo viene como JSON string
+        if (is_string($featured)) {
+            $decoded = json_decode($featured, true);
+            $featured = is_array($decoded) ? $decoded : [];
         }
+
+        $featured = collect($featured)->filter(fn($v) => $v !== null && $v !== '')->values()->all();
+
+        if (!empty($featured)) {
+            $allNumeric = collect($featured)->every(fn($v) => is_numeric($v));
+
+            if ($allNumeric) {
+                // ✅ Compat: si aún guardas IDs
+                $categoriesById = \App\Models\Category::whereIn('id', $featured)->get()->keyBy('id');
+
+                $items = collect($featured)
+                    ->map(fn($id) => $categoriesById->get((int) $id))
+                    ->filter()
+                    ->map(function ($cat) use ($lang) {
+                        $label = $cat->{'name_' . $lang} ?? $cat->name ?? $cat->name_es ?? null;
+                        $slug  = $cat->{'slug_' . $lang} ?? $cat->slug;
+
+                        return [
+                            'slug'  => $slug,
+                            'label' => $label,
+                        ];
+                    })
+                    ->values();
+            } else {
+                // ✅ Caso actual: guardas SLUGS
+                $categoriesBySlug = \App\Models\Category::whereIn('slug', $featured)->get()->keyBy('slug');
+
+                $items = collect($featured)
+                    ->map(fn($slug) => $categoriesBySlug->get($slug))
+                    ->filter()
+                    ->map(function ($cat) use ($lang) {
+                        $label = $cat->{'name_' . $lang} ?? $cat->name ?? $cat->name_es ?? null;
+                        $slug  = $cat->{'slug_' . $lang} ?? $cat->slug;
+
+                        return [
+                            'slug'  => $slug,
+                            'label' => $label,
+                        ];
+                    })
+                    ->values();
+            }
+        }
+
 
         return response()->json([
             'success' => true,

@@ -30,7 +30,8 @@ class DocumentsRelationManager extends RelationManager
                     ->required()
                     ->label('Archivo')
                     ->preserveFilenames()
-                    ->directory('products/documents')
+                ->disk('public')
+                ->directory('files')
                     ->acceptedFileTypes([
                         'application/pdf',
                         'application/msword',

@@ -60,11 +60,21 @@ class EmpresaSeeder extends Seeder
                 'solutions_intro_fr' => 'Avec plus de 25 ans d’expérience, Grupo Estucalia propose une gamme de produits d’une qualité exceptionnelle.',
 
 
-                // categorías destacadas (ejemplo)
+
+
                 'featured_categories_items' => [
-                    ['category_id' => 1],
-                    ['category_id' => 2],
+                    'single-layer-mortar',      // Mortero monocapa
+                    'tile-adhesive',            // Mortero cola
+                    'lime-mortar',              // Mortero cal
+                    'grout-mortar',             // Mortero juntas
+                    'stamped-mortar',           // Mortero impreso
+                    'decorative-stone-mortar',  // Mortero piedra decorativa
+                    'water-protector',          // Protector de agua
+                    'bonding-bridge',           // Puente de unión
+                    'talisman-tools',           // Complementos y accesorios
                 ],
+
+
 
                 'international_title_es' => 'Internacionales',
                 'international_title_en' => 'International',

@@ -39,20 +39,22 @@ class HomeSeeder extends Seeder
 
                 'second_image_url' => null,
 
-                'cta_help_title_es' => '¿Necesitas ayuda con tu proyecto?',
-                'cta_help_title_en' => 'Need help with your project?',
-                'cta_help_title_fr' => 'Besoin d’aide pour votre projet ?',
+                'cta_help_title_es' => '<h2 class="text-2xl md:text-3xl xl:text-4xl font-[600] mb-4">¿Necesitas ayuda con tu proyecto?</h2>',
+                'cta_help_title_en' => '<h2 class="text-2xl md:text-3xl xl:text-4xl font-[600] mb-4">Need help with your project?</h2>',
+                'cta_help_title_fr' => '<h2 class="text-2xl md:text-3xl xl:text-4xl font-[600] mb-4">Besoin d’aide pour votre projet ?</h2>',
 
-                'cta_help_text_es' => 'Nuestro equipo de expertos está listo para asesorarte en la selección de los productos más adecuados para tu proyecto. Contáctanos y te ayudaremos a encontrar la mejor solución.',
-                'cta_help_text_en' => 'Our team of experts is ready to help you choose the most suitable products for your project. Contact us and we’ll help you find the best solution.',
-                'cta_help_text_fr' => 'Notre équipe d’experts est prête à vous conseiller dans le choix des produits les plus adaptés à votre projet. Contactez-nous et nous vous aiderons à trouver la meilleure solution.',
+                'cta_help_text_es' => '<p class="text-black text-base md:text-xl mb-8 text-left">Nuestro equipo de expertos está listo para asesorarte en la selección de los productos más adecuados para tu proyecto. Contáctanos y te ayudaremos a encontrar la mejor solución.</p>',
+                'cta_help_text_en' => '<p class="text-black text-base md:text-xl mb-8 text-left">Our team of experts is ready to help you choose the most suitable products for your project. Contact us and we’ll help you find the best solution.</p>',
+                'cta_help_text_fr' => '<p class="text-black text-base md:text-xl mb-8 text-left">Notre équipe d’experts est prête à vous conseiller dans le choix des produits les plus adaptés à votre projet. Contactez-nous et nous vous aiderons à trouver la meilleure solution.</p>',
+
+                'cta_help_image_url' => 'home/helper.jpg',
+
 
                 'cta_help_button_es' => 'Contactar',
                 'cta_help_button_en' => 'Contact',
                 'cta_help_button_fr' => 'Contacter',
 
                 'cta_help_url' => '/contacto',
-                'cta_help_image_url' => 'home/help-bg.jpg',
 
                 'cta_help_image_title_es' => 'Asesoría para proyectos',
                 'cta_help_image_alt_es' => 'Persona trabajando, imagen de fondo de la sección de ayuda',

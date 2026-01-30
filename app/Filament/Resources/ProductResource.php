@@ -103,6 +103,20 @@ class ProductResource extends Resource
                             ->preserveFilenames()
                             ->maxSize(2048),
 
+                Forms\Components\FileUpload::make('image')
+                    ->label('Imagen Principal')
+                    ->image()
+                    ->disk('public')
+                    ->directory('img/productos') // Es mejor usar subdirectorio específico
+                    ->preserveFilenames()
+                    ->maxSize(2048) // 2MB
+                    ->imagePreviewHeight(250)
+                    ->downloadable()
+                    ->openable()
+                    ->deletable(true)
+                    ->helperText('Formatos: JPG, PNG, WebP. Máximo 2MB')
+                    ->rules(['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048']),
+
                         Forms\Components\Grid::make(3)
                             ->schema([
                                 Forms\Components\Fieldset::make('Texto Alternativo (SEO)')

@@ -102,7 +102,7 @@ class CertificationsDocumentation extends Page implements HasForms
                         FileUpload::make('file_path')
                             ->label('Archivo')
                             ->disk('public')
-                            ->directory('documents/certifications')
+                            ->directory('files')
                             ->visibility('public')
                             ->preserveFilenames()
                             ->openable()
