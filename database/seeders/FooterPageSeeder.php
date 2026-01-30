@@ -112,22 +112,22 @@ class FooterPageSeeder extends Seeder
 
                 // SOCIAL
                 'social_links_es' => [
-                    ['icon_key' => 'linkedin', 'label_html' => 'LinkedIn', 'url' => 'https://www.linkedin.com/'],
-                    ['icon_key' => 'facebook', 'label_html' => 'Facebook', 'url' => 'https://www.facebook.com/'],
-                    ['icon_key' => 'instagram', 'label_html' => 'Instagram', 'url' => 'https://www.instagram.com/'],
-                    ['icon_key' => 'youtube', 'label_html' => 'YouTube', 'url' => 'https://www.youtube.com/'],
+                    ['icon_key' => 'linkedin', 'label_html' => 'LinkedIn', 'url' => 'https://www.linkedin.com/in/grupo-estucalia-182653368'],
+                    ['icon_key' => 'facebook', 'label_html' => 'Facebook', 'url' => 'https://www.facebook.com/Estucalia2022?rdid=ukZDYzCONY8zTwFT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1A5tsR5Aaq#'],
+                    ['icon_key' => 'instagram', 'label_html' => 'Instagram', 'url' => 'https://www.instagram.com/grupo_estucalia?igsh=MTdoazk0NHVpaXdkdg%3D%3D'],
+                    ['icon_key' => 'youtube', 'label_html' => 'YouTube', 'url' => 'https://www.youtube.com/channel/UCyFIm8KQCuF_YQZVN7XM05A'],
                 ],
                 'social_links_en' => [
-                    ['icon_key' => 'linkedin', 'label_html' => 'LinkedIn', 'url' => 'https://www.linkedin.com/'],
-                    ['icon_key' => 'facebook', 'label_html' => 'Facebook', 'url' => 'https://www.facebook.com/'],
-                    ['icon_key' => 'instagram', 'label_html' => 'Instagram', 'url' => 'https://www.instagram.com/'],
-                    ['icon_key' => 'youtube', 'label_html' => 'YouTube', 'url' => 'https://www.youtube.com/'],
+                    ['icon_key' => 'linkedin', 'label_html' => 'LinkedIn', 'url' => 'https://www.linkedin.com/in/grupo-estucalia-182653368'],
+                    ['icon_key' => 'facebook', 'label_html' => 'Facebook', 'url' => 'https://www.facebook.com/Estucalia2022?rdid=ukZDYzCONY8zTwFT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1A5tsR5Aaq#'],
+                    ['icon_key' => 'instagram', 'label_html' => 'Instagram', 'url' => 'https://www.instagram.com/grupo_estucalia?igsh=MTdoazk0NHVpaXdkdg%3D%3D'],
+                    ['icon_key' => 'youtube', 'label_html' => 'YouTube', 'url' => 'https://www.youtube.com/channel/UCyFIm8KQCuF_YQZVN7XM05A'],
                 ],
                 'social_links_fr' => [
-                    ['icon_key' => 'linkedin', 'label_html' => 'LinkedIn', 'url' => 'https://www.linkedin.com/'],
-                    ['icon_key' => 'facebook', 'label_html' => 'Facebook', 'url' => 'https://www.facebook.com/'],
-                    ['icon_key' => 'instagram', 'label_html' => 'Instagram', 'url' => 'https://www.instagram.com/'],
-                    ['icon_key' => 'youtube', 'label_html' => 'YouTube', 'url' => 'https://www.youtube.com/'],
+                    ['icon_key' => 'linkedin', 'label_html' => 'LinkedIn', 'url' => 'https://www.linkedin.com/in/grupo-estucalia-182653368'],
+                    ['icon_key' => 'facebook', 'label_html' => 'Facebook', 'url' => 'https://www.facebook.com/Estucalia2022?rdid=ukZDYzCONY8zTwFT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1A5tsR5Aaq#'],
+                    ['icon_key' => 'instagram', 'label_html' => 'Instagram', 'url' => 'https://www.instagram.com/grupo_estucalia?igsh=MTdoazk0NHVpaXdkdg%3D%3D'],
+                    ['icon_key' => 'youtube', 'label_html' => 'YouTube', 'url' => 'https://www.youtube.com/channel/UCyFIm8KQCuF_YQZVN7XM05A'],
                 ],
 
                 // COPYRIGHT
