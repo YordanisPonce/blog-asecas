@@ -31,49 +31,53 @@ class CategoryResource extends Resource
                             ->maxLength(255)
                             ->live(onBlur: true)
                             ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
-                                if ($operation === 'edit')
-                                    return;
+                                if ($operation === 'edit') return;
                                 $set('slug', Str::slug($state));
                             }),
+
                         Forms\Components\TextInput::make('slug')
                             ->label('Slug')
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
+
                         Forms\Components\TextInput::make('name_en')
                             ->label('Nombre (Inglés)')
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
                             ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
-                                if ($operation === 'edit')
-                                    return;
+                                if ($operation === 'edit') return;
                                 $set('slug_en', Str::slug($state));
                             }),
+
                         Forms\Components\TextInput::make('slug_en')
                             ->label('Slug (Inglés)')
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
+
                         Forms\Components\TextInput::make('name_fr')
                             ->label('Nombre (Francés)')
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
                             ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
-                                if ($operation === 'edit')
-                                    return;
+                                if ($operation === 'edit') return;
                                 $set('slug_fr', Str::slug($state));
                             }),
+
                         Forms\Components\TextInput::make('slug_fr')
                             ->label('Slug (Francés)')
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
+
                         Forms\Components\TextInput::make('order')
                             ->label('Orden')
                             ->numeric()
                             ->default(0),
+
                         Forms\Components\Toggle::make('is_active')
                             ->label('Activo')
                             ->default(true),
@@ -81,8 +85,19 @@ class CategoryResource extends Resource
 
                 Forms\Components\Section::make('Imagen')
                     ->schema([
-                        Forms\Components\TextInput::make('image')
-                            ->label('Imagen de la Categoría'),
+                Forms\Components\FileUpload::make('image')
+                    ->label('Imagen de la Categoría')
+                    ->image()
+                    ->disk('public')
+                    ->directory('img') // Es mejor usar subdirectorio específico
+                    ->preserveFilenames()
+                    ->maxSize(2048) // 2MB
+                    ->imagePreviewHeight(250)
+                    ->downloadable()
+                    ->openable()
+                    ->deletable(true)
+                    ->helperText('Formatos: JPG, PNG, WebP. Máximo 2MB')
+                    ->rules(['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048']),
 
                         Forms\Components\Grid::make(3)
                             ->schema([
@@ -113,31 +128,36 @@ class CategoryResource extends Resource
                                     ]),
                             ]),
                     ]),
+
                 Forms\Components\Section::make('Descripciones Completas')
                     ->schema([
-                        Forms\Components\RichEditor::make('description_en')
+                        Forms\Components\Textarea::make('description_en')
                             ->label('Descripción Completa (Inglés)')
-                            ->fileAttachmentsDirectory('categories/descriptions'),
-                        Forms\Components\RichEditor::make('description_es')
+                            ->rows(6),
+
+                        Forms\Components\Textarea::make('description_es')
                             ->label('Descripción Completa (Español)')
-                            ->fileAttachmentsDirectory('categories/descriptions'),
-                        Forms\Components\RichEditor::make('description_fr')
+                            ->rows(6),
+
+                        Forms\Components\Textarea::make('description_fr')
                             ->label('Descripción Completa (Francés)')
-                            ->fileAttachmentsDirectory('categories/descriptions'),
+                            ->rows(6),
                     ]),
+
                 Forms\Components\Section::make('Descripciones Cortas')
                     ->schema([
                         Forms\Components\Textarea::make('short_description_en')
                             ->label('Descripción Corta (Inglés)')
                             ->rows(3),
+
                         Forms\Components\Textarea::make('short_description_es')
                             ->label('Descripción Corta (Español)')
                             ->rows(3),
+
                         Forms\Components\Textarea::make('short_description_fr')
                             ->label('Descripción Corta (Francés)')
                             ->rows(3),
                     ]),
-
             ]);
     }
 
@@ -147,6 +167,7 @@ class CategoryResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Imagen')
+                    ->disk('public')
                     ->circular(),
 
                 Tables\Columns\TextColumn::make('name')
@@ -180,6 +201,7 @@ class CategoryResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->label('Editar'),
+
                 Tables\Actions\DeleteAction::make()
                     ->label('Eliminar'),
             ])

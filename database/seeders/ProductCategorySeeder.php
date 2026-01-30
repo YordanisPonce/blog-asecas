@@ -15,7 +15,7 @@ class ProductCategorySeeder extends Seeder
     public function run(): void
     {
         // Carga los 3 JSON (ES manda el orden)
-        $es = json_decode(file_get_contents(database_path('data/data-en.json')), true);
+        $es = json_decode(file_get_contents(database_path('data/data-es.json')), true);
         $en = json_decode(file_get_contents(database_path('data/data-en.json')), true);
         $fr = json_decode(file_get_contents(database_path('data/data-fr.json')), true);
 
@@ -38,7 +38,7 @@ class ProductCategorySeeder extends Seeder
 
             Category::updateOrCreate(
                 // Clave única: slug ES (puedes cambiar si usas otra)
-                ['slug' => Str::slug($nameEs)],
+                ['slug' => Str::slug($nameEn)],
                 [
                     'name' => $nameEs,
                     'name_en' => $nameEn,
@@ -51,13 +51,13 @@ class ProductCategorySeeder extends Seeder
                     'image_alt' => $nameEs,
                     'image_title' => $nameEs,
 
-                    'short_description_es' => $catEs['descripcion'] ?? null,
-                    'short_description_en' => $catEn['descripcion'] ?? null,
-                    'short_description_fr' => $catFr['descripcion'] ?? null,
+                    'short_description_es' => $catEs['descripcion1'] ?? null,
+                    'short_description_en' => $catEn['descripcion1'] ?? null,
+                    'short_description_fr' => $catFr['descripcion1'] ?? null,
 
-                    'description_es' => $catEs['descripcion1'] ?? null,
-                    'description_en' => $catEn['descripcion1'] ?? null,
-                    'description_fr' => $catFr['descripcion1'] ?? null,
+                    'description_es' => $catEs['descripcion'] ?? null,
+                    'description_en' => $catEn['descripcion'] ?? null,
+                    'description_fr' => $catFr['descripcion'] ?? null,
 
                     'order' => $order++,
                     'is_active' => true,

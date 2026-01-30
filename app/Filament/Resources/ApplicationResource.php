@@ -160,15 +160,15 @@ class ApplicationResource extends Resource
 
                 Forms\Components\Section::make('Descripciones Completas')
                     ->schema([
-                        Forms\Components\RichEditor::make('description_en')
+                        Forms\Components\Textarea::make('description_en')
                             ->label('Descripción Completa (Inglés)')
-                            ->fileAttachmentsDirectory('applications/descriptions'),
-                        Forms\Components\RichEditor::make('description_es')
+                            ,
+                        Forms\Components\Textarea::make('description_es')
                             ->label('Descripción Completa (Español)')
-                            ->fileAttachmentsDirectory('applications/descriptions'),
-                        Forms\Components\RichEditor::make('description_fr')
+                            ,
+                        Forms\Components\Textarea::make('description_fr')
                             ->label('Descripción Completa (Francés)')
-                            ->fileAttachmentsDirectory('applications/descriptions'),
+                            ,
                     ]),
             ]);
     }
