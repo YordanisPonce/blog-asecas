@@ -20,7 +20,7 @@ class HomeSeeder extends Seeder
                 'first_description_en' => null,
                 'first_description_fr' => null,
 
-                'first_image_url' => 'home/hero.jpg',
+                'first_image_url' => 'home/Home.jpg',
 
                 'first_image_title_es' => 'Morteros sostenibles',
                 'first_image_alt_es' => 'Fondo arquitectónico para sección hero',
