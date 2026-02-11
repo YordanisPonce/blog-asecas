@@ -12,15 +12,15 @@ class HomeSeeder extends Seeder
         Home::updateOrCreate(
             ['id' => 1],
             [
-                'first_title_es' => 'Morteros sostenibles para la arquitectura y construcción.',
-                'first_title_en' => 'Sustainable mortars for architecture and construction.',
-                'first_title_fr' => 'Mortiers durables pour l’architecture et la construction.',
+                'first_title_es' => '<h1 class="text-white text-3xl text-center font-[600] md:text-4xl xl:text-5xl max-w-3xl leading-tight mt-8 md:mt-0">Morteros sostenibles para la arquitectura y construcción.</h1>',
+                'first_title_en' => '<h1 class="text-white text-3xl text-center font-[600] md:text-4xl xl:text-5xl max-w-3xl leading-tight mt-8 md:mt-0">Sustainable mortars for architecture and construction.</h1>',
+                'first_title_fr' => '<h1 class="text-white text-3xl text-center font-[600] md:text-4xl xl:text-5xl max-w-3xl leading-tight mt-8 md:mt-0">Mortiers durables pour l’architecture et la construction.</h1>',
 
                 'first_description_es' => null,
                 'first_description_en' => null,
                 'first_description_fr' => null,
 
-                'first_image_url' => 'home/hero.jpg',
+                'first_image_url' => 'home/Home.jpg',
 
                 'first_image_title_es' => 'Morteros sostenibles',
                 'first_image_alt_es' => 'Fondo arquitectónico para sección hero',
@@ -29,13 +29,13 @@ class HomeSeeder extends Seeder
                 'first_image_title_fr' => 'Mortiers durables',
                 'first_image_alt_fr' => 'Arrière-plan architectural pour la section hero',
 
-                'second_title_es' => 'Grupo Estucalia',
-                'second_title_en' => 'Estucalia Group',
-                'second_title_fr' => 'Groupe Estucalia',
+                'second_title_es' => '<h2 class="text-2xl font-medium mb-4">Grupo Estucalia</h2>',
+                'second_title_en' => '<h2 class="text-2xl font-medium mb-4">Estucalia Group</h2>',
+                'second_title_fr' => '<h2 class="text-2xl font-medium mb-4">Groupe Estucalia</h2>',
 
-                'second_description_es' => 'Más de 25 años desarrollando y fabricando morteros de alta gama.',
-                'second_description_en' => 'More than 25 years developing and manufacturing premium mortars.',
-                'second_description_fr' => 'Plus de 25 ans à développer et fabriquer des mortiers haut de gamme.',
+                'second_description_es' => '<p class="text-3xl font-[600] text-gray-800 max-w-2xl mx-auto">Más de 25 años desarrollando y fabricando morteros de alta gama.</p>',
+                'second_description_en' => '<p class="text-3xl font-[600] text-gray-800 max-w-2xl mx-auto">More than 25 years developing and manufacturing premium mortars.</p>',
+                'second_description_fr' => '<p class="text-3xl font-[600] text-gray-800 max-w-2xl mx-auto">Plus de 25 ans à développer et fabriquer des mortiers haut de gamme.</p>',
 
                 'second_image_url' => null,
 

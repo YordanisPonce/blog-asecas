@@ -76,19 +76,19 @@ class Empresa extends Page implements HasForms
                         ]),
                         Grid::make()->columns(4)->schema([
                             TextInput::make('hero_video_url')->label('Video URL')->url()->nullable(),
-                            FileUpload::make('hero_image')
-                                ->label('Imagen (Hero)')
-                                ->image()
-                                ->disk('public')
-                                ->directory('empresa/hero')
-                                ->visibility('public')
-                                ->preserveFilenames()
-                                ->openable()
-                                ->downloadable()
-                                ->nullable(),
+                        //     FileUpload::make('hero_image')
+                        //         ->label('Imagen (Hero)')
+                        //         ->image()
+                        //         ->disk('public')
+                        //         ->directory('empresa/hero')
+                        //         ->visibility('public')
+                        //         ->preserveFilenames()
+                        //         ->openable()
+                        //         ->downloadable()
+                        //         ->nullable(),
 
-                            TextInput::make('hero_image_title')->label('Imagen title')->nullable(),
-                            TextInput::make('hero_image_alt')->label('Imagen alt')->nullable(),
+                        //     TextInput::make('hero_image_title')->label('Imagen title')->nullable(),
+                        //     TextInput::make('hero_image_alt')->label('Imagen alt')->nullable(),
                         ])
                     ])->columns(1),
 

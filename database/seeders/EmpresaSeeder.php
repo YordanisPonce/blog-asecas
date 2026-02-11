@@ -98,10 +98,7 @@ class EmpresaSeeder extends Seeder
                 'certs_text_fr' => "<p class='text-lg mb-16 leading-relaxed'>Notre entreprise s'engage à la qualité à chaque étape du processus, comme le démontre notre certification qualité. Grupo Estucalia intègre le système rigoureux de Qualité Totale basé sur la norme UNE-EN ISO 9001/2000 et certifié par AENOR comme entreprise numéro ER-0339/2002.</p>",
 
                 'certs_logos' => [
-                    ['logo_url' => 'empresa/certs/ce.png', 'title' => 'CE', 'alt' => 'CE'],
-                    ['logo_url' => 'empresa/certs/aenor.png', 'title' => 'AENOR', 'alt' => 'AENOR'],
-                    ['logo_url' => 'empresa/certs/iqnet.png', 'title' => 'IQNet', 'alt' => 'IQNet'],
-                    ['logo_url' => 'empresa/certs/other.png', 'title' => 'Other', 'alt' => 'Other'],
+                    ['logo_url' => 'empresa/certs/logos-licencia.png', 'title' => 'CE', 'alt' => 'CE'],
                 ],
 
                 'consulting_title_es' => '<h2 class="text-4xl font-[600] mb-8">Asesoramiento personalizado</h2>',
