@@ -23,7 +23,7 @@ class Home extends Page implements HasForms
 
     protected static ?string $navigationGroup = 'Contenido web';
     protected static ?int $navigationSort = 100;
-    protected static ?string $navigationLabel = 'Ayuda';
+    protected static ?string $navigationLabel = 'Home y Ayuda';
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
     protected static ?string $title = 'Sección Home y Ayuda';
