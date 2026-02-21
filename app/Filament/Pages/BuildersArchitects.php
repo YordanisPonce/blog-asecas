@@ -226,22 +226,22 @@ class BuildersArchitects extends Page implements HasForms
                             ->searchable()
                             ->required()
                             ->disableOptionsWhenSelectedInSiblingRepeaterItems()
-                            ->options(function (Get $get) {
-                                // Estado actual del repeater
-                                $selectedIds = collect($get('../../featured_categories_items') ?? [])
-                                    ->pluck('category_id')
-                                    ->filter()
-                                    ->map(fn($v) => (int) $v)
-                                    ->values()
-                                    ->all();
+                        
 
-                                // Mostrar SOLO las que aún NO están seleccionadas
-                                return Category::query()
-                                    ->when(count($selectedIds), fn($q) => $q->whereNotIn('id', $selectedIds))
-                                    ->orderBy('name')
-                                    ->pluck('name', 'id')
-                                    ->toArray();
-                            })
+                        ->options(function (Get $get) {
+                            $selectedIds = collect($get('../../featured_categories_items') ?? [])
+                                ->pluck('category_id')
+                                ->filter()
+                                ->map(fn($v) => (int) $v)
+                                ->values()
+                                ->all();
+
+                            return Category::query()
+                                ->when(count($selectedIds), fn($q) => $q->whereNotIn('id', $selectedIds))
+                                ->orderBy('name')
+                                ->pluck('name', 'id')  // ✅ Esto ya debería mostrar el nombre
+                                ->toArray();
+                        })
                             ->preload(),
                     ])
                     ->reorderable()
