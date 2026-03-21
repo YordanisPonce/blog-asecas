@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo;
 
 class Empresa extends Model
 {
+    use HasSeo; // ← AÑADIR ESTA LÍNEA
+
     protected $fillable = [
         // HERO
         'hero_title_es',

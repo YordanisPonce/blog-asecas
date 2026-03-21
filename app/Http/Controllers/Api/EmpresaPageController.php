@@ -225,6 +225,7 @@ class EmpresaPageController extends Controller
                 'bottom_bg_image' => $this->img($page->bottom_bg_image),
                 'bottom_bg_image_title' => $page->bottom_bg_image_title,
                 'bottom_bg_image_alt' => $page->bottom_bg_image_alt,
+                'seo' => $page->getSeoForApi($lang),
             ],
         ]);
     }
