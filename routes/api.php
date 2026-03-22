@@ -183,7 +183,8 @@ Route::prefix('v1')->group(function () {
 
     Route::get('/finishes', [FinishController::class, 'index']);
     Route::get('/finishes/{slug}', [FinishController::class, 'show']);
-
+    Route::get('/acabados', [\App\Http\Controllers\Api\FinishesPageController::class, 'show']);
+    
     // Search endpoints
     Route::get('/search', [ProductController::class, 'search']);
     Route::get('/search/categories', [CategoryController::class, 'search']);
