@@ -4,9 +4,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo;
 
 class ContactPage extends Model
 {
+    use HasSeo;
+    
     protected $fillable = [
         'map_embed_url',
         'contact_title_es',

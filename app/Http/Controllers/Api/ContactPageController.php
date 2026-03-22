@@ -1,4 +1,5 @@
 <?php
+// app/Http/Controllers/Api/ContactPageController.php
 
 namespace App\Http\Controllers\Api;
 
@@ -11,9 +12,11 @@ class ContactPageController extends Controller
 {
     public function show(Request $request)
     {
-        $lang = in_array($request->query('lang'), ['es', 'en', 'fr']) ? $request->query('lang') : 'es';
+        $lang = $request->query('lang', 'es');
+        abort_unless(in_array($lang, ['es', 'en', 'fr']), 422, 'Invalid lang');
 
-        $page = ContactPage::firstOrCreate(['id' => 1]);
+        // Cargar el modelo con su relación SEO
+        $page = ContactPage::with('seo')->firstOrCreate(['id' => 1]);
 
         $t = fn(string $key) => $page->{$key . '_' . $lang} ?: $page->{$key . '_es'} ?: null;
 
@@ -24,8 +27,9 @@ class ContactPageController extends Controller
         };
 
         return response()->json([
-            'success' => true,
-            'data' => [
+            'status' => 200,
+            'message' => 'OK',
+            'response' => [
                 'map' => [
                     'embedUrl' => $page->map_embed_url,
                 ],
@@ -47,7 +51,6 @@ class ContactPageController extends Controller
                     'legalInfoHtml' => $t('legal_info_text'),
                     'checkbox1Label' => $t('checkbox_1_label'),
                     'checkbox2Label' => $t('checkbox_2_label'),
-                    // si quieres luego, aquí también puedes meter labels de campos
                 ],
 
                 'cta' => [
@@ -68,6 +71,9 @@ class ContactPageController extends Controller
                     'instagram' => $page->social_instagram,
                     'youtube' => $page->social_youtube,
                 ],
+
+                // 👇 NUEVO: Datos SEO usando el trait
+                'seo' => $page->getSeoForApi($lang),
             ],
         ]);
     }
