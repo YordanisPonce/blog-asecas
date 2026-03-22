@@ -1,4 +1,5 @@
 <?php
+// app/Http/Controllers/Api/IntegralProjectsPageController.php
 
 namespace App\Http\Controllers\Api;
 
@@ -11,9 +12,11 @@ class IntegralProjectsPageController extends Controller
 {
     public function show(Request $request)
     {
-        $lang = in_array($request->query('lang'), ['es', 'en', 'fr']) ? $request->query('lang') : 'es';
+        $lang = $request->query('lang', 'es');
+        abort_unless(in_array($lang, ['es', 'en', 'fr']), 422, 'Invalid lang');
 
-        $page = IntegralProjectsPage::firstOrCreate(['id' => 1]);
+        // Cargar el modelo con su relación SEO
+        $page = IntegralProjectsPage::with('seo')->firstOrCreate(['id' => 1]);
 
         $t = fn(string $key) => $page->{$key . '_' . $lang} ?: $page->{$key . '_es'} ?: null;
 
@@ -36,38 +39,17 @@ class IntegralProjectsPageController extends Controller
         })->values();
 
         return response()->json([
-            'success' => true,
-            'data' => [
+            'status' => 200,
+            'message' => 'OK',
+            'response' => [
                 'hero' => [
                     'title' => $t('hero_title'),
-                    'description' => $t('hero_description'),
                     'image' => [
                         'url' => $url($page->hero_image_url),
-                        'title' => $t('hero_image_title'),
                         'alt' => $t('hero_image_alt'),
                     ],
                 ],
-
-                'columns' => [
-                    [
-                        'title' => $t('col1_title'),
-                        'text' => $t('col1_text'),
-                        'bullets' => $t('col1_bullets'),
-                    ],
-                    [
-                        'title' => $t('col2_title'),
-                        'text' => $t('col2_text'),
-                        'bullets' => $t('col2_bullets'),
-                    ],
-                    [
-                        'title' => $t('col3_title'),
-                        'text' => $t('col3_text'),
-                        'bullets' => $t('col3_bullets'),
-                    ],
-                ],
-
                 'cards' => $cards,
-
                 'banner' => [
                     'image' => [
                         'url' => $url($page->banner_image_url),
@@ -75,25 +57,9 @@ class IntegralProjectsPageController extends Controller
                         'alt' => $t('banner_image_alt'),
                     ],
                 ],
-
-                'seo' => [
-                    'title' => $t('seo_title'),
-                    'description' => $t('seo_description'),
-                ],
+                // 👇 NUEVO: Datos SEO usando el trait
+                'seo' => $page->getSeoForApi($lang),
             ],
-        ]);
-    }
-
-    public function update(Request $request)
-    {
-        $page = IntegralProjectsPage::firstOrCreate(['id' => 1]);
-        $page->fill($request->all());
-        $page->save();
-
-        return response()->json([
-            'success' => true,
-            'data' => $page,
-            'message' => 'Integral Projects page updated successfully.',
         ]);
     }
 }
