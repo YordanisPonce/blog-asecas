@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo;
 
 class Home extends Model
 {
+    use HasSeo;
     protected $fillable = [
         // HERO
         'first_title_es',
@@ -57,11 +59,9 @@ class Home extends Model
         'cta_help_image_alt_fr',
 
         // SEO
-        'seo_title_es',
-        'seo_title_en',
-        'seo_title_fr',
-        'seo_description_es',
-        'seo_description_en',
-        'seo_description_fr',
+        
     ];
+
+    
+
 }

@@ -15,7 +15,7 @@ class HomeController extends Controller
             ? $request->query('lang')
             : 'es';
 
-        $home = Home::firstOrCreate([]);
+        $home = Home::with('seo')->firstOrCreate([]);
 
         // Helper fallback ES si falta idioma
         $t = fn($key) => $home->{$key . '_' . $lang} ?: $home->{$key . '_es'} ?: null;
@@ -54,10 +54,7 @@ class HomeController extends Controller
                         'alt' => $t('cta_help_image_alt'),
                     ],
                 ],
-                'seo' => [
-                    'title' => $t('seo_title'),
-                    'description' => $t('seo_description'),
-                ],
+                'seo' => $home->getSeoForApi($lang),
             ],
         ]);
     }
