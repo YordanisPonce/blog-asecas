@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo;
 
 class BuildersArchitectsPage extends Model
 {
+
+    use HasSeo;
+
     protected $fillable = [
         'hero_title_es',
         'hero_title_en',
@@ -68,12 +72,12 @@ class BuildersArchitectsPage extends Model
 
         'featured_categories',
 
-        'seo_title_es',
-        'seo_title_en',
-        'seo_title_fr',
-        'seo_description_es',
-        'seo_description_en',
-        'seo_description_fr',
+        // 'seo_title_es',
+        // 'seo_title_en',
+        // 'seo_title_fr',
+        // 'seo_description_es',
+        // 'seo_description_en',
+        // 'seo_description_fr',
     ];
 
     protected $casts = [
