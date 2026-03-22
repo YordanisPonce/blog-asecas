@@ -1,10 +1,10 @@
 <?php
-// app/Filament/Pages/ApplicationsPage.php
+// app/Filament/Pages/SpacesPage.php
 
 namespace App\Filament\Pages;
 
 use Filament\Pages\Page;
-use App\Models\ApplicationsPage as ApplicationsPageModel;
+use App\Models\SpacesPage as SpacesModel;
 use Filament\Actions\Action;
 use Filament\Forms\Form;
 use Filament\Forms\Contracts\HasForms;
@@ -14,32 +14,31 @@ use Filament\Forms\Components\Tabs\Tab;
 use Filament\Notifications\Notification;
 use App\Filament\Components\SeoFields;
 
-class ApplicationsPage extends Page implements HasForms
+class SpacesPage extends Page implements HasForms
 {
     use InteractsWithForms;
 
     protected static ?string $navigationGroup = 'Contenido web';
-    protected static ?int $navigationSort = 75;
-    protected static ?string $navigationLabel = 'SEO - Aplicaciones';
-    protected static ?string $navigationIcon = 'heroicon-o-queue-list';
-    protected static ?string $title = 'SEO - Página Aplicaciones';
-    protected static string $view = 'filament.pages.applications-page';
+    protected static ?int $navigationSort = 76;
+    protected static ?string $navigationLabel = 'SEO - Espacios';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
+    protected static ?string $title = 'SEO - Página Espacios';
+    protected static string $view = 'filament.pages.spaces-page';
 
-    public ApplicationsPageModel $record;
+    public SpacesModel $record;
     public ?array $data = [];
 
     public function mount(): void
     {
-        $this->record = ApplicationsPageModel::first() ?? ApplicationsPageModel::create([]);
+        $this->record = SpacesModel::first() ?? SpacesModel::create([]);
 
-        // Cargar datos del modelo + SEO
         $this->form->fill([
             ...$this->record->toArray(),
             'seo' => $this->record->seo?->toArray() ?? [],
         ]);
     }
 
-    protected function getFormModel(): ApplicationsPageModel
+    protected function getFormModel(): SpacesModel
     {
         return $this->record;
     }
@@ -71,15 +70,12 @@ class ApplicationsPage extends Page implements HasForms
     {
         $data = $this->form->getState();
 
-        // 👇 IMPORTANTE: Separar los datos SEO del resto
         $seoData = $data['seo'] ?? [];
-        unset($data['seo']); // Eliminar seo del array de datos principales
+        unset($data['seo']);
 
-        // Guardar contenido principal (solo los campos que tiene la tabla)
         $this->record->fill($data);
         $this->record->save();
 
-        // Guardar datos SEO usando el método syncSeo del trait
         if (!empty($seoData)) {
             $this->record->syncSeo($seoData);
         }

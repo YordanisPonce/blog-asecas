@@ -22,7 +22,7 @@ class Espacios extends Page implements HasForms
     protected static ?string $navigationIcon = 'heroicon-o-photo';
     protected static ?string $navigationLabel = 'Contenido – Espacios';
     protected static ?string $title = 'Contenido – Espacios';
-    protected static ?string $navigationGroup = 'Sitio';
+    protected static ?string $navigationGroup = 'Contenido web';
     protected static ?int $navigationSort = 30;
     protected static bool $shouldRegisterNavigation = false;
 
