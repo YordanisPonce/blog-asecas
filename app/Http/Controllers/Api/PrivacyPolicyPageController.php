@@ -1,4 +1,5 @@
 <?php
+// app/Http/Controllers/Api/PrivacyPolicyPageController.php
 
 namespace App\Http\Controllers\Api;
 
@@ -10,21 +11,16 @@ class PrivacyPolicyPageController extends Controller
 {
     public function show(Request $request)
     {
-        $lang = strtolower((string) $request->query('lang', 'es'));
-        if (!in_array($lang, ['es', 'en', 'fr'], true)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid lang. Allowed: es, en, fr',
-            ], 422);
-        }
+        $lang = $request->query('lang', 'es');
+        abort_unless(in_array($lang, ['es', 'en', 'fr']), 422, 'Invalid lang');
 
-        $page = PrivacyPage::query()->first() ?? PrivacyPage::create([]);
+        // Cargar el modelo con su relación SEO
+        $page = PrivacyPage::with('seo')->first() ?? PrivacyPage::create([]);
 
         $data = [
             'page_title'      => $this->t($page, 'page_title', $lang),
             'last_updated_at' => optional($page->last_updated_at)->toDateString(),
 
-            // Para render en 2 columnas como tu diseño
             'columns' => [
                 'left' => [
                     ['key' => 'intro',             'html' => $this->t($page, 'intro', $lang)],
@@ -42,10 +38,8 @@ class PrivacyPolicyPageController extends Controller
                 ],
             ],
 
-            'seo' => [
-                'title'       => $this->t($page, 'seo_title', $lang),
-                'description' => $this->t($page, 'seo_description', $lang),
-            ],
+            // 👇 NUEVO: Datos SEO usando el trait
+            'seo' => $page->getSeoForApi($lang),
         ];
 
         return response()->json([

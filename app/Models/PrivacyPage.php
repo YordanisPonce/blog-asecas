@@ -1,12 +1,15 @@
 <?php
-
 // app/Models/PrivacyPage.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo; // ← IMPORTAR EL TRAIT
 
 class PrivacyPage extends Model
 {
+    use HasSeo; // ← AÑADIR ESTA LÍNEA
+
     protected $fillable = [
         'page_title_es',
         'page_title_en',
@@ -42,12 +45,14 @@ class PrivacyPage extends Model
         'modifications_en',
         'modifications_fr',
         'last_updated_at',
-        'seo_title_es',
-        'seo_title_en',
-        'seo_title_fr',
-        'seo_description_es',
-        'seo_description_en',
-        'seo_description_fr',
+
+        // ⚠️ ELIMINAR LOS CAMPOS SEO ANTIGUOS
+        // 'seo_title_es',
+        // 'seo_title_en',
+        // 'seo_title_fr',
+        // 'seo_description_es',
+        // 'seo_description_en',
+        // 'seo_description_fr',
     ];
 
     protected $casts = [
