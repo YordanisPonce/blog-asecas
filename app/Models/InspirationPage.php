@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo;
 
 class InspirationPage extends Model
 {
+    use HasSeo;
     protected $fillable = [
         'title_es',
         'title_en',
@@ -13,13 +15,13 @@ class InspirationPage extends Model
         'description_es',
         'description_en',
         'description_fr',
-        'seo_title_es',
-        'seo_title_en',
-        'seo_title_fr',
-        'seo_description_es',
-        'seo_description_en',
-        'seo_description_fr',
-        'default_limit',
+        // 'seo_title_es',
+        // 'seo_title_en',
+        // 'seo_title_fr',
+        // 'seo_description_es',
+        // 'seo_description_en',
+        // 'seo_description_fr',
+        // 'default_limit',
     ];
 
     protected $casts = [

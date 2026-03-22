@@ -1,4 +1,5 @@
 <?php
+// app/Filament/Pages/Inspiracion.php
 
 namespace App\Filament\Pages;
 
@@ -13,6 +14,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use App\Filament\Components\SeoFields; // ← IMPORTAR EL COMPONENTE SEO
 
 class Inspiracion extends Page implements HasForms
 {
@@ -27,18 +29,17 @@ class Inspiracion extends Page implements HasForms
     protected static string $view = 'filament.pages.inspiracion';
 
     public InspirationPageModel $record;
-
-    /**
-     * OJO: como usamos statePath('data'), aquí vive el estado del form.
-     */
     public ?array $data = [];
 
     public function mount(): void
     {
         $this->record = InspirationPageModel::first() ?? InspirationPageModel::create([]);
 
-        // Llenar el form con valores del record
-        $this->form->fill($this->record->toArray());
+        // Cargar datos del modelo + SEO
+        $this->form->fill([
+            ...$this->record->toArray(),
+            'seo' => $this->record->seo?->toArray() ?? [], // ← CARGAR SEO
+        ]);
     }
 
     protected function getFormModel(): InspirationPageModel
@@ -50,62 +51,62 @@ class Inspiracion extends Page implements HasForms
     {
         return $form
             ->schema([
-                Section::make('Título')->schema([
-                    Tabs::make('titles')->tabs([
-                        Tabs\Tab::make('ES')->schema([
-                            TextInput::make('title_es')->label('Título (ES)')->required(),
-                        ]),
-                        Tabs\Tab::make('EN')->schema([
-                            TextInput::make('title_en')->label('Title (EN)'),
-                        ]),
-                        Tabs\Tab::make('FR')->schema([
-                            TextInput::make('title_fr')->label('Titre (FR)'),
-                        ]),
-                    ]),
-                ]),
+                Tabs::make('Contenido')
+                    ->tabs([
 
-                Section::make('Descripción (opcional)')->schema([
-                    Tabs::make('descriptions')->tabs([
-                        Tabs\Tab::make('ES')->schema([
-                            Textarea::make('description_es')->label('Descripción (ES)')->rows(4),
-                        ]),
-                        Tabs\Tab::make('EN')->schema([
-                            Textarea::make('description_en')->label('Description (EN)')->rows(4),
-                        ]),
-                        Tabs\Tab::make('FR')->schema([
-                            Textarea::make('description_fr')->label('Description (FR)')->rows(4),
-                        ]),
-                    ]),
-                ]),
+                        // ===== TAB 1: TODO TU CONTENIDO EXISTENTE =====
+                        Tabs\Tab::make('Contenido Principal')
+                            ->icon('heroicon-o-document-text')
+                            ->schema([
 
-                Section::make('SEO (opcional)')->schema([
-                    Tabs::make('seo')->tabs([
-                        Tabs\Tab::make('ES')->schema([
-                            TextInput::make('seo_title_es')->label('SEO title (ES)')->maxLength(70),
-                            TextInput::make('seo_description_es')->label('SEO description (ES)')->maxLength(300),
-                        ]),
-                        Tabs\Tab::make('EN')->schema([
-                            TextInput::make('seo_title_en')->label('SEO title (EN)')->maxLength(70),
-                            TextInput::make('seo_description_en')->label('SEO description (EN)')->maxLength(300),
-                        ]),
-                        Tabs\Tab::make('FR')->schema([
-                            TextInput::make('seo_title_fr')->label('SEO title (FR)')->maxLength(70),
-                            TextInput::make('seo_description_fr')->label('SEO description (FR)')->maxLength(300),
-                        ]),
-                    ]),
-                ]),
+                                Section::make('Título')
+                                    ->schema([
+                                        Tabs::make('titles')->tabs([
+                                            Tabs\Tab::make('ES')->schema([
+                                                TextInput::make('title_es')->label('Título (ES)')->required(),
+                                            ]),
+                                            Tabs\Tab::make('EN')->schema([
+                                                TextInput::make('title_en')->label('Title (EN)'),
+                                            ]),
+                                            Tabs\Tab::make('FR')->schema([
+                                                TextInput::make('title_fr')->label('Titre (FR)'),
+                                            ]),
+                                        ]),
+                                    ]),
 
-                Section::make('Control de imágenes')->schema([
-                    TextInput::make('default_limit')
-                        ->label('Límite sugerido para secciones pequeñas')
-                        ->helperText("Define cuántas imágenes se verán en secciones pequeñas (como la Home). Ej: 8 = se ven 8. En la página de Inspiración normalmente se ven todas. 0 = sin límite (se ven todas).")
+                                Section::make('Descripción (opcional)')
+                                    ->schema([
+                                        Tabs::make('descriptions')->tabs([
+                                            Tabs\Tab::make('ES')->schema([
+                                                Textarea::make('description_es')->label('Descripción (ES)')->rows(4),
+                                            ]),
+                                            Tabs\Tab::make('EN')->schema([
+                                                Textarea::make('description_en')->label('Description (EN)')->rows(4),
+                                            ]),
+                                            Tabs\Tab::make('FR')->schema([
+                                                Textarea::make('description_fr')->label('Description (FR)')->rows(4),
+                                            ]),
+                                        ]),
+                                    ]),
 
-                        ->numeric()
-                        ->minValue(0)
-                        ->default(0),
-                ]),
+                                Section::make('Control de imágenes')
+                                    ->schema([
+                                        TextInput::make('default_limit')
+                                            ->label('Límite sugerido para secciones pequeñas')
+                                            ->helperText("Define cuántas imágenes se verán en secciones pequeñas (como la Home). Ej: 8 = se ven 8. En la página de Inspiración normalmente se ven todas. 0 = sin límite (se ven todas).")
+                                            ->numeric()
+                                            ->minValue(0)
+                                            ->default(0),
+                                    ]),
+                            ]),
+
+                        // ===== TAB 2: SEO (UNA SOLA LÍNEA) =====
+                        SeoFields::make(), // ← ¡ASÍ DE SIMPLE!
+
+                    ])
+                    ->persistTabInQueryString(),
             ])
-            ->statePath('data'); // <-- el estado vive en $this->data
+            ->statePath('data');
     }
 
     protected function getFormActions(): array
@@ -118,14 +119,58 @@ class Inspiracion extends Page implements HasForms
         ];
     }
 
+    
+
     public function save(): void
     {
-        // Validación del form (Filament valida automáticamente, pero lo forzamos si quieres)
         $this->form->validate();
 
-        // Como statePath('data'), el estado está en $this->data
-        $this->record->fill($this->data);
+        // 🔧 Procesar datos SEO antes de guardar
+        $modelData = $this->data;
+        $seoData = null;
+
+        if (isset($modelData['seo'])) {
+            $seoData = $modelData['seo'];
+
+            // 🔧 Limpiar campos que son arrays
+            $fieldsToClean = ['og_image', 'twitter_image'];
+            foreach ($fieldsToClean as $field) {
+                if (isset($seoData[$field]) && is_array($seoData[$field])) {
+                    // Si es array vacío, poner null
+                    if (empty($seoData[$field])) {
+                        $seoData[$field] = null;
+                    }
+                    // Si es array con un elemento, tomar ese elemento
+                    elseif (count($seoData[$field]) === 1) {
+                        $seoData[$field] = $seoData[$field][0];
+                    }
+                }
+            }
+
+            unset($modelData['seo']); // Remover SEO de los datos del modelo
+        }
+
+        // Guardar contenido principal
+        $this->record->fill($modelData);
         $this->record->save();
+
+        // Guardar datos SEO (si existen)
+        if ($seoData && is_array($seoData)) {
+            try {
+                $this->record->syncSeo($seoData);
+                \Log::info('SEO saved successfully for InspirationPage');
+            } catch (\Exception $e) {
+                \Log::error('Error saving SEO: ' . $e->getMessage());
+                \Log::error('SEO Data that caused error:', $seoData);
+
+                Notification::make()
+                    ->title('Error al guardar SEO')
+                    ->body($e->getMessage())
+                    ->danger()
+                    ->send();
+                return;
+            }
+        }
 
         Notification::make()
             ->title('Contenido de Inspiración actualizado.')

@@ -28,14 +28,51 @@ trait HasSeo
     /**
      * Sincronizar datos SEO (guardar o actualizar)
      */
+    // app/Traits/HasSeo.php
+
     public function syncSeo(array $data): SeoMetadata
     {
-        // Limpiar datos vacíos para no guardar basura
-        $data = array_filter($data, function ($value) {
-            return !is_null($value) && $value !== '';
-        });
+        // Limpiar y convertir datos
+        $filteredData = [];
 
-        return $this->seo()->updateOrCreate([], $data);
+        foreach ($data as $key => $value) {
+            // 🔧 Manejar arrays (como og_image y twitter_image)
+            if (is_array($value)) {
+                // Si es un array vacío, convertirlo a null
+                if (empty($value)) {
+                    $filteredData[$key] = null;
+                    \Log::info("Field {$key} was empty array, converted to null");
+                }
+                // Si es un array con un solo valor, tomar ese valor
+                elseif (count($value) === 1 && isset($value[0])) {
+                    $filteredData[$key] = $value[0];
+                    \Log::info("Field {$key} was array with single value, extracted: " . $value[0]);
+                }
+                // Si es un array con múltiples valores, tomar el primero
+                elseif (count($value) > 1) {
+                    $filteredData[$key] = $value[0];
+                    \Log::info("Field {$key} was array with multiple values, taking first: " . $value[0]);
+                }
+                // Para otros casos, convertir a JSON
+                else {
+                    $filteredData[$key] = json_encode($value);
+                    \Log::warning("Field {$key} was complex array, converted to JSON");
+                }
+            }
+            // Filtrar valores null y strings vacías
+            elseif (!is_null($value) && $value !== '') {
+                $filteredData[$key] = $value;
+            }
+        }
+
+        \Log::info('syncSeo processed data:', $filteredData);
+
+        try {
+            return $this->seo()->updateOrCreate([], $filteredData);
+        } catch (\Exception $e) {
+            \Log::error('updateOrCreate failed: ' . $e->getMessage());
+            throw $e;
+        }
     }
 
     /**
