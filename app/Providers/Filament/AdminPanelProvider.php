@@ -45,6 +45,7 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Pages\ApplicationsPage::class,
                 \App\Filament\Pages\FinishesPage::class,
                 \App\Filament\Pages\SpacesPage::class,
+                \App\Filament\Pages\CategoriesPage::class,
                 // \App\Filament\Pages\Espacios::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')

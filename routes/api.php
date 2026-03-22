@@ -169,6 +169,11 @@ Route::prefix('v1')->group(function () {
     Route::get('/categories/{slug}/products', [CategoryController::class, 'products']);
     Route::get('/categories/{slug}/applications', [CategoryController::class, 'applications']);
 
+
+    // routes/api.php - dentro del grupo v1
+
+    Route::get('/categorias', [\App\Http\Controllers\Api\CategoriesPageController::class, 'show']);
+    
     // Products endpoints
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/products/{slug}', [ProductController::class, 'show']);
