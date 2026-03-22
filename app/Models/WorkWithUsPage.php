@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo;
 
 class WorkWithUsPage extends Model
 {
+
+    use HasSeo;
     protected $fillable = [
         'hero_title_es',
         'hero_title_en',
@@ -52,11 +55,6 @@ class WorkWithUsPage extends Model
         'checkbox_2_label_en',
         'checkbox_2_label_fr',
 
-        'seo_title_es',
-        'seo_title_en',
-        'seo_title_fr',
-        'seo_description_es',
-        'seo_description_en',
-        'seo_description_fr',
+    
     ];
 }

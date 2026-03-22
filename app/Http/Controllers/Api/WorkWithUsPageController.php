@@ -1,4 +1,5 @@
 <?php
+// app/Http/Controllers/Api/WorkWithUsPageController.php
 
 namespace App\Http\Controllers\Api;
 
@@ -11,32 +12,31 @@ class WorkWithUsPageController extends Controller
 {
     public function show(Request $request)
     {
-        $lang = in_array($request->query('lang'), ['es', 'en', 'fr']) ? $request->query('lang') : 'es';
+        $lang = $request->query('lang', 'es');
+        abort_unless(in_array($lang, ['es', 'en', 'fr']), 422, 'Invalid lang');
 
-        $page = WorkWithUsPage::firstOrCreate(['id' => 1]);
+        // Cargar el modelo con su relación SEO
+        $page = WorkWithUsPage::with('seo')->firstOrCreate(['id' => 1]);
 
-        $t = fn(string $key) => $page->{$key . '_' . $lang} ?: $page->{$key . '_es'} ?: null;
+        $t = function (string $key) use ($page, $lang) {
+            return $page->{$key . '_' . $lang} ?: $page->{$key . '_es'} ?: null;
+        };
 
         $url = function (?string $path) {
             if (!$path) return null;
-
             if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
                 return $path;
             }
-
-            // ✅ si existe en /public (ej: public/work-with-us/xxx.png)
             if (file_exists(public_path($path))) {
                 return asset($path);
             }
-
-            // ✅ fallback a storage/app/public
             return Storage::disk('public')->url($path);
         };
 
-
         return response()->json([
-            'success' => true,
-            'data' => [
+            'status' => 200,
+            'message' => 'OK',
+            'response' => [
                 'hero' => [
                     'title' => $t('hero_title'),
                     'bgImage' => [
@@ -61,16 +61,13 @@ class WorkWithUsPageController extends Controller
                     ],
                     'cvLabel' => $t('cv_label'),
                     'submitText' => $t('submit_text'),
-
                     'legalInfoHtml' => $t('legal_info_text'),
                     'checkbox1Label' => $t('checkbox_1_label'),
                     'checkbox2Label' => $t('checkbox_2_label'),
                 ],
 
-                'seo' => [
-                    'title' => $t('seo_title'),
-                    'description' => $t('seo_description'),
-                ],
+                // 👇 NUEVO: Datos SEO usando el trait
+                'seo' => $page->getSeoForApi($lang),
             ],
         ]);
     }
