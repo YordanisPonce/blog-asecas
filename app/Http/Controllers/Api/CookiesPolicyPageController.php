@@ -1,4 +1,5 @@
 <?php
+// app/Http/Controllers/Api/CookiesPolicyPageController.php
 
 namespace App\Http\Controllers\Api;
 
@@ -10,22 +11,16 @@ class CookiesPolicyPageController extends Controller
 {
     public function show(Request $request)
     {
-        $lang = strtolower((string) $request->query('lang', 'es'));
-        if (!in_array($lang, ['es', 'en', 'fr'], true)) {
-            return response()->json([
-                'status' => 422,
-                'message' => 'Invalid lang. Allowed: es, en, fr',
-                'response' => null,
-            ], 422);
-        }
+        $lang = $request->query('lang', 'es');
+        abort_unless(in_array($lang, ['es', 'en', 'fr']), 422, 'Invalid lang');
 
-        $page = CookiesPage::query()->first() ?? CookiesPage::create([]);
+        // Cargar el modelo con su relación SEO
+        $page = CookiesPage::with('seo')->first() ?? CookiesPage::create([]);
 
         $response = [
             'page_title'      => $this->t($page, 'page_title', $lang),
             'last_updated_at' => optional($page->last_updated_at)->toDateString(),
 
-            // ✅ layout 2 columnas como en tu captura
             'columns' => [
                 'left' => [
                     ['key' => 'intro',           'html' => $this->t($page, 'intro', $lang)],
@@ -38,10 +33,8 @@ class CookiesPolicyPageController extends Controller
                 ],
             ],
 
-            'seo' => [
-                'title'       => $this->t($page, 'seo_title', $lang),
-                'description' => $this->t($page, 'seo_description', $lang),
-            ],
+            // 👇 NUEVO: Datos SEO usando el trait
+            'seo' => $page->getSeoForApi($lang),
         ];
 
         return response()->json([
