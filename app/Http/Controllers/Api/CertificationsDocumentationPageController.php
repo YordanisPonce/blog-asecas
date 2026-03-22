@@ -90,10 +90,7 @@ class CertificationsDocumentationPageController extends Controller
                     'description' => $t('solutions_description'),
                     'items' => $items,
                 ],
-                'seo' => [
-                    'title' => $t('seo_title'),
-                    'description' => $t('seo_description'),
-                ],
+                'seo' => $page->getSeoForApi($lang),
             ],
         ]);
     }

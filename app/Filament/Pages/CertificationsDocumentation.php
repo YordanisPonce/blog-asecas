@@ -1,4 +1,5 @@
 <?php
+// app/Filament/Pages/CertificationsDocumentation.php
 
 namespace App\Filament\Pages;
 
@@ -20,6 +21,7 @@ use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Forms\Get;
 use Filament\Forms\Components\Select;
+use App\Filament\Components\SeoFields; // ← IMPORTAR EL COMPONENTE SEO
 
 class CertificationsDocumentation extends Page implements HasForms
 {
@@ -48,7 +50,11 @@ class CertificationsDocumentation extends Page implements HasForms
             ->values()
             ->all();
 
-        $this->form->fill($state);
+        // Cargar datos del modelo + SEO
+        $this->form->fill([
+            ...$state,
+            'seo' => $this->record->seo?->toArray() ?? [], // ← CARGAR SEO
+        ]);
     }
 
     protected function getFormModel(): PageModel
@@ -59,129 +65,126 @@ class CertificationsDocumentation extends Page implements HasForms
     public function form(Form $form): Form
     {
         return $form->schema([
-            // ================= TITULO =================
-            Section::make('Título')->schema([
-                Tabs::make('title_lang')->tabs([
-                    Tab::make('ES')->schema([
-                        TextInput::make('title_es')->label('Título (ES)')->required(),
-                    ]),
-                    Tab::make('EN')->schema([
-                        TextInput::make('title_en')->label('Title (EN)')->nullable(),
-                    ]),
-                    Tab::make('FR')->schema([
-                        TextInput::make('title_fr')->label('Titre (FR)')->nullable(),
-                    ]),
-                ]),
-            ]),
+            Tabs::make('Contenido')
+                ->tabs([
 
-            // ================= DOCUMENTOS =================
-            Section::make('Documentos (Descargables)')->schema([
-                Repeater::make('documents')
-                    ->label('Documentos')
-                    ->reorderable()
-                    ->defaultItems(0)
-                    ->collapsed()
-                    ->schema([
-                        TextInput::make('key')
-                            ->label('Key (única)')
-                            ->helperText('Ej: certificado-aenor')
-                            ->required()
-                            ->maxLength(120),
+                    // ===== TAB 1: TODO TU CONTENIDO EXISTENTE =====
+                    Tab::make('Contenido Principal')
+                        ->icon('heroicon-o-document-text')
+                        ->schema([
 
-                        Tabs::make('doc_titles')->tabs([
-                            Tab::make('ES')->schema([
-                                TextInput::make('title_es')->label('Título (ES)')->required(),
+                            // ================= TITULO =================
+                            Section::make('Título')->schema([
+                                Tabs::make('title_lang')->tabs([
+                                    Tab::make('ES')->schema([
+                                        TextInput::make('title_es')->label('Título (ES)')->required(),
+                                    ]),
+                                    Tab::make('EN')->schema([
+                                        TextInput::make('title_en')->label('Title (EN)')->nullable(),
+                                    ]),
+                                    Tab::make('FR')->schema([
+                                        TextInput::make('title_fr')->label('Titre (FR)')->nullable(),
+                                    ]),
+                                ]),
                             ]),
-                            Tab::make('EN')->schema([
-                                TextInput::make('title_en')->label('Title (EN)')->nullable(),
+
+                            // ================= DOCUMENTOS =================
+                            Section::make('Documentos (Descargables)')->schema([
+                                Repeater::make('documents')
+                                    ->label('Documentos')
+                                    ->reorderable()
+                                    ->defaultItems(0)
+                                    ->collapsed()
+                                    ->schema([
+                                        TextInput::make('key')
+                                            ->label('Key (única)')
+                                            ->helperText('Ej: certificado-aenor')
+                                            ->required()
+                                            ->maxLength(120),
+
+                                        Tabs::make('doc_titles')->tabs([
+                                            Tab::make('ES')->schema([
+                                                TextInput::make('title_es')->label('Título (ES)')->required(),
+                                            ]),
+                                            Tab::make('EN')->schema([
+                                                TextInput::make('title_en')->label('Title (EN)')->nullable(),
+                                            ]),
+                                            Tab::make('FR')->schema([
+                                                TextInput::make('title_fr')->label('Titre (FR)')->nullable(),
+                                            ]),
+                                        ]),
+
+                                        FileUpload::make('file_path')
+                                            ->label('Archivo')
+                                            ->disk('public')
+                                            ->directory('files')
+                                            ->visibility('public')
+                                            ->preserveFilenames()
+                                            ->openable()
+                                            ->downloadable()
+                                            ->acceptedFileTypes([
+                                                'application/pdf',
+                                                'application/msword',
+                                                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                                            ])
+                                            ->maxSize(10240)
+                                            ->required(),
+                                    ])
+                                    ->itemLabel(fn(array $state): ?string => $state['title_es'] ?? $state['key'] ?? null),
                             ]),
-                            Tab::make('FR')->schema([
-                                TextInput::make('title_fr')->label('Titre (FR)')->nullable(),
+
+                            // ================= SOLUCIONES + CATEGORIAS =================
+                            Section::make('Soluciones para la construcción')->schema([
+                                Tabs::make('solutions_lang')->tabs([
+                                    Tab::make('ES')->schema([
+                                        TextInput::make('solutions_title_es')->label('Título (ES)')->nullable(),
+                                        Textarea::make('solutions_description_es')->label('Descripción (ES)')->rows(2)->nullable(),
+                                    ]),
+                                    Tab::make('EN')->schema([
+                                        TextInput::make('solutions_title_en')->label('Title (EN)')->nullable(),
+                                        Textarea::make('solutions_description_en')->label('Description (EN)')->rows(2)->nullable(),
+                                    ]),
+                                    Tab::make('FR')->schema([
+                                        TextInput::make('solutions_title_fr')->label('Titre (FR)')->nullable(),
+                                        Textarea::make('solutions_description_fr')->label('Description (FR)')->rows(2)->nullable(),
+                                    ]),
+                                ]),
+
+                                Repeater::make('featured_categories_items')
+                                    ->label('Categorías a mostrar (ordenable)')
+                                    ->schema([
+                                        Select::make('category_id')
+                                            ->label('Categoría')
+                                            ->searchable()
+                                            ->required()
+                                            ->disableOptionsWhenSelectedInSiblingRepeaterItems()
+                                            ->options(function (Get $get) {
+                                                $selectedIds = collect($get('../../featured_categories_items') ?? [])
+                                                    ->pluck('category_id')
+                                                    ->filter()
+                                                    ->map(fn($v) => (int) $v)
+                                                    ->values()
+                                                    ->all();
+
+                                                return Category::query()
+                                                    ->when(count($selectedIds), fn($q) => $q->whereNotIn('id', $selectedIds))
+                                                    ->orderBy('name')
+                                                    ->pluck('name', 'id')
+                                                    ->toArray();
+                                            })
+                                            ->preload(),
+                                    ])
+                                    ->reorderable()
+                                    ->defaultItems(0)
+                                    ->collapsed(),
                             ]),
                         ]),
 
-                        FileUpload::make('file_path')
-                            ->label('Archivo')
-                            ->disk('public')
-                            ->directory('files')
-                            ->visibility('public')
-                            ->preserveFilenames()
-                            ->openable()
-                            ->downloadable()
-                            ->acceptedFileTypes([
-                                'application/pdf',
-                                'application/msword',
-                                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                            ])
-                            ->maxSize(10240)
-                            ->required(),
-                    ])
-                    ->itemLabel(fn(array $state): ?string => $state['title_es'] ?? $state['key'] ?? null),
-            ]),
+                    // ===== TAB 2: SEO (UNA SOLA LÍNEA) =====
+                    SeoFields::make(), // ← ¡ASÍ DE SIMPLE!
 
-            // ================= SOLUCIONES + CATEGORIAS =================
-            Section::make('Soluciones para la construcción')->schema([
-                Tabs::make('solutions_lang')->tabs([
-                    Tab::make('ES')->schema([
-                        TextInput::make('solutions_title_es')->label('Título (ES)')->nullable(),
-                        Textarea::make('solutions_description_es')->label('Descripción (ES)')->rows(2)->nullable(),
-                    ]),
-                    Tab::make('EN')->schema([
-                        TextInput::make('solutions_title_en')->label('Title (EN)')->nullable(),
-                        Textarea::make('solutions_description_en')->label('Description (EN)')->rows(2)->nullable(),
-                    ]),
-                    Tab::make('FR')->schema([
-                        TextInput::make('solutions_title_fr')->label('Titre (FR)')->nullable(),
-                        Textarea::make('solutions_description_fr')->label('Description (FR)')->rows(2)->nullable(),
-                    ]),
-                ]),
-
-                Repeater::make('featured_categories_items')
-                    ->label('Categorías a mostrar (ordenable)')
-                    ->schema([
-                        Select::make('category_id')
-                            ->label('Categoría')
-                            ->searchable()
-                            ->required()
-                            ->disableOptionsWhenSelectedInSiblingRepeaterItems()
-                            ->options(function (Get $get) {
-                                $selectedIds = collect($get('../../featured_categories_items') ?? [])
-                                    ->pluck('category_id')
-                                    ->filter()
-                                    ->map(fn($v) => (int) $v)
-                                    ->values()
-                                    ->all();
-
-                                return Category::query()
-                                    ->when(count($selectedIds), fn($q) => $q->whereNotIn('id', $selectedIds))
-                                    ->orderBy('name')
-                                    ->pluck('name', 'id')
-                                    ->toArray();
-                            })
-                            ->preload(),
-                    ])
-                    ->reorderable()
-                    ->defaultItems(0)
-                    ->collapsed(),
-            ]),
-
-            // ================= SEO =================
-            Section::make('SEO (opcional)')->schema([
-                Tabs::make('seo_lang')->tabs([
-                    Tab::make('ES')->schema([
-                        TextInput::make('seo_title_es')->maxLength(70)->label('SEO title (ES)'),
-                        Textarea::make('seo_description_es')->maxLength(300)->rows(2)->label('SEO description (ES)'),
-                    ]),
-                    Tab::make('EN')->schema([
-                        TextInput::make('seo_title_en')->maxLength(70)->label('SEO title (EN)'),
-                        Textarea::make('seo_description_en')->maxLength(300)->rows(2)->label('SEO description (EN)'),
-                    ]),
-                    Tab::make('FR')->schema([
-                        TextInput::make('seo_title_fr')->maxLength(70)->label('SEO title (FR)'),
-                        Textarea::make('seo_description_fr')->maxLength(300)->rows(2)->label('SEO description (FR)'),
-                    ]),
-                ]),
-            ]),
+                ])
+                ->persistTabInQueryString(),
         ])->statePath('data');
     }
 
@@ -210,8 +213,14 @@ class CertificationsDocumentation extends Page implements HasForms
         $data['featured_categories'] = $items;
         unset($data['featured_categories_items']);
 
+        // Guardar contenido principal
         $this->record->fill($data);
         $this->record->save();
+
+        // Guardar datos SEO (si existen)
+        if (isset($data['seo'])) {
+            $this->record->syncSeo($data['seo']);
+        }
 
         Notification::make()
             ->title('Cambios guardados satisfactoriamente')
