@@ -177,6 +177,7 @@ Route::prefix('v1')->group(function () {
 
     // Applications endpoints
     Route::get('/applications', [ApplicationController::class, 'index']);
+    Route::get('/aplicaciones', [\App\Http\Controllers\Api\ApplicationsPageController::class, 'show']);
     Route::get('/applications/{slug}', [ApplicationController::class, 'show']);
     Route::get('/applications/{slug}/categories', [ApplicationController::class, 'categories']);
 
