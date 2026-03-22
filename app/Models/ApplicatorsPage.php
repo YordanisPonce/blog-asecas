@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo;
 
 class ApplicatorsPage extends Model
 {
+    use HasSeo;
+
     protected $fillable = [
         'hero_title_es',
         'hero_title_en',
@@ -77,12 +80,12 @@ class ApplicatorsPage extends Model
         'form_checkbox2_en',
         'form_checkbox2_fr',
 
-        'seo_title_es',
-        'seo_title_en',
-        'seo_title_fr',
-        'seo_description_es',
-        'seo_description_en',
-        'seo_description_fr',
+        // 'seo_title_es',
+        // 'seo_title_en',
+        // 'seo_title_fr',
+        // 'seo_description_es',
+        // 'seo_description_en',
+        // 'seo_description_fr',
     ];
 
     protected $casts = [
