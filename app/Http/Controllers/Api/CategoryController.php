@@ -69,9 +69,36 @@ class CategoryController extends Controller
             ], 404);
         }
 
+        $lang = request()->query('lang', 'es');
+
+        // 👇 Construir SEO personalizado de la categoría
+        $seo = [
+            'meta' => [
+                'title' => $category->getMetaTitle($lang),
+                'description' => $category->getMetaDescription($lang),
+                'keywords' => $category->getMetaKeywords($lang),
+                'robots' => 'index, follow',
+            ],
+            'og' => [
+                'title' => $category->getOgTitle($lang),
+                'description' => $category->getOgDescription($lang),
+                'image' => $category->getOgImageUrl(),
+                'type' => 'website',
+            ],
+            'twitter' => [
+                'card' => 'summary_large_image',
+                'title' => $category->getOgTitle($lang),
+                'description' => $category->getOgDescription($lang),
+                'image' => $category->getOgImageUrl(),
+            ],
+        ];
+
+        $categoryArray = $category->toArray();
+        $categoryArray['seo'] = $seo;
+
         return response()->json([
             'success' => true,
-            'data' => $category,
+            'data' => $categoryArray,
             'message' => 'Category retrieved successfully.'
         ]);
     }

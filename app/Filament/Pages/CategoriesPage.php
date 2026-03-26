@@ -19,7 +19,7 @@ class CategoriesPage extends Page implements HasForms
 
     protected static ?string $navigationGroup = 'Contenido web';
     protected static ?int $navigationSort = 74;
-    protected static ?string $navigationLabel = 'SEO - Productos';
+    protected static ?string $navigationLabel = 'SEO - Categorías';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $title = 'SEO - Página Categorías';
     protected static string $view = 'filament.pages.categories-page';

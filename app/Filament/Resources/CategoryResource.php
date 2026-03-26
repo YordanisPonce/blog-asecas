@@ -85,19 +85,19 @@ class CategoryResource extends Resource
 
                 Forms\Components\Section::make('Imagen')
                     ->schema([
-                Forms\Components\FileUpload::make('image')
-                    ->label('Imagen de la Categoría')
-                    ->image()
-                    ->disk('public')
-                    ->directory('img') // Es mejor usar subdirectorio específico
-                    ->preserveFilenames()
-                    ->maxSize(2048) // 2MB
-                    ->imagePreviewHeight(250)
-                    ->downloadable()
-                    ->openable()
-                    ->deletable(true)
-                    ->helperText('Formatos: JPG, PNG, WebP. Máximo 2MB')
-                    ->rules(['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048']),
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Imagen de la Categoría')
+                            ->image()
+                            ->disk('public')
+                            ->directory('img') // Es mejor usar subdirectorio específico
+                            ->preserveFilenames()
+                            ->maxSize(2048) // 2MB
+                            ->imagePreviewHeight(250)
+                            ->downloadable()
+                            ->openable()
+                            ->deletable(true)
+                            ->helperText('Formatos: JPG, PNG, WebP. Máximo 2MB')
+                            ->rules(['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048']),
 
                         Forms\Components\Grid::make(3)
                             ->schema([
@@ -158,6 +158,76 @@ class CategoryResource extends Resource
                             ->label('Descripción Corta (Francés)')
                             ->rows(3),
                     ]),
+
+
+                Forms\Components\Section::make('Optimización SEO')
+                    ->icon('heroicon-o-globe-alt')
+                    ->schema([
+                        Forms\Components\Tabs::make('SEO Tabs')
+                            ->tabs([
+                                Forms\Components\Tabs\Tab::make('Español')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('meta_title_es')
+                                            ->label('Meta Title (ES)')
+                                            ->maxLength(60),
+                                        Forms\Components\Textarea::make('meta_description_es')
+                                            ->label('Meta Description (ES)')
+                                            ->maxLength(160)
+                                            ->rows(2),
+                                        Forms\Components\Textarea::make('meta_keywords_es')
+                                            ->label('Meta Keywords (ES)')
+                                            ->helperText('Separadas por comas'),
+                                        Forms\Components\TextInput::make('og_title_es')
+                                            ->label('OG Title (ES)'),
+                                        Forms\Components\Textarea::make('og_description_es')
+                                            ->label('OG Description (ES)')
+                                            ->rows(2),
+                                    ]),
+                                Forms\Components\Tabs\Tab::make('English')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('meta_title_en')
+                                            ->label('Meta Title (EN)')
+                                            ->maxLength(60),
+                                        Forms\Components\Textarea::make('meta_description_en')
+                                            ->label('Meta Description (EN)')
+                                            ->maxLength(160)
+                                            ->rows(2),
+                                        Forms\Components\Textarea::make('meta_keywords_en')
+                                            ->label('Meta Keywords (EN)'),
+                                        Forms\Components\TextInput::make('og_title_en')
+                                            ->label('OG Title (EN)'),
+                                        Forms\Components\Textarea::make('og_description_en')
+                                            ->label('OG Description (EN)')
+                                            ->rows(2),
+                                    ]),
+                                Forms\Components\Tabs\Tab::make('Français')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('meta_title_fr')
+                                            ->label('Meta Title (FR)')
+                                            ->maxLength(60),
+                                        Forms\Components\Textarea::make('meta_description_fr')
+                                            ->label('Meta Description (FR)')
+                                            ->maxLength(160)
+                                            ->rows(2),
+                                        Forms\Components\Textarea::make('meta_keywords_fr')
+                                            ->label('Meta Keywords (FR)'),
+                                        Forms\Components\TextInput::make('og_title_fr')
+                                            ->label('OG Title (FR)'),
+                                        Forms\Components\Textarea::make('og_description_fr')
+                                            ->label('OG Description (FR)')
+                                            ->rows(2),
+                                    ]),
+                            ]),
+
+                        Forms\Components\FileUpload::make('og_image')
+                            ->label('OG Image (Imagen para redes sociales)')
+                            ->image()
+                            ->disk('public')
+                            ->directory('seo/og-images')
+                            ->visibility('public')
+                            ->helperText('Recomendado: 1200x630px'),
+                    ])
+                    ->collapsible(),
             ]);
     }
 
