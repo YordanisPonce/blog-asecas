@@ -30,6 +30,24 @@ class Application extends Model
         'description_fr',
         'order',
         'is_active',
+
+        // 👇 NUEVOS CAMPOS SEO
+        'meta_title_es',
+        'meta_title_en',
+        'meta_title_fr',
+        'meta_description_es',
+        'meta_description_en',
+        'meta_description_fr',
+        'meta_keywords_es',
+        'meta_keywords_en',
+        'meta_keywords_fr',
+        'og_title_es',
+        'og_title_en',
+        'og_title_fr',
+        'og_description_es',
+        'og_description_en',
+        'og_description_fr',
+        'og_image',
     ];
 
     protected $casts = [
@@ -39,6 +57,71 @@ class Application extends Model
     ];
 
     protected $appends = ['image_url', 'icon_url'];
+
+    // 👇 AÑADIR MÉTODOS HELPER PARA SEO
+    public function getMetaTitle(string $lang): ?string
+    {
+        $seoValue = $this->{"meta_title_{$lang}"};
+        if (!empty($seoValue)) {
+            return $seoValue;
+        }
+
+        if ($lang === 'en') {
+            return $this->name_en ?? $this->name;
+        }
+        if ($lang === 'fr') {
+            return $this->name_fr ?? $this->name;
+        }
+        return $this->name;
+    }
+
+    public function getMetaDescription(string $lang): ?string
+    {
+        $seoValue = $this->{"meta_description_{$lang}"};
+        if (!empty($seoValue)) {
+            return $seoValue;
+        }
+
+        if ($lang === 'en') {
+            return $this->short_description_en ?? null;
+        }
+        if ($lang === 'fr') {
+            return $this->short_description_fr ?? $this->short_description_en ?? null;
+        }
+        return $this->short_description_es ?? $this->short_description_en ?? null;
+    }
+
+    public function getMetaKeywords(string $lang): ?string
+    {
+        return $this->{"meta_keywords_{$lang}"} ?? null;
+    }
+
+    public function getOgTitle(string $lang): ?string
+    {
+        $ogValue = $this->{"og_title_{$lang}"};
+        if (!empty($ogValue)) {
+            return $ogValue;
+        }
+        return $this->getMetaTitle($lang);
+    }
+
+    public function getOgDescription(string $lang): ?string
+    {
+        $ogValue = $this->{"og_description_{$lang}"};
+        if (!empty($ogValue)) {
+            return $ogValue;
+        }
+        return $this->getMetaDescription($lang);
+    }
+
+    public function getOgImageUrl(): ?string
+    {
+        if ($this->og_image) {
+            return Storage::disk('public')->url($this->og_image);
+        }
+        return $this->image_url;
+    }
+    
     // Relación many-to-many con Category
     public function categories(): BelongsToMany
     {

@@ -35,8 +35,11 @@ class ApplicationController extends Controller
     /**
      * Display the specified application.
      */
-    public function show(string $slug): JsonResponse
+    public function show(Request $request,string $slug): JsonResponse
     {
+
+        $lang = $request->query('lang', 'es');
+
         $application = Application::with([
             'categories' => function ($query) {
                 $query
@@ -57,9 +60,34 @@ class ApplicationController extends Controller
             ], 404);
         }
 
+        // 👇 Construir SEO personalizado de la aplicación
+        $seo = [
+            'meta' => [
+                'title' => $application->getMetaTitle($lang),
+                'description' => $application->getMetaDescription($lang),
+                'keywords' => $application->getMetaKeywords($lang),
+                'robots' => 'index, follow',
+            ],
+            'og' => [
+                'title' => $application->getOgTitle($lang),
+                'description' => $application->getOgDescription($lang),
+                'image' => $application->getOgImageUrl(),
+                'type' => 'website',
+            ],
+            'twitter' => [
+                'card' => 'summary_large_image',
+                'title' => $application->getOgTitle($lang),
+                'description' => $application->getOgDescription($lang),
+                'image' => $application->getOgImageUrl(),
+            ],
+        ];
+
+        $applicationArray = $application->toArray();
+        $applicationArray['seo'] = $seo;
+
         return response()->json([
             'success' => true,
-            'data' => $application,
+            'data' => $applicationArray,
             'message' => 'Application retrieved successfully.'
         ]);
     }

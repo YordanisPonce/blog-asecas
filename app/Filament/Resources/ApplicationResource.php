@@ -85,25 +85,25 @@ class ApplicationResource extends Resource
 
                 Forms\Components\Section::make('Medios')
                     ->schema([
-                // Forms\Components\FileUpload::make('icon')
-                //     ->label('Icono')
-                //     ->image()
-                //     ->directory('applications/icons')
-                //     ->preserveFilenames()
-                //     ->maxSize(1024),
+                        // Forms\Components\FileUpload::make('icon')
+                        //     ->label('Icono')
+                        //     ->image()
+                        //     ->directory('applications/icons')
+                        //     ->preserveFilenames()
+                        //     ->maxSize(1024),
 
-                Forms\Components\FileUpload::make('image')
-                    ->label('Imagen')
-                    ->image()
-                    ->disk('public')
-                    ->directory('applications/images')
-                    ->preserveFilenames()
-                    ->maxSize(2048),
-
-
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Imagen')
+                            ->image()
+                            ->disk('public')
+                            ->directory('applications/images')
+                            ->preserveFilenames()
+                            ->maxSize(2048),
 
 
-                Forms\Components\Grid::make(3)
+
+
+                        Forms\Components\Grid::make(3)
                             ->schema([
                                 Forms\Components\Fieldset::make('Texto Alternativo (SEO)')
                                     ->schema([
@@ -161,15 +161,81 @@ class ApplicationResource extends Resource
                 Forms\Components\Section::make('Descripciones Completas')
                     ->schema([
                         Forms\Components\Textarea::make('description_en')
-                            ->label('Descripción Completa (Inglés)')
-                            ,
+                            ->label('Descripción Completa (Inglés)'),
                         Forms\Components\Textarea::make('description_es')
-                            ->label('Descripción Completa (Español)')
-                            ,
+                            ->label('Descripción Completa (Español)'),
                         Forms\Components\Textarea::make('description_fr')
-                            ->label('Descripción Completa (Francés)')
-                            ,
+                            ->label('Descripción Completa (Francés)'),
                     ]),
+
+
+                Forms\Components\Section::make('Optimización SEO')
+                    ->icon('heroicon-o-globe-alt')
+                    ->schema([
+                        Forms\Components\Tabs::make('SEO Tabs')
+                            ->tabs([
+                                Forms\Components\Tabs\Tab::make('Español')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('meta_title_es')
+                                            ->label('Meta Title (ES)')
+                                            ->maxLength(60),
+                                        Forms\Components\Textarea::make('meta_description_es')
+                                            ->label('Meta Description (ES)')
+                                            ->maxLength(160)
+                                            ->rows(2),
+                                        Forms\Components\Textarea::make('meta_keywords_es')
+                                            ->label('Meta Keywords (ES)')
+                                            ->helperText('Separadas por comas'),
+                                        Forms\Components\TextInput::make('og_title_es')
+                                            ->label('OG Title (ES)'),
+                                        Forms\Components\Textarea::make('og_description_es')
+                                            ->label('OG Description (ES)')
+                                            ->rows(2),
+                                    ]),
+                                Forms\Components\Tabs\Tab::make('English')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('meta_title_en')
+                                            ->label('Meta Title (EN)')
+                                            ->maxLength(60),
+                                        Forms\Components\Textarea::make('meta_description_en')
+                                            ->label('Meta Description (EN)')
+                                            ->maxLength(160)
+                                            ->rows(2),
+                                        Forms\Components\Textarea::make('meta_keywords_en')
+                                            ->label('Meta Keywords (EN)'),
+                                        Forms\Components\TextInput::make('og_title_en')
+                                            ->label('OG Title (EN)'),
+                                        Forms\Components\Textarea::make('og_description_en')
+                                            ->label('OG Description (EN)')
+                                            ->rows(2),
+                                    ]),
+                                Forms\Components\Tabs\Tab::make('Français')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('meta_title_fr')
+                                            ->label('Meta Title (FR)')
+                                            ->maxLength(60),
+                                        Forms\Components\Textarea::make('meta_description_fr')
+                                            ->label('Meta Description (FR)')
+                                            ->maxLength(160)
+                                            ->rows(2),
+                                        Forms\Components\Textarea::make('meta_keywords_fr')
+                                            ->label('Meta Keywords (FR)'),
+                                        Forms\Components\TextInput::make('og_title_fr')
+                                            ->label('OG Title (FR)'),
+                                        Forms\Components\Textarea::make('og_description_fr')
+                                            ->label('OG Description (FR)')
+                                            ->rows(2),
+                                    ]),
+                            ]),
+                        Forms\Components\FileUpload::make('og_image')
+                            ->label('OG Image (Imagen para redes sociales)')
+                            ->image()
+                            ->disk('public')
+                            ->directory('seo/og-images')
+                            ->visibility('public')
+                            ->helperText('Recomendado: 1200x630px'),
+                    ])
+                    ->collapsible(),
             ]);
     }
 
