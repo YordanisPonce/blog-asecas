@@ -18,6 +18,8 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Textarea;
 
 class BlogResource extends Resource
 {
@@ -36,13 +38,50 @@ class BlogResource extends Resource
                 RichEditor::make('description')->label('Contenido')->columnSpanFull(),
                 Toggle::make('active')->label('Habilitado')->columnSpanFull(),
                 FileUpload::make('photo')->label('Foto')->columnSpanFull(),
-                Select::make('writer_id')->label('Escritor')->
-                    relationship('writer', 'name')
-                    ->columnSpanFull()->preload()->native(false),
-                Select::make('blog_category_id')->label('Categoría')->
-                    relationship('blogCategory', 'name')
-                    ->columnSpanFull()->preload()->native(false),
-                Hidden::make('user_id')->default(auth()->id())
+                // Select::make('writer_id')->label('Escritor')->
+                //     relationship('writer', 'name')
+                //     ->columnSpanFull()->preload()->native(false),
+                // Select::make('blog_category_id')->label('Categoría')->
+                //     relationship('blogCategory', 'name')
+                //     ->columnSpanFull()->preload()->native(false),
+                Hidden::make('user_id')->default(auth()->id()),
+            // Dentro de form(), después de los campos existentes:
+            Forms\Components\Section::make('Optimización SEO')
+                ->icon('heroicon-o-globe-alt')
+                ->schema([
+                    Tabs::make('SEO Tabs')
+                        ->tabs([
+                            Tabs\Tab::make('Español')->schema([
+                                TextInput::make('meta_title_es')->label('Meta Title (ES)')->maxLength(60),
+                                Textarea::make('meta_description_es')->label('Meta Description (ES)')->maxLength(160)->rows(2),
+                                Textarea::make('meta_keywords_es')->label('Meta Keywords (ES)')->helperText('Separadas por comas'),
+                                TextInput::make('og_title_es')->label('OG Title (ES)'),
+                                Textarea::make('og_description_es')->label('OG Description (ES)')->rows(2),
+                            ]),
+                            Tabs\Tab::make('English')->schema([
+                                TextInput::make('meta_title_en')->label('Meta Title (EN)')->maxLength(60),
+                                Textarea::make('meta_description_en')->label('Meta Description (EN)')->maxLength(160)->rows(2),
+                                Textarea::make('meta_keywords_en')->label('Meta Keywords (EN)'),
+                                TextInput::make('og_title_en')->label('OG Title (EN)'),
+                                Textarea::make('og_description_en')->label('OG Description (EN)')->rows(2),
+                            ]),
+                            Tabs\Tab::make('Français')->schema([
+                                TextInput::make('meta_title_fr')->label('Meta Title (FR)')->maxLength(60),
+                                Textarea::make('meta_description_fr')->label('Meta Description (FR)')->maxLength(160)->rows(2),
+                                Textarea::make('meta_keywords_fr')->label('Meta Keywords (FR)'),
+                                TextInput::make('og_title_fr')->label('OG Title (FR)'),
+                                Textarea::make('og_description_fr')->label('OG Description (FR)')->rows(2),
+                            ]),
+                        ]),
+                    FileUpload::make('og_image')
+                        ->label('OG Image (Imagen para redes sociales)')
+                        ->image()
+                        ->disk('public')
+                        ->directory('seo/og-images')
+                        ->visibility('public')
+                        ->helperText('Recomendado: 1200x630px'),
+                ])
+                ->collapsible(),
             ]);
     }
 
@@ -53,8 +92,8 @@ class BlogResource extends Resource
                 ImageColumn::make('photo')->label('Foto')->circular(),
                 TextColumn::make('title')->label('Título'),
                 TextColumn::make('user.name')->label('Usuario'),
-                TextColumn::make('writer.name')->label('Escritor'),
-                TextColumn::make('blogCategory.name')->label('Categoría'),
+                // TextColumn::make('writer.name')->label('Escritor'),
+                // TextColumn::make('blogCategory.name')->label('Categoría'),
             ])
             ->filters([
                 //

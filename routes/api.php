@@ -162,6 +162,9 @@ Route::prefix('v1')->group(function () {
 
     Route::get('/home', [HomeController::class, 'show']);
 
+    Route::get('/blog', [\App\Http\Controllers\Api\BlogPageController::class, 'show']);      // listado + SEO general
+    Route::get('/blog/{slug}', [\App\Http\Controllers\Api\BlogController::class, 'show']);   // detalle + SEO personalizado
+
 
     // Categories endpoints
     Route::get('/categories', [CategoryController::class, 'index']);
