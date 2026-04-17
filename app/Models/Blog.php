@@ -7,12 +7,21 @@ use App\Traits\Upload;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Blog extends Model
 {
     use HasSlug, Upload;
     protected static array $slugAttributes = ['title'];
-    protected $fillable = ['title', 'description', 'slug', 'active', 'user_id', 'photo', 'notified', // 👇 nuevos campos SEO
+    protected $fillable = [
+        'title',
+        'title_en',
+        'title_fr',
+        'description',
+        'description_en',
+        'description_fr', 'slug',
+        'slug_en',
+        'slug_fr','active', 'user_id', 'photo', 'notified', // 👇 nuevos campos SEO
         'meta_title_es',
         'meta_title_en',
         'meta_title_fr',
@@ -30,6 +39,9 @@ class Blog extends Model
         'og_description_fr',
         'og_image',];
 
+
+    // app/Models/Blog.php
+    protected $appends = ['photo_url'];
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -45,19 +57,19 @@ class Blog extends Model
     }
 
 
-    public function setPhotoAttribute($value)
-    {
-        $source = collect(explode("/", $value));
-        if ($source->count() > 2) {
-            $fileName = $source->pop();
-            $fileFolder = $source->pop();
-            $source = "$fileFolder/$fileName";
-        } else {
-            $source = $value;
-        }
+    // public function setPhotoAttribute($value)
+    // {
+    //     $source = collect(explode("/", $value));
+    //     if ($source->count() > 2) {
+    //         $fileName = $source->pop();
+    //         $fileFolder = $source->pop();
+    //         $source = "$fileFolder/$fileName";
+    //     } else {
+    //         $source = $value;
+    //     }
 
-        $this->attributes['photo'] = $source;
-    }
+    //     $this->attributes['photo'] = $source;
+    // }
 
 
     public function writer()
@@ -112,6 +124,35 @@ class Blog extends Model
             return Storage::disk('public')->url($this->og_image);
         }
         return $this->photo ? Storage::disk('public')->url($this->photo) : null;
+    }
+
+    // app/Models/Blog.php
+
+    public function getPhotoUrlAttribute(): ?string
+    {
+        if ($this->photo && Storage::disk('public')->exists($this->photo)) {
+            return Storage::disk('public')->url($this->photo);
+        }
+        return null;
+    }
+
+    // Añadir boot() para generar slugs automáticos
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($blog) {
+            // Solo generar slug si está vacío (no si el usuario lo ha definido)
+            if (empty($blog->slug)) {
+                $blog->slug = Str::slug($blog->title);
+            }
+            if (empty($blog->slug_en) && $blog->title_en) {
+                $blog->slug_en = Str::slug($blog->title_en);
+            }
+            if (empty($blog->slug_fr) && $blog->title_fr) {
+                $blog->slug_fr = Str::slug($blog->title_fr);
+            }
+        });
     }
 
 }

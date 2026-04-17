@@ -34,18 +34,44 @@ class BlogResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->label('Título')->columnSpanFull(),
-                RichEditor::make('description')->label('Contenido')->columnSpanFull(),
+                Forms\Components\Tabs::make('Idiomas')
+                ->columnSpanFull()
+                    ->tabs([
+                        Tabs\Tab::make('Español')->schema([
+                            TextInput::make('title')->label('Título')->required(),
+                            TextInput::make('slug')
+                                ->label('Slug (ES)')
+                                ->required()
+                                ->unique(ignoreRecord: true)
+                                ->helperText('URL amigable para la versión en español'),
+                            RichEditor::make('description')->label('Contenido')->columnSpanFull(),
+                        ]),
+                        Tabs\Tab::make('English')->schema([
+                            TextInput::make('title_en')->label('Title')->required(),
+                            TextInput::make('slug_en')
+                                ->label('Slug (EN)')
+                                ->unique(ignoreRecord: true)
+                                ->helperText('URL amigable para la versión en inglés'),
+                            RichEditor::make('description_en')->label('Content')->columnSpanFull(),
+                        ]),
+                        Tabs\Tab::make('Français')->schema([
+                            TextInput::make('title_fr')->label('Titre')->required(),
+                            TextInput::make('slug_fr')
+                                ->label('Slug (FR)')
+                                ->unique(ignoreRecord: true)
+                                ->helperText('URL amigable para la versión en francés'),
+                            RichEditor::make('description_fr')->label('Contenu')->columnSpanFull(),
+                        ]),
+                    ]),
                 Toggle::make('active')->label('Habilitado')->columnSpanFull(),
-                FileUpload::make('photo')->label('Foto')->columnSpanFull(),
-                // Select::make('writer_id')->label('Escritor')->
-                //     relationship('writer', 'name')
-                //     ->columnSpanFull()->preload()->native(false),
-                // Select::make('blog_category_id')->label('Categoría')->
-                //     relationship('blogCategory', 'name')
-                //     ->columnSpanFull()->preload()->native(false),
-                Hidden::make('user_id')->default(auth()->id()),
-            // Dentro de form(), después de los campos existentes:
+            FileUpload::make('photo')
+                ->label('Foto')
+                ->disk('public')
+                ->directory('blog/photos')
+                ->image()
+                ->imagePreviewHeight('250')
+                ->columnSpanFull(),
+                Hidden::make('user_id')->default(auth()->id()),    // Dentro de form(), después de los campos existentes:
             Forms\Components\Section::make('Optimización SEO')
                 ->icon('heroicon-o-globe-alt')
                 ->schema([

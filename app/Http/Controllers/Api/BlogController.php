@@ -21,7 +21,15 @@ class BlogController extends Controller
     {
         $lang = $request->query('lang', 'es');
 
-        $blog = Blog::where('slug', $slug)->where('active', 1)->firstOrFail();
+        $blog = Blog::where(function ($query) use ($slug) {
+            $query->where('slug', $slug)      // español
+                ->orWhere('slug_en', $slug) // inglés
+                ->orWhere('slug_fr', $slug); // francés
+        })
+            ->where('active', 1)
+            ->firstOrFail();
+
+        $blogArray['photo_url'] = $blog->photo_url;
 
         // Construir SEO personalizado
         $seo = [
@@ -50,6 +58,7 @@ class BlogController extends Controller
 
         $blogArray = $blog->toArray();
         $blogArray['seo'] = $seo;
+        $blogArray['photo_url'] = $blog->photo_url;
 
         return response()->json([
             'success' => true,
