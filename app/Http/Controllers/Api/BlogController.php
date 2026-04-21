@@ -10,7 +10,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::where('active', 1)->orderBy('created_at', 'desc')->get();
+        $blogs = Blog::where('active', 1)->orderByDesc('id')->get();
         return response()->json([
             'success' => true,
             'data' => $blogs,
