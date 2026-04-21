@@ -18,7 +18,7 @@ class BlogPageController extends Controller
         $page = BlogPage::with('seo')->first() ?? BlogPage::create([]);
 
         $blogs = Blog::where('active', 1)
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('id')
             ->get(['id', 'title', 'title_en', 'title_fr', 'slug', 'slug_en', 'slug_fr', 'photo', 'created_at', 'description']);
     
         return response()->json([
