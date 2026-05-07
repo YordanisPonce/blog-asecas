@@ -97,11 +97,7 @@ class ProductResource extends Resource
 
                 Forms\Components\Section::make('Imagen del Producto')
                     ->schema([
-                        Forms\Components\FileUpload::make('image')
-                            ->label('Imagen Principal')
-                            ->image()
-                            ->preserveFilenames()
-                            ->maxSize(2048),
+                       
 
                 Forms\Components\FileUpload::make('image')
                     ->label('Imagen Principal')

@@ -114,28 +114,37 @@ class Category extends Model
     }
 
     // Añadir métodos helper para SEO (después de los existentes)
+
+    /**
+     * Limpia HTML y espacios sobrantes para usar un texto en meta tags.
+     * Devuelve null si queda vacío (para que el siguiente fallback funcione).
+     */
+    private static function cleanSeoText(?string $value): ?string
+    {
+        if ($value === null) return null;
+        $clean = trim(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($value), ENT_QUOTES | ENT_HTML5)));
+        return $clean !== '' ? $clean : null;
+    }
+
     public function getMetaTitle(string $lang): ?string
     {
         // 1. Intentar obtener el valor SEO específico del idioma
         $seoValue = $this->{"meta_title_{$lang}"};
 
-        // 2. Si existe y no está vacío, devolverlo
+        // 2. Si existe y no está vacío, devolverlo tal cual
         if (!empty($seoValue)) {
             return $seoValue;
         }
 
-        // 3. Si no hay SEO, usar el nombre traducido según el idioma
-        // Nota: $this->name es español, $this->name_en es inglés, $this->name_fr es francés
-        if ($lang === 'en') {
-            return $this->name_en ?? $this->name;
-        }
-
-        if ($lang === 'fr') {
-            return $this->name_fr ?? $this->name;
-        }
-
-        // Español por defecto
-        return $this->name;
+        // 3. Fallback: usar el nombre traducido según el idioma. Si los `name_*`
+        // traen HTML (los usa el frontend para renderizar <h1>), aquí lo
+        // limpiamos para que el meta tag salga en texto plano.
+        $name = match ($lang) {
+            'en' => $this->name_en ?? $this->name,
+            'fr' => $this->name_fr ?? $this->name,
+            default => $this->name,
+        };
+        return self::cleanSeoText($name);
     }
 
     public function getMetaDescription(string $lang): ?string
@@ -148,17 +157,13 @@ class Category extends Model
             return $seoValue;
         }
 
-        // 3. Si no hay SEO, usar la short_description traducida según el idioma
-        if ($lang === 'en') {
-            return $this->short_description_en ?? null;
-        }
-
-        if ($lang === 'fr') {
-            return $this->short_description_fr ?? $this->short_description_en ?? null;
-        }
-
-        // Español por defecto
-        return $this->short_description_es ?? $this->short_description_en ?? null;
+        // 3. Fallback a short_description traducida (limpiando HTML por si acaso).
+        $desc = match ($lang) {
+            'en' => $this->short_description_en,
+            'fr' => $this->short_description_fr ?? $this->short_description_en,
+            default => $this->short_description_es ?? $this->short_description_en,
+        };
+        return self::cleanSeoText($desc);
     }
 
     public function getMetaKeywords(string $lang): ?string

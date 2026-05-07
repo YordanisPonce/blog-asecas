@@ -59,20 +59,36 @@ class Application extends Model
     protected $appends = ['image_url', 'icon_url'];
 
     // 👇 AÑADIR MÉTODOS HELPER PARA SEO
+
+    /**
+     * Limpia HTML y espacios sobrantes para usar un texto en meta tags.
+     * Devuelve null si queda vacío (para que el siguiente fallback funcione).
+     */
+    private static function cleanSeoText(?string $value): ?string
+    {
+        if ($value === null) return null;
+        // strip_tags + decodificar entidades HTML + normalizar espacios.
+        $clean = trim(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($value), ENT_QUOTES | ENT_HTML5)));
+        return $clean !== '' ? $clean : null;
+    }
+
     public function getMetaTitle(string $lang): ?string
     {
+        // Si el cliente puso meta_title específico, lo respetamos tal cual.
         $seoValue = $this->{"meta_title_{$lang}"};
         if (!empty($seoValue)) {
             return $seoValue;
         }
 
-        if ($lang === 'en') {
-            return $this->name_en ?? $this->name;
-        }
-        if ($lang === 'fr') {
-            return $this->name_fr ?? $this->name;
-        }
-        return $this->name;
+        // Fallback al name traducido. Como los `name_*` pueden contener HTML
+        // (los usa el frontend para renderizar <h1>), aquí lo limpiamos para
+        // que el meta tag salga en texto plano.
+        $name = match ($lang) {
+            'en' => $this->name_en ?? $this->name,
+            'fr' => $this->name_fr ?? $this->name,
+            default => $this->name,
+        };
+        return self::cleanSeoText($name);
     }
 
     public function getMetaDescription(string $lang): ?string
@@ -82,13 +98,12 @@ class Application extends Model
             return $seoValue;
         }
 
-        if ($lang === 'en') {
-            return $this->short_description_en ?? null;
-        }
-        if ($lang === 'fr') {
-            return $this->short_description_fr ?? $this->short_description_en ?? null;
-        }
-        return $this->short_description_es ?? $this->short_description_en ?? null;
+        $desc = match ($lang) {
+            'en' => $this->short_description_en,
+            'fr' => $this->short_description_fr ?? $this->short_description_en,
+            default => $this->short_description_es ?? $this->short_description_en,
+        };
+        return self::cleanSeoText($desc);
     }
 
     public function getMetaKeywords(string $lang): ?string

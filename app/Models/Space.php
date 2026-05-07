@@ -56,6 +56,18 @@ class Space extends Model
 
 
     // 👇 AÑADIR MÉTODOS HELPER PARA SEO
+
+    /**
+     * Limpia HTML y espacios sobrantes para usar un texto en meta tags.
+     * Devuelve null si queda vacío (para que el siguiente fallback funcione).
+     */
+    private static function cleanSeoText(?string $value): ?string
+    {
+        if ($value === null) return null;
+        $clean = trim(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($value), ENT_QUOTES | ENT_HTML5)));
+        return $clean !== '' ? $clean : null;
+    }
+
     public function getMetaTitle(string $lang): ?string
     {
         $seoValue = $this->{"meta_title_{$lang}"};
@@ -63,13 +75,14 @@ class Space extends Model
             return $seoValue;
         }
 
-        if ($lang === 'en') {
-            return $this->title_en ?? $this->title;
-        }
-        if ($lang === 'fr') {
-            return $this->title_fr ?? $this->title;
-        }
-        return $this->title;
+        // Los `title_*` pueden contener HTML (los usa el frontend para
+        // renderizar <h1>). Limpiamos para que el meta tag salga en texto plano.
+        $title = match ($lang) {
+            'en' => $this->title_en ?? $this->title,
+            'fr' => $this->title_fr ?? $this->title,
+            default => $this->title,
+        };
+        return self::cleanSeoText($title);
     }
 
     public function getMetaDescription(string $lang): ?string
@@ -79,13 +92,12 @@ class Space extends Model
             return $seoValue;
         }
 
-        if ($lang === 'en') {
-            return $this->description_en ?? null;
-        }
-        if ($lang === 'fr') {
-            return $this->description_fr ?? $this->description_en ?? null;
-        }
-        return $this->description ?? null;
+        $desc = match ($lang) {
+            'en' => $this->description_en,
+            'fr' => $this->description_fr ?? $this->description_en,
+            default => $this->description,
+        };
+        return self::cleanSeoText($desc);
     }
 
     public function getMetaKeywords(string $lang): ?string
