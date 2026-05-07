@@ -11,7 +11,7 @@ class Service
     protected array $with = [];
     public function getAll()
     {
-        $query = $this->record->newQuery()->with($this->with);
+        $query = $this->record->newQuery()->orderByDesc('id')->with($this->with);
         if (Schema::hasColumn($this->record->getTable(), 'active')) {
             $query->where('active', true);
         }
