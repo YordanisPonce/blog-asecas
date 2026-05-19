@@ -7,9 +7,6 @@ Route::permanentRedirect('/', '/admin');
 Route::get('/verify-email', [SuscriptionEmailController::class, 'verify'])->name('verify-email');
 Route::get('/un-verify-email', [SuscriptionEmailController::class, 'unVerify'])->name('unverify-email');
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
-
 Route::get('/files/{filename}', function ($filename) {
     // Decodifica URL y limpia espacios repetidos
     $decoded = urldecode($filename);
