@@ -7,35 +7,34 @@ Route::permanentRedirect('/', '/admin');
 Route::get('/verify-email', [SuscriptionEmailController::class, 'verify'])->name('verify-email');
 Route::get('/un-verify-email', [SuscriptionEmailController::class, 'unVerify'])->name('unverify-email');
 
-Route::get('/files/{filename}', function ($filename) {
-    // Decodifica URL y limpia espacios repetidos
-    $decoded = urldecode($filename);
-    $decoded = preg_replace('/\s+/', ' ', trim($decoded));
+Route::get('/storage/files/{filename}', function ($filename) {
+    $decoded = rawurldecode($filename);
 
-    /*
-     * Parche SOLO para estos 2 archivos antiguos.
-     * Todo lo demás queda igual.
-     */
+    // Normaliza espacios dobles, espacios raros y apóstrofes
+    $normalized = preg_replace('/\s+/', ' ', trim($decoded));
+
     $map = [
         "EURO MONEY F' mortero monocapa hidrofugo capa gruesa.pdf" => "EURO-MONEY-F-mortero-monocapa-hidrofugo-capa-gruesa.pdf",
         "EURO MONEY F' mortero monocapa hidrofugo capa fina.pdf"   => "EURO-MONEY-F-mortero-monocapa-hidrofugo-capa-fina.pdf",
     ];
 
-    $finalFilename = $map[$decoded] ?? $decoded;
+    // Si no es uno de esos 2 archivos, no toca nada
+    if (!isset($map[$normalized])) {
+        abort(404);
+    }
 
-    /*
-     * Busca el archivo en posibles ubicaciones.
-     * Deja las 3 para no romper según dónde esté guardado.
-     */
+    $realFilename = $map[$normalized];
+
     $possiblePaths = [
-        public_path('files/' . $finalFilename),
-        public_path('storage/files/' . $finalFilename),
-        storage_path('app/public/files/' . $finalFilename),
+        public_path('storage/files/' . $realFilename),
+        storage_path('app/public/files/' . $realFilename),
     ];
 
     foreach ($possiblePaths as $path) {
         if (file_exists($path)) {
-            return response()->file($path);
+            return response()->file($path, [
+                'Content-Type' => 'application/pdf',
+            ]);
         }
     }
 
