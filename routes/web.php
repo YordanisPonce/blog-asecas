@@ -81,4 +81,3 @@ Route::get('/storage/files/{filename}', function ($filename) {
 
     abort(404);
 })->where('filename', '.*');
-})->where('filename', '.*');
