@@ -7,8 +7,6 @@ Route::permanentRedirect('/', '/admin');
 Route::get('/verify-email', [SuscriptionEmailController::class, 'verify'])->name('verify-email');
 Route::get('/un-verify-email', [SuscriptionEmailController::class, 'unVerify'])->name('unverify-email');
 
-use Illuminate\Support\Facades\Route;
-
 Route::get('/storage/files/{filename}', function ($filename) {
     $requested = rawurldecode($filename);
     $requestedLower = mb_strtolower($requested);
