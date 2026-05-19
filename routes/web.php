@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SuscriptionEmailController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::permanentRedirect('/', '/admin');
@@ -11,6 +12,8 @@ Route::get('/storage/files/{filename}', function ($filename) {
     $requested = rawurldecode($filename);
     $requestedLower = mb_strtolower($requested);
 
+    Log::debug('Requested file: ' . $requested);
+    Log::debug('Requested file: ' . $filename);
     /*
      |--------------------------------------------------------------------------
      | Parche SOLO para los PDFs de mortero hidrofugo capa fina / capa gruesa
