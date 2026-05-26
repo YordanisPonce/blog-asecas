@@ -15,6 +15,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use App\Filament\Components\SeoFields; // ← IMPORTAR EL COMPONENTE SEO
@@ -127,21 +128,21 @@ class Home extends Page implements HasForms
                                                 ->tabs([
                                                     Tab::make('ES')->schema([
                                                         TextInput::make('cta_help_title_es')->label('Título (ES)'),
-                                                        Textarea::make('cta_help_text_es')->label('Texto (ES)')->rows(4),
+                                                        RichEditor::make('cta_help_text_es')->label('Texto (ES)'),
                                                         TextInput::make('cta_help_button_es')->label('Texto botón (ES)'),
                                                         TextInput::make('cta_help_image_title_es')->label('BG title (ES)'),
                                                         TextInput::make('cta_help_image_alt_es')->label('BG alt (ES)'),
                                                     ]),
                                                     Tab::make('EN')->schema([
                                                         TextInput::make('cta_help_title_en')->label('Title (EN)'),
-                                                        Textarea::make('cta_help_text_en')->label('Text (EN)')->rows(4),
+                                                        RichEditor::make('cta_help_text_en')->label('Text (EN)'),
                                                         TextInput::make('cta_help_button_en')->label('Button (EN)'),
                                                         TextInput::make('cta_help_image_title_en')->label('BG title (EN)'),
                                                         TextInput::make('cta_help_image_alt_en')->label('BG alt (EN)'),
                                                     ]),
                                                     Tab::make('FR')->schema([
                                                         TextInput::make('cta_help_title_fr')->label('Titre (FR)'),
-                                                        Textarea::make('cta_help_text_fr')->label('Texte (FR)')->rows(4),
+                                                        RichEditor::make('cta_help_text_fr')->label('Texte (FR)'),
                                                         TextInput::make('cta_help_button_fr')->label('Bouton (FR)'),
                                                         TextInput::make('cta_help_image_title_fr')->label('BG title (FR)'),
                                                         TextInput::make('cta_help_image_alt_fr')->label('BG alt (FR)'),

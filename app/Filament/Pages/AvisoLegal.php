@@ -14,6 +14,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\DatePicker;
 use Filament\Notifications\Notification;
 use App\Filament\Components\SeoFields; // ← IMPORTAR EL COMPONENTE SEO
@@ -84,13 +85,13 @@ class AvisoLegal extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('ident_info')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('ident_info_es')->rows(7),
+                                                RichEditor::make('ident_info_es'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('ident_info_en')->rows(7),
+                                                RichEditor::make('ident_info_en'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('ident_info_fr')->rows(7),
+                                                RichEditor::make('ident_info_fr'),
                                             ]),
                                         ]),
                                     ]),
@@ -99,13 +100,13 @@ class AvisoLegal extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('ip_rights')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('ip_rights_es')->rows(7),
+                                                RichEditor::make('ip_rights_es'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('ip_rights_en')->rows(7),
+                                                RichEditor::make('ip_rights_en'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('ip_rights_fr')->rows(7),
+                                                RichEditor::make('ip_rights_fr'),
                                             ]),
                                         ]),
                                     ]),
@@ -114,13 +115,13 @@ class AvisoLegal extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('terms_use')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('terms_use_es')->rows(7),
+                                                RichEditor::make('terms_use_es'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('terms_use_en')->rows(7),
+                                                RichEditor::make('terms_use_en'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('terms_use_fr')->rows(7),
+                                                RichEditor::make('terms_use_fr'),
                                             ]),
                                         ]),
                                     ]),
@@ -129,13 +130,13 @@ class AvisoLegal extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('warranty_exclusion')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('warranty_exclusion_es')->rows(7),
+                                                RichEditor::make('warranty_exclusion_es'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('warranty_exclusion_en')->rows(7),
+                                                RichEditor::make('warranty_exclusion_en'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('warranty_exclusion_fr')->rows(7),
+                                                RichEditor::make('warranty_exclusion_fr'),
                                             ]),
                                         ]),
                                     ]),
@@ -144,13 +145,13 @@ class AvisoLegal extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('security_measures')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('security_measures_es')->rows(7),
+                                                RichEditor::make('security_measures_es'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('security_measures_en')->rows(7),
+                                                RichEditor::make('security_measures_en'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('security_measures_fr')->rows(7),
+                                                RichEditor::make('security_measures_fr'),
                                             ]),
                                         ]),
                                     ]),
@@ -159,13 +160,13 @@ class AvisoLegal extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('modifications')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('modifications_es')->rows(5),
+                                                RichEditor::make('modifications_es'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('modifications_en')->rows(5),
+                                                RichEditor::make('modifications_en'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('modifications_fr')->rows(5),
+                                                RichEditor::make('modifications_fr'),
                                             ]),
                                         ]),
                                     ]),
@@ -174,13 +175,13 @@ class AvisoLegal extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('applicable_law')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('applicable_law_es')->rows(5),
+                                                RichEditor::make('applicable_law_es'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('applicable_law_en')->rows(5),
+                                                RichEditor::make('applicable_law_en'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('applicable_law_fr')->rows(5),
+                                                RichEditor::make('applicable_law_fr'),
                                             ]),
                                         ]),
                                     ]),

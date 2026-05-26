@@ -9,6 +9,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Forms\Contracts\HasForms;
@@ -90,15 +91,15 @@ class TrabajaConNosotros extends Page implements HasForms
                                         Tabs::make('section_tabs')->tabs([
                                             Tabs\Tab::make('ES')->schema([
                                                 TextInput::make('section_title_es')->label('Título sección (ES)'),
-                                                Textarea::make('section_text_es')->label('Descripción (ES)')->rows(4),
+                                                RichEditor::make('section_text_es')->label('Descripción (ES)'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
                                                 TextInput::make('section_title_en')->label('Section title (EN)'),
-                                                Textarea::make('section_text_en')->label('Description (EN)')->rows(4),
+                                                RichEditor::make('section_text_en')->label('Description (EN)'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
                                                 TextInput::make('section_title_fr')->label('Titre section (FR)'),
-                                                Textarea::make('section_text_fr')->label('Description (FR)')->rows(4),
+                                                RichEditor::make('section_text_fr')->label('Description (FR)'),
                                             ]),
                                         ]),
                                     ]),
@@ -114,7 +115,7 @@ class TrabajaConNosotros extends Page implements HasForms
                                                 TextInput::make('field_message_label_es')->label('Label Mensaje (ES)')->default('Mensaje'),
                                                 TextInput::make('cv_label_es')->label('Label Adjuntar CV (ES)')->default('Adjuntar CV'),
                                                 TextInput::make('submit_text_es')->label('Texto botón enviar (ES)')->default('Enviar'),
-                                                Textarea::make('legal_info_text_es')->label('Legal (ES)')->rows(6),
+                                                RichEditor::make('legal_info_text_es')->label('Legal (ES)'),
                                                 TextInput::make('checkbox_1_label_es')->label('Checkbox 1 (ES)'),
                                                 TextInput::make('checkbox_2_label_es')->label('Checkbox 2 (ES)'),
                                             ]),
@@ -126,7 +127,7 @@ class TrabajaConNosotros extends Page implements HasForms
                                                 TextInput::make('field_message_label_en')->label('Message label (EN)')->default('Message'),
                                                 TextInput::make('cv_label_en')->label('Attach CV label (EN)')->default('Attach CV'),
                                                 TextInput::make('submit_text_en')->label('Submit text (EN)')->default('Send'),
-                                                Textarea::make('legal_info_text_en')->label('Legal (EN)')->rows(6),
+                                                RichEditor::make('legal_info_text_en')->label('Legal (EN)'),
                                                 TextInput::make('checkbox_1_label_en')->label('Checkbox 1 (EN)'),
                                                 TextInput::make('checkbox_2_label_en')->label('Checkbox 2 (EN)'),
                                             ]),
@@ -138,7 +139,7 @@ class TrabajaConNosotros extends Page implements HasForms
                                                 TextInput::make('field_message_label_fr')->label('Message label (FR)')->default('Message'),
                                                 TextInput::make('cv_label_fr')->label('Joindre CV label (FR)')->default('Joindre CV'),
                                                 TextInput::make('submit_text_fr')->label('Submit text (FR)')->default('Envoyer'),
-                                                Textarea::make('legal_info_text_fr')->label('Legal (FR)')->rows(6),
+                                                RichEditor::make('legal_info_text_fr')->label('Legal (FR)'),
                                                 TextInput::make('checkbox_1_label_fr')->label('Checkbox 1 (FR)'),
                                                 TextInput::make('checkbox_2_label_fr')->label('Checkbox 2 (FR)'),
                                             ]),

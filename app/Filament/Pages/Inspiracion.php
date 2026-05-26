@@ -9,6 +9,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -78,13 +79,13 @@ class Inspiracion extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('descriptions')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('description_es')->label('Descripción (ES)')->rows(4),
+                                                RichEditor::make('description_es')->label('Descripción (ES)'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('description_en')->label('Description (EN)')->rows(4),
+                                                RichEditor::make('description_en')->label('Description (EN)'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('description_fr')->label('Description (FR)')->rows(4),
+                                                RichEditor::make('description_fr')->label('Description (FR)'),
                                             ]),
                                         ]),
                                     ]),

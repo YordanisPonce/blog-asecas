@@ -15,6 +15,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Forms\Components\Repeater;
@@ -105,15 +106,15 @@ class IntegralProjects extends Page implements HasForms
                                             Tabs::make('card_lang')->tabs([
                                                 Tab::make('ES')->schema([
                                                     TextInput::make('title_es')->label('Título (ES)')->required(),
-                                                    Textarea::make('text_es')->label('Texto (ES)')->rows(3)->required(),
+                                                    RichEditor::make('text_es')->label('Texto (ES)')->required(),
                                                 ]),
                                                 Tab::make('EN')->schema([
                                                     TextInput::make('title_en')->label('Title (EN)')->required(),
-                                                    Textarea::make('text_en')->label('Text (EN)')->rows(3)->required(),
+                                                    RichEditor::make('text_en')->label('Text (EN)')->required(),
                                                 ]),
                                                 Tab::make('FR')->schema([
                                                     TextInput::make('title_fr')->label('Titre (FR)')->required(),
-                                                    Textarea::make('text_fr')->label('Texte (FR)')->rows(3)->required(),
+                                                    RichEditor::make('text_fr')->label('Texte (FR)')->required(),
                                                 ]),
                                             ])->columnSpanFull(),
                                         ])

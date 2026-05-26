@@ -13,6 +13,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Tabs;
 use Filament\Notifications\Notification;
@@ -91,15 +92,15 @@ class Empresa extends Page implements HasForms
                                         Tabs::make('about_tabs')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('about_title_es')->label('Título (ES)'),
-                                                Textarea::make('about_text_es')->label('Texto (ES)')->rows(3),
+                                                RichEditor::make('about_text_es')->label('Texto (ES)'),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('about_title_en')->label('Title (EN)'),
-                                                Textarea::make('about_text_en')->label('Text (EN)')->rows(3),
+                                                RichEditor::make('about_text_en')->label('Text (EN)'),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('about_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('about_text_fr')->label('Texte (FR)')->rows(3),
+                                                RichEditor::make('about_text_fr')->label('Texte (FR)'),
                                             ]),
                                         ]),
                                         Grid::make(3)->schema([
@@ -125,15 +126,15 @@ class Empresa extends Page implements HasForms
                                         Tabs::make('mission_tabs')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('mission_title_es')->label('Título (ES)'),
-                                                Textarea::make('mission_text_es')->label('Texto (ES)')->rows(3),
+                                                RichEditor::make('mission_text_es')->label('Texto (ES)'),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('mission_title_en')->label('Title (EN)'),
-                                                Textarea::make('mission_text_en')->label('Text (EN)')->rows(3),
+                                                RichEditor::make('mission_text_en')->label('Text (EN)'),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('mission_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('mission_text_fr')->label('Texte (FR)')->rows(3),
+                                                RichEditor::make('mission_text_fr')->label('Texte (FR)'),
                                             ]),
                                         ]),
                                     ])->columns(1),
@@ -144,15 +145,15 @@ class Empresa extends Page implements HasForms
                                         Tabs::make('production_tabs')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('production_title_es')->label('Título (ES)'),
-                                                Textarea::make('production_text_es')->label('Texto (ES)')->rows(3),
+                                                RichEditor::make('production_text_es')->label('Texto (ES)'),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('production_title_en')->label('Title (EN)'),
-                                                Textarea::make('production_text_en')->label('Text (EN)')->rows(3),
+                                                RichEditor::make('production_text_en')->label('Text (EN)'),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('production_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('production_text_fr')->label('Texte (FR)')->rows(3),
+                                                RichEditor::make('production_text_fr')->label('Texte (FR)'),
                                             ]),
                                         ]),
 
@@ -172,15 +173,15 @@ class Empresa extends Page implements HasForms
                                         Tabs::make('solutions_tabs')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('solutions_title_es')->label('Título (ES)'),
-                                                Textarea::make('solutions_intro_es')->label('Intro (ES)')->rows(2),
+                                                RichEditor::make('solutions_intro_es')->label('Intro (ES)'),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('solutions_title_en')->label('Title (EN)'),
-                                                Textarea::make('solutions_intro_en')->label('Intro (EN)')->rows(2),
+                                                RichEditor::make('solutions_intro_en')->label('Intro (EN)'),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('solutions_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('solutions_intro_fr')->label('Intro (FR)')->rows(2),
+                                                RichEditor::make('solutions_intro_fr')->label('Intro (FR)'),
                                             ]),
                                             Tab::make('Categorías')->schema([
                                                 Repeater::make('featured_categories_items')
@@ -221,15 +222,15 @@ class Empresa extends Page implements HasForms
                                         Tabs::make('international_tabs')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('international_title_es')->label('Título (ES)'),
-                                                Textarea::make('international_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('international_text_es')->label('Texto (ES)'),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('international_title_en')->label('Title (EN)'),
-                                                Textarea::make('international_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('international_text_en')->label('Text (EN)'),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('international_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('international_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('international_text_fr')->label('Texte (FR)'),
                                             ]),
                                         ]),
                                         Grid::make(3)->schema([
@@ -255,17 +256,17 @@ class Empresa extends Page implements HasForms
                                         Tabs::make('certs_tabs')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('certs_title_es')->label('Título (ES)'),
-                                                Textarea::make('certs_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('certs_text_es')->label('Texto (ES)'),
                                                 TextInput::make('certs_cta_text_es')->label('CTA texto (ES)')->nullable(),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('certs_title_en')->label('Title (EN)'),
-                                                Textarea::make('certs_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('certs_text_en')->label('Text (EN)'),
                                                 TextInput::make('certs_cta_text_en')->label('CTA text (EN)')->nullable(),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('certs_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('certs_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('certs_text_fr')->label('Texte (FR)'),
                                                 TextInput::make('certs_cta_text_fr')->label('CTA texte (FR)')->nullable(),
                                             ]),
                                         ]),
@@ -301,17 +302,17 @@ class Empresa extends Page implements HasForms
                                         Tabs::make('consulting_tabs')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('consulting_title_es')->label('Título (ES)'),
-                                                Textarea::make('consulting_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('consulting_text_es')->label('Texto (ES)'),
                                                 TextInput::make('consulting_cta_text_es')->label('CTA texto (ES)'),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('consulting_title_en')->label('Title (EN)'),
-                                                Textarea::make('consulting_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('consulting_text_en')->label('Text (EN)'),
                                                 TextInput::make('consulting_cta_text_en')->label('CTA text (EN)'),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('consulting_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('consulting_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('consulting_text_fr')->label('Texte (FR)'),
                                                 TextInput::make('consulting_cta_text_fr')->label('CTA texte (FR)'),
                                             ]),
                                         ]),

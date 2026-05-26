@@ -17,6 +17,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Forms\Get;
@@ -138,15 +139,15 @@ class CertificationsDocumentation extends Page implements HasForms
                                 Tabs::make('solutions_lang')->tabs([
                                     Tab::make('ES')->schema([
                                         TextInput::make('solutions_title_es')->label('Título (ES)')->nullable(),
-                                        Textarea::make('solutions_description_es')->label('Descripción (ES)')->rows(2)->nullable(),
+                                        RichEditor::make('solutions_description_es')->label('Descripción (ES)')->nullable(),
                                     ]),
                                     Tab::make('EN')->schema([
                                         TextInput::make('solutions_title_en')->label('Title (EN)')->nullable(),
-                                        Textarea::make('solutions_description_en')->label('Description (EN)')->rows(2)->nullable(),
+                                        RichEditor::make('solutions_description_en')->label('Description (EN)')->nullable(),
                                     ]),
                                     Tab::make('FR')->schema([
                                         TextInput::make('solutions_title_fr')->label('Titre (FR)')->nullable(),
-                                        Textarea::make('solutions_description_fr')->label('Description (FR)')->rows(2)->nullable(),
+                                        RichEditor::make('solutions_description_fr')->label('Description (FR)')->nullable(),
                                     ]),
                                 ]),
 

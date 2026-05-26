@@ -80,13 +80,13 @@ class ProductCategoryResource extends Resource
             Forms\Components\Section::make('Descripción')->schema([
                 Forms\Components\Tabs::make('descriptions')->tabs([
                     Forms\Components\Tabs\Tab::make('ES')->schema([
-                        Forms\Components\Textarea::make('description_es')->label('Descripción (ES)')->rows(5),
+                        Forms\Components\RichEditor::make('description_es')->label('Descripción (ES)'),
                     ]),
                     Forms\Components\Tabs\Tab::make('EN')->schema([
-                        Forms\Components\Textarea::make('description_en')->label('Descripción (EN)')->rows(5),
+                        Forms\Components\RichEditor::make('description_en')->label('Descripción (EN)'),
                     ]),
                     Forms\Components\Tabs\Tab::make('FR')->schema([
-                        Forms\Components\Textarea::make('description_fr')->label('Descripción (FR)')->rows(5),
+                        Forms\Components\RichEditor::make('description_fr')->label('Descripción (FR)'),
                     ]),
                 ]),
             ]),

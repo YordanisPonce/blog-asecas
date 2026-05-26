@@ -14,6 +14,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\DatePicker;
 use Filament\Notifications\Notification;
 use App\Filament\Components\SeoFields; // ← IMPORTAR EL COMPONENTE SEO
@@ -82,41 +83,41 @@ class Cookies extends Page implements HasForms
 
                             Section::make('Introducción')->schema([
                                 Tabs::make('intro')->tabs([
-                                    Tabs\Tab::make('ES')->schema([Textarea::make('intro_es')->rows(7)]),
-                                    Tabs\Tab::make('EN')->schema([Textarea::make('intro_en')->rows(7)]),
-                                    Tabs\Tab::make('FR')->schema([Textarea::make('intro_fr')->rows(7)]),
+                                    Tabs\Tab::make('ES')->schema([RichEditor::make('intro_es')]),
+                                    Tabs\Tab::make('EN')->schema([RichEditor::make('intro_en')]),
+                                    Tabs\Tab::make('FR')->schema([RichEditor::make('intro_fr')]),
                                 ]),
                             ]),
 
                             Section::make('Información recopilada / funcionamiento')->schema([
                                 Tabs::make('collected')->tabs([
-                                    Tabs\Tab::make('ES')->schema([Textarea::make('collected_info_es')->rows(7)]),
-                                    Tabs\Tab::make('EN')->schema([Textarea::make('collected_info_en')->rows(7)]),
-                                    Tabs\Tab::make('FR')->schema([Textarea::make('collected_info_fr')->rows(7)]),
+                                    Tabs\Tab::make('ES')->schema([RichEditor::make('collected_info_es')]),
+                                    Tabs\Tab::make('EN')->schema([RichEditor::make('collected_info_en')]),
+                                    Tabs\Tab::make('FR')->schema([RichEditor::make('collected_info_fr')]),
                                 ]),
                             ]),
 
                             Section::make('Nota sobre datos personales / identificación')->schema([
                                 Tabs::make('personal_note')->tabs([
-                                    Tabs\Tab::make('ES')->schema([Textarea::make('personal_data_note_es')->rows(6)]),
-                                    Tabs\Tab::make('EN')->schema([Textarea::make('personal_data_note_en')->rows(6)]),
-                                    Tabs\Tab::make('FR')->schema([Textarea::make('personal_data_note_fr')->rows(6)]),
+                                    Tabs\Tab::make('ES')->schema([RichEditor::make('personal_data_note_es')]),
+                                    Tabs\Tab::make('EN')->schema([RichEditor::make('personal_data_note_en')]),
+                                    Tabs\Tab::make('FR')->schema([RichEditor::make('personal_data_note_fr')]),
                                 ]),
                             ]),
 
                             Section::make('Consentimiento')->schema([
                                 Tabs::make('consent')->tabs([
-                                    Tabs\Tab::make('ES')->schema([Textarea::make('consent_es')->rows(6)]),
-                                    Tabs\Tab::make('EN')->schema([Textarea::make('consent_en')->rows(6)]),
-                                    Tabs\Tab::make('FR')->schema([Textarea::make('consent_fr')->rows(6)]),
+                                    Tabs\Tab::make('ES')->schema([RichEditor::make('consent_es')]),
+                                    Tabs\Tab::make('EN')->schema([RichEditor::make('consent_en')]),
+                                    Tabs\Tab::make('FR')->schema([RichEditor::make('consent_fr')]),
                                 ]),
                             ]),
 
                             Section::make('Deshabilitar, rechazar y borrar cookies')->schema([
                                 Tabs::make('disable')->tabs([
-                                    Tabs\Tab::make('ES')->schema([Textarea::make('disable_reject_delete_es')->rows(8)]),
-                                    Tabs\Tab::make('EN')->schema([Textarea::make('disable_reject_delete_en')->rows(8)]),
-                                    Tabs\Tab::make('FR')->schema([Textarea::make('disable_reject_delete_fr')->rows(8)]),
+                                    Tabs\Tab::make('ES')->schema([RichEditor::make('disable_reject_delete_es')]),
+                                    Tabs\Tab::make('EN')->schema([RichEditor::make('disable_reject_delete_en')]),
+                                    Tabs\Tab::make('FR')->schema([RichEditor::make('disable_reject_delete_fr')]),
                                 ]),
                             ]),
                         ]),

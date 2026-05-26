@@ -214,24 +214,21 @@ class ApplicationResource extends Resource
                     ]),
                 Forms\Components\Section::make('Descripciones Cortas')
                     ->schema([
-                        Forms\Components\Textarea::make('short_description_en')
-                            ->label('Descripción Corta (Inglés)')
-                            ->rows(3),
-                        Forms\Components\Textarea::make('short_description_es')
-                            ->label('Descripción Corta (Español)')
-                            ->rows(3),
-                        Forms\Components\Textarea::make('short_description_fr')
-                            ->label('Descripción Corta (Francés)')
-                            ->rows(3),
+                        Forms\Components\RichEditor::make('short_description_en')
+                            ->label('Descripción Corta (Inglés)'),
+                        Forms\Components\RichEditor::make('short_description_es')
+                            ->label('Descripción Corta (Español)'),
+                        Forms\Components\RichEditor::make('short_description_fr')
+                            ->label('Descripción Corta (Francés)'),
                     ]),
 
                 Forms\Components\Section::make('Descripciones Completas')
                     ->schema([
-                        Forms\Components\Textarea::make('description_en')
+                        Forms\Components\RichEditor::make('description_en')
                             ->label('Descripción Completa (Inglés)'),
-                        Forms\Components\Textarea::make('description_es')
+                        Forms\Components\RichEditor::make('description_es')
                             ->label('Descripción Completa (Español)'),
-                        Forms\Components\Textarea::make('description_fr')
+                        Forms\Components\RichEditor::make('description_fr')
                             ->label('Descripción Completa (Francés)'),
                     ]),
 

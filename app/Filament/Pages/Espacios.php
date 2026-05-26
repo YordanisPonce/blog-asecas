@@ -14,6 +14,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 
 class Espacios extends Page implements HasForms
 {
@@ -62,13 +63,13 @@ class Espacios extends Page implements HasForms
             Section::make('Descripción')->schema([
                 Tabs::make('descriptions')->tabs([
                     Tabs\Tab::make('ES')->schema([
-                        Textarea::make('description_es')->label('Descripción (ES)')->rows(6)->required(),
+                        RichEditor::make('description_es')->label('Descripción (ES)')->required(),
                     ]),
                     Tabs\Tab::make('EN')->schema([
-                        Textarea::make('description_en')->label('Descripción (EN)')->rows(6)->required(),
+                        RichEditor::make('description_en')->label('Descripción (EN)')->required(),
                     ]),
                     Tabs\Tab::make('FR')->schema([
-                        Textarea::make('description_fr')->label('Descripción (FR)')->rows(6)->required(),
+                        RichEditor::make('description_fr')->label('Descripción (FR)')->required(),
                     ]),
                 ]),
             ]),

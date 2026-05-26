@@ -15,6 +15,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Notifications\Notification;
 use App\Filament\Components\SeoFields; // ← IMPORTAR EL COMPONENTE SEO
@@ -127,17 +128,17 @@ class Contacto extends Page implements HasForms
                                     ->schema([
                                         Tabs::make('legal_tabs')->tabs([
                                             Tabs\Tab::make('ES')->schema([
-                                                Textarea::make('legal_info_text_es')->rows(5),
+                                                RichEditor::make('legal_info_text_es')->label('Texto legal (ES)'),
                                                 TextInput::make('checkbox_1_label_es')->label('Checkbox 1 (ES)'),
                                                 TextInput::make('checkbox_2_label_es')->label('Checkbox 2 (ES)'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
-                                                Textarea::make('legal_info_text_en')->rows(5),
+                                                RichEditor::make('legal_info_text_en')->label('Legal text (EN)'),
                                                 TextInput::make('checkbox_1_label_en')->label('Checkbox 1 (EN)'),
                                                 TextInput::make('checkbox_2_label_en')->label('Checkbox 2 (EN)'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
-                                                Textarea::make('legal_info_text_fr')->rows(5),
+                                                RichEditor::make('legal_info_text_fr')->label('Texte légal (FR)'),
                                                 TextInput::make('checkbox_1_label_fr')->label('Checkbox 1 (FR)'),
                                                 TextInput::make('checkbox_2_label_fr')->label('Checkbox 2 (FR)'),
                                             ]),
@@ -150,17 +151,17 @@ class Contacto extends Page implements HasForms
                                         Tabs::make('cta_tabs')->tabs([
                                             Tabs\Tab::make('ES')->schema([
                                                 TextInput::make('cta_title_es')->label('Título (ES)'),
-                                                Textarea::make('cta_text_es')->label('Texto (ES)')->rows(3),
+                                                RichEditor::make('cta_text_es')->label('Texto (ES)'),
                                                 TextInput::make('cta_button_text_es')->label('Texto botón (ES)')->placeholder('Contactar'),
                                             ]),
                                             Tabs\Tab::make('EN')->schema([
                                                 TextInput::make('cta_title_en')->label('Title (EN)'),
-                                                Textarea::make('cta_text_en')->label('Text (EN)')->rows(3),
+                                                RichEditor::make('cta_text_en')->label('Text (EN)'),
                                                 TextInput::make('cta_button_text_en')->label('Button text (EN)'),
                                             ]),
                                             Tabs\Tab::make('FR')->schema([
                                                 TextInput::make('cta_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('cta_text_fr')->label('Texte (FR)')->rows(3),
+                                                RichEditor::make('cta_text_fr')->label('Texte (FR)'),
                                                 TextInput::make('cta_button_text_fr')->label('Texte du bouton (FR)'),
                                             ]),
                                         ]),

@@ -16,6 +16,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use App\Filament\Components\SeoFields; // ← IMPORTAR EL COMPONENTE SEO
@@ -96,17 +97,17 @@ class Applicators extends Page implements HasForms
                                         Tabs::make('col1_lang')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('col1_title_es')->label('Título (ES)'),
-                                                Textarea::make('col1_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('col1_text_es')->label('Texto (ES)'),
                                                 Textarea::make('col1_bullets_es')->label('Bullets (ES)')->rows(4),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('col1_title_en')->label('Title (EN)'),
-                                                Textarea::make('col1_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('col1_text_en')->label('Text (EN)'),
                                                 Textarea::make('col1_bullets_en')->label('Bullets (EN)')->rows(4),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('col1_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('col1_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('col1_text_fr')->label('Texte (FR)'),
                                                 Textarea::make('col1_bullets_fr')->label('Bullets (FR)')->rows(4),
                                             ]),
                                         ]),
@@ -115,17 +116,17 @@ class Applicators extends Page implements HasForms
                                         Tabs::make('col2_lang')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('col2_title_es')->label('Título (ES)'),
-                                                Textarea::make('col2_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('col2_text_es')->label('Texto (ES)'),
                                                 Textarea::make('col2_bullets_es')->label('Bullets (ES)')->rows(4),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('col2_title_en')->label('Title (EN)'),
-                                                Textarea::make('col2_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('col2_text_en')->label('Text (EN)'),
                                                 Textarea::make('col2_bullets_en')->label('Bullets (EN)')->rows(4),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('col2_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('col2_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('col2_text_fr')->label('Texte (FR)'),
                                                 Textarea::make('col2_bullets_fr')->label('Bullets (FR)')->rows(4),
                                             ]),
                                         ]),
@@ -134,17 +135,17 @@ class Applicators extends Page implements HasForms
                                         Tabs::make('col3_lang')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('col3_title_es')->label('Título (ES)'),
-                                                Textarea::make('col3_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('col3_text_es')->label('Texto (ES)'),
                                                 Textarea::make('col3_bullets_es')->label('Bullets (ES)')->rows(4),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('col3_title_en')->label('Title (EN)'),
-                                                Textarea::make('col3_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('col3_text_en')->label('Text (EN)'),
                                                 Textarea::make('col3_bullets_en')->label('Bullets (EN)')->rows(4),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('col3_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('col3_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('col3_text_fr')->label('Texte (FR)'),
                                                 Textarea::make('col3_bullets_fr')->label('Bullets (FR)')->rows(4),
                                             ]),
                                         ]),
@@ -179,22 +180,21 @@ class Applicators extends Page implements HasForms
                                 Tabs::make('final_lang')->tabs([
                                     Tab::make('ES')->schema([
                                         TextInput::make('final_title_es')->label('Título (ES)'),
-                                        Textarea::make('final_description_es')->label('Descripción (ES)')->rows(3)
-                                            ->helperText('Puede contener HTML.'),
+                                        RichEditor::make('final_description_es')->label('Descripción (ES)'),
                                         Textarea::make('form_privacy_es')->label('Texto legal (ES)')->rows(6),
                                         Textarea::make('form_checkbox1_es')->label('Checkbox 1 (ES)')->rows(2),
                                         Textarea::make('form_checkbox2_es')->label('Checkbox 2 (ES)')->rows(2),
                                     ]),
                                     Tab::make('EN')->schema([
                                         TextInput::make('final_title_en')->label('Title (EN)'),
-                                        Textarea::make('final_description_en')->label('Description (EN)')->rows(3),
+                                        RichEditor::make('final_description_en')->label('Description (EN)'),
                                         Textarea::make('form_privacy_en')->label('Legal text (EN)')->rows(6),
                                         Textarea::make('form_checkbox1_en')->label('Checkbox 1 (EN)')->rows(2),
                                         Textarea::make('form_checkbox2_en')->label('Checkbox 2 (EN)')->rows(2),
                                     ]),
                                     Tab::make('FR')->schema([
                                         TextInput::make('final_title_fr')->label('Titre (FR)'),
-                                        Textarea::make('final_description_fr')->label('Description (FR)')->rows(3),
+                                        RichEditor::make('final_description_fr')->label('Description (FR)'),
                                         Textarea::make('form_privacy_fr')->label('Texte légal (FR)')->rows(6),
                                         Textarea::make('form_checkbox1_fr')->label('Checkbox 1 (FR)')->rows(2),
                                         Textarea::make('form_checkbox2_fr')->label('Checkbox 2 (FR)')->rows(2),
@@ -207,15 +207,15 @@ class Applicators extends Page implements HasForms
                                         Tabs::make('benefit_lang')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('title_es')->label('Título (ES)')->required(),
-                                                Textarea::make('text_es')->label('Texto (ES)')->rows(2)->required(),
+                                                RichEditor::make('text_es')->label('Texto (ES)')->required(),
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('title_en')->label('Title (EN)'),
-                                                Textarea::make('text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('text_en')->label('Text (EN)'),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('title_fr')->label('Titre (FR)'),
-                                                Textarea::make('text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('text_fr')->label('Texte (FR)'),
                                             ]),
                                         ]),
                                     ])

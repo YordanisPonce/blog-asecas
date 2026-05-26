@@ -14,6 +14,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Notifications\Notification;
 
@@ -64,9 +65,9 @@ class Acabados extends Page implements HasForms
 
                 Section::make('Introducción (opcional)')->schema([
                     Tabs::make('intro')->tabs([
-                        Tabs\Tab::make('ES')->schema([Textarea::make('intro_es')->rows(3)->label('Introducción (ES)')]),
-                        Tabs\Tab::make('EN')->schema([Textarea::make('intro_en')->rows(3)->label('Introducción (EN)')]),
-                        Tabs\Tab::make('FR')->schema([Textarea::make('intro_fr')->rows(3)->label('Introducción (FR)')]),
+                        Tabs\Tab::make('ES')->schema([RichEditor::make('intro_es')->label('Introducción (ES)')]),
+                        Tabs\Tab::make('EN')->schema([RichEditor::make('intro_en')->label('Introducción (EN)')]),
+                        Tabs\Tab::make('FR')->schema([RichEditor::make('intro_fr')->label('Introducción (FR)')]),
                     ]),
                 ]),
 
@@ -86,15 +87,15 @@ class Acabados extends Page implements HasForms
                             Tabs::make('titles_per_item')->tabs([
                                 Tabs\Tab::make('ES')->schema([
                                     TextInput::make('title_es')->label('Título (ES)')->required(),
-                                    Textarea::make('description_es')->label('Descripción (ES)')->rows(4)->required(),
+                                    RichEditor::make('description_es')->label('Descripción (ES)')->required(),
                                 ]),
                                 Tabs\Tab::make('EN')->schema([
                                     TextInput::make('title_en')->label('Título (EN)')->required(),
-                                    Textarea::make('description_en')->label('Descripción (EN)')->rows(4)->required(),
+                                    RichEditor::make('description_en')->label('Descripción (EN)')->required(),
                                 ]),
                                 Tabs\Tab::make('FR')->schema([
                                     TextInput::make('title_fr')->label('Título (FR)')->required(),
-                                    Textarea::make('description_fr')->label('Descripción (FR)')->rows(4)->required(),
+                                    RichEditor::make('description_fr')->label('Descripción (FR)')->required(),
                                 ]),
                             ]),
 

@@ -17,6 +17,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Forms\Get;
@@ -113,7 +114,7 @@ class BuildersArchitects extends Page implements HasForms
                                         Tabs::make('col1_lang')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('col1_title_es')->label('Título (ES)'),
-                                                Textarea::make('col1_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('col1_text_es')->label('Texto (ES)'),
                                                 Textarea::make('col1_bullets_es')
                                                     ->label('Bullets (ES)')
                                                     ->helperText('Puedes poner saltos de línea o HTML.')
@@ -121,12 +122,12 @@ class BuildersArchitects extends Page implements HasForms
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('col1_title_en')->label('Title (EN)'),
-                                                Textarea::make('col1_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('col1_text_en')->label('Text (EN)'),
                                                 Textarea::make('col1_bullets_en')->label('Bullets (EN)')->rows(5),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('col1_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('col1_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('col1_text_fr')->label('Texte (FR)'),
                                                 Textarea::make('col1_bullets_fr')->label('Bullets (FR)')->rows(5),
                                             ]),
                                         ]),
@@ -136,7 +137,7 @@ class BuildersArchitects extends Page implements HasForms
                                         Tabs::make('col2_lang')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('col2_title_es')->label('Título (ES)'),
-                                                Textarea::make('col2_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('col2_text_es')->label('Texto (ES)'),
                                                 Textarea::make('col2_bullets_es')
                                                     ->label('Bullets (ES)')
                                                     ->helperText('Puedes poner saltos de línea o HTML.')
@@ -144,12 +145,12 @@ class BuildersArchitects extends Page implements HasForms
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('col2_title_en')->label('Title (EN)'),
-                                                Textarea::make('col2_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('col2_text_en')->label('Text (EN)'),
                                                 Textarea::make('col2_bullets_en')->label('Bullets (EN)')->rows(5),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('col2_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('col2_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('col2_text_fr')->label('Texte (FR)'),
                                                 Textarea::make('col2_bullets_fr')->label('Bullets (FR)')->rows(5),
                                             ]),
                                         ]),
@@ -159,7 +160,7 @@ class BuildersArchitects extends Page implements HasForms
                                         Tabs::make('col3_lang')->tabs([
                                             Tab::make('ES')->schema([
                                                 TextInput::make('col3_title_es')->label('Título (ES)'),
-                                                Textarea::make('col3_text_es')->label('Texto (ES)')->rows(2),
+                                                RichEditor::make('col3_text_es')->label('Texto (ES)'),
                                                 Textarea::make('col3_bullets_es')
                                                     ->label('Bullets (ES)')
                                                     ->helperText('Puedes poner saltos de línea o HTML.')
@@ -167,12 +168,12 @@ class BuildersArchitects extends Page implements HasForms
                                             ]),
                                             Tab::make('EN')->schema([
                                                 TextInput::make('col3_title_en')->label('Title (EN)'),
-                                                Textarea::make('col3_text_en')->label('Text (EN)')->rows(2),
+                                                RichEditor::make('col3_text_en')->label('Text (EN)'),
                                                 Textarea::make('col3_bullets_en')->label('Bullets (EN)')->rows(5),
                                             ]),
                                             Tab::make('FR')->schema([
                                                 TextInput::make('col3_title_fr')->label('Titre (FR)'),
-                                                Textarea::make('col3_text_fr')->label('Texte (FR)')->rows(2),
+                                                RichEditor::make('col3_text_fr')->label('Texte (FR)'),
                                                 Textarea::make('col3_bullets_fr')->label('Bullets (FR)')->rows(5),
                                             ]),
                                         ]),
@@ -210,24 +211,15 @@ class BuildersArchitects extends Page implements HasForms
                                 Tabs::make('final_lang')->tabs([
                                     Tab::make('ES')->schema([
                                         TextInput::make('final_title_es')->label('Título (ES)'),
-                                        Textarea::make('final_description_es')
-                                            ->label('Descripción (ES)')
-                                            ->helperText('Puede contener HTML.')
-                                            ->rows(3),
+                                        RichEditor::make('final_description_es')->label('Descripción (ES)'),
                                     ]),
                                     Tab::make('EN')->schema([
                                         TextInput::make('final_title_en')->label('Title (EN)'),
-                                        Textarea::make('final_description_en')
-                                            ->label('Description (EN)')
-                                            ->helperText('Can contain HTML.')
-                                            ->rows(3),
+                                        RichEditor::make('final_description_en')->label('Description (EN)'),
                                     ]),
                                     Tab::make('FR')->schema([
                                         TextInput::make('final_title_fr')->label('Titre (FR)'),
-                                        Textarea::make('final_description_fr')
-                                            ->label('Description (FR)')
-                                            ->helperText('Peut contenir du HTML.')
-                                            ->rows(3),
+                                        RichEditor::make('final_description_fr')->label('Description (FR)'),
                                     ]),
                                 ]),
 

@@ -14,6 +14,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\DatePicker;
 use Filament\Notifications\Notification;
 use App\Filament\Components\SeoFields; // ← IMPORTAR EL COMPONENTE SEO
@@ -85,90 +86,90 @@ class Privacidad extends Page implements HasForms
                                 Section::make('Introducción')
                                     ->schema([
                                         Tabs::make('intro')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('intro_es')->rows(6)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('intro_en')->rows(6)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('intro_fr')->rows(6)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('intro_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('intro_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('intro_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Responsable del tratamiento')
                                     ->schema([
                                         Tabs::make('controller_info')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('controller_info_es')->rows(6)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('controller_info_en')->rows(6)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('controller_info_fr')->rows(6)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('controller_info_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('controller_info_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('controller_info_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Finalidad del tratamiento')
                                     ->schema([
                                         Tabs::make('purpose')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('purpose_es')->rows(6)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('purpose_en')->rows(6)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('purpose_fr')->rows(6)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('purpose_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('purpose_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('purpose_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Base legal')
                                     ->schema([
                                         Tabs::make('legal_basis')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('legal_basis_es')->rows(6)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('legal_basis_en')->rows(6)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('legal_basis_fr')->rows(6)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('legal_basis_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('legal_basis_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('legal_basis_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Medidas de seguridad')
                                     ->schema([
                                         Tabs::make('security_measures')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('security_measures_es')->rows(6)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('security_measures_en')->rows(6)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('security_measures_fr')->rows(6)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('security_measures_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('security_measures_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('security_measures_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Comunicación de datos a terceros')
                                     ->schema([
                                         Tabs::make('data_sharing')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('data_sharing_es')->rows(6)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('data_sharing_en')->rows(6)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('data_sharing_fr')->rows(6)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('data_sharing_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('data_sharing_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('data_sharing_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Transferencias internacionales')
                                     ->schema([
                                         Tabs::make('intl_transfers')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('intl_transfers_es')->rows(6)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('intl_transfers_en')->rows(6)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('intl_transfers_fr')->rows(6)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('intl_transfers_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('intl_transfers_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('intl_transfers_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Plazos de conservación')
                                     ->schema([
                                         Tabs::make('retention')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('retention_es')->rows(6)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('retention_en')->rows(6)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('retention_fr')->rows(6)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('retention_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('retention_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('retention_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Cómo ejercer tus derechos')
                                     ->schema([
                                         Tabs::make('rights_howto')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('rights_howto_es')->rows(8)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('rights_howto_en')->rows(8)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('rights_howto_fr')->rows(8)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('rights_howto_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('rights_howto_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('rights_howto_fr')]),
                                         ]),
                                     ]),
 
                                 Section::make('Modificaciones de esta información')
                                     ->schema([
                                         Tabs::make('modifications')->tabs([
-                                            Tabs\Tab::make('ES')->schema([Textarea::make('modifications_es')->rows(4)]),
-                                            Tabs\Tab::make('EN')->schema([Textarea::make('modifications_en')->rows(4)]),
-                                            Tabs\Tab::make('FR')->schema([Textarea::make('modifications_fr')->rows(4)]),
+                                            Tabs\Tab::make('ES')->schema([RichEditor::make('modifications_es')]),
+                                            Tabs\Tab::make('EN')->schema([RichEditor::make('modifications_en')]),
+                                            Tabs\Tab::make('FR')->schema([RichEditor::make('modifications_fr')]),
                                         ]),
                                     ]),
                             ]),

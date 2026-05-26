@@ -123,9 +123,8 @@ class SpaceResource extends Resource
                             ->maxLength(255)
                               ->unique(ignoreRecord: true),
 
-                        Forms\Components\Textarea::make('description')
-                            ->label('Descripción (ES)')
-                            ->rows(6),
+                        Forms\Components\RichEditor::make('description')
+                            ->label('Descripción (ES)'),
                     ]),
 
                     Forms\Components\Tabs\Tab::make('EN')->schema([
@@ -144,9 +143,8 @@ class SpaceResource extends Resource
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
 
-                        Forms\Components\Textarea::make('description_en')
-                            ->label('Description (EN)')
-                            ->rows(6),
+                        Forms\Components\RichEditor::make('description_en')
+                            ->label('Description (EN)'),
                     ]),
 
                     Forms\Components\Tabs\Tab::make('FR')->schema([
@@ -165,9 +163,8 @@ class SpaceResource extends Resource
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
 
-                        Forms\Components\Textarea::make('description_fr')
-                            ->label('Description (FR)')
-                            ->rows(6),
+                        Forms\Components\RichEditor::make('description_fr')
+                            ->label('Description (FR)'),
                     ]),
                 ]),
             ])->columns(1),
