@@ -19,8 +19,21 @@ class BlogPageController extends Controller
 
         $blogs = Blog::where('active', 1)
             ->orderByDesc('id')
-            ->get(['id', 'title', 'title_en', 'title_fr', 'slug', 'slug_en', 'slug_fr', 'photo', 'created_at', 'description']);
-    
+            ->get([
+                'id',
+                'title',
+                'title_en',
+                'title_fr',
+                'slug',
+                'slug_en',
+                'slug_fr',
+                'photo',
+                'created_at',
+                'description',
+                'description_en',
+                'description_fr',
+            ]);
+
         return response()->json([
             'status' => 200,
             'message' => 'OK',

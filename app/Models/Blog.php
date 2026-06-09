@@ -19,9 +19,14 @@ class Blog extends Model
         'title_fr',
         'description',
         'description_en',
-        'description_fr', 'slug',
+        'description_fr',
+        'slug',
         'slug_en',
-        'slug_fr','active', 'user_id', 'photo', 'notified', // 👇 nuevos campos SEO
+        'slug_fr',
+        'active',
+        'user_id',
+        'photo',
+        'notified', // 👇 nuevos campos SEO
         'meta_title_es',
         'meta_title_en',
         'meta_title_fr',
@@ -37,7 +42,8 @@ class Blog extends Model
         'og_description_es',
         'og_description_en',
         'og_description_fr',
-        'og_image',];
+        'og_image',
+    ];
 
 
     // app/Models/Blog.php
@@ -86,14 +92,16 @@ class Blog extends Model
     public function getMetaTitle(string $lang): ?string
     {
         $seoValue = $this->{"meta_title_{$lang}"};
-        if (!empty($seoValue)) return $seoValue;
+        if (!empty($seoValue))
+            return $seoValue;
         return $this->title; // fallback al título de la noticia
     }
 
     public function getMetaDescription(string $lang): ?string
     {
         $seoValue = $this->{"meta_description_{$lang}"};
-        if (!empty($seoValue)) return $seoValue;
+        if (!empty($seoValue))
+            return $seoValue;
         // fallback a un extracto de la descripción (sin HTML)
         $plainText = strip_tags($this->description ?? '');
         return substr($plainText, 0, 160);
@@ -107,14 +115,16 @@ class Blog extends Model
     public function getOgTitle(string $lang): ?string
     {
         $ogValue = $this->{"og_title_{$lang}"};
-        if (!empty($ogValue)) return $ogValue;
+        if (!empty($ogValue))
+            return $ogValue;
         return $this->getMetaTitle($lang);
     }
 
     public function getOgDescription(string $lang): ?string
     {
         $ogValue = $this->{"og_description_{$lang}"};
-        if (!empty($ogValue)) return $ogValue;
+        if (!empty($ogValue))
+            return $ogValue;
         return $this->getMetaDescription($lang);
     }
 
