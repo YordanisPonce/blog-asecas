@@ -26,6 +26,9 @@ class Blog extends Model
         'active',
         'user_id',
         'photo',
+        'photo_alt_es',
+        'photo_alt_en',
+        'photo_alt_fr',
         'notified', // 👇 nuevos campos SEO
         'meta_title_es',
         'meta_title_en',

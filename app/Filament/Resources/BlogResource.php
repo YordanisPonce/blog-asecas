@@ -45,6 +45,11 @@ class BlogResource extends Resource
                                 ->unique(ignoreRecord: true)
                                 ->helperText('URL amigable para la versión en español'),
                             RichEditor::make('description')->label('Contenido')->columnSpanFull(),
+                            TextInput::make('photo_alt_es')
+                                ->label('Texto ALT de la imagen de portada (ES)')
+                                ->maxLength(255)
+                                ->columnSpanFull()
+                                ->helperText('Opcional. Si se deja vacío se usa el título de la noticia.'),
                         ]),
                         Tabs\Tab::make('English')->schema([
                             TextInput::make('title_en')->label('Title')->required(),
@@ -53,6 +58,11 @@ class BlogResource extends Resource
                                 ->unique(ignoreRecord: true)
                                 ->helperText('URL amigable para la versión en inglés'),
                             RichEditor::make('description_en')->label('Content')->columnSpanFull(),
+                            TextInput::make('photo_alt_en')
+                                ->label('Cover image ALT text (EN)')
+                                ->maxLength(255)
+                                ->columnSpanFull()
+                                ->helperText('Opcional. Si se deja vacío se usa el título de la noticia.'),
                         ]),
                         Tabs\Tab::make('Français')->schema([
                             TextInput::make('title_fr')->label('Titre')->required(),
@@ -61,6 +71,11 @@ class BlogResource extends Resource
                                 ->unique(ignoreRecord: true)
                                 ->helperText('URL amigable para la versión en francés'),
                             RichEditor::make('description_fr')->label('Contenu')->columnSpanFull(),
+                            TextInput::make('photo_alt_fr')
+                                ->label('Texte ALT de l’image de couverture (FR)')
+                                ->maxLength(255)
+                                ->columnSpanFull()
+                                ->helperText('Opcional. Si se deja vacío se usa el título de la noticia.'),
                         ]),
                     ]),
                 Toggle::make('active')->label('Habilitado')->columnSpanFull(),

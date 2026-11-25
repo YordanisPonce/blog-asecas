@@ -17,9 +17,6 @@ class LegalNoticePageController extends Controller
         // Cargar el modelo con su relación SEO
         $page = LegalPage::with('seo')->first() ?? LegalPage::create([]);
 
-        // Debug: ver qué tiene el SEO
-        \Log::info('LegalPage SEO:', $page->seo ? $page->seo->toArray() : 'No SEO');
-
         $data = [
             'page_title'      => $this->t($page, 'page_title', $lang),
             'last_updated_at' => optional($page->last_updated_at)->toDateString(),
